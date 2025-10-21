@@ -1,0 +1,183 @@
+---
+import { Icon } from "astro-icon/components";
+import Tag from "@/components/tag.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="home-how-it-works" class="section__block">
+  <div class="container">
+    <div class="section__header">
+      <div class="title">
+        <Tag label={t("home.how-it-works.tag")}>
+          <Icon name="pink__wave" width={15.643} height={7.176} />
+        </Tag>
+        <h2 class="section__title">{t("home.how-it-works.title")}</h2>
+      </div>
+      <p class="section__copy">
+        {t("home.how-it-works.copy")}
+      </p>
+    </div>
+    <div class="steps">
+      <div class="row top">
+        <div class="card glass-card">
+          <h3>1- {t("home.how-it-works.step.1.title")}</h3>
+          <p>
+            {t("home.how-it-works.step.1.copy")}
+          </p>
+          <div class="bottom">
+            <span class="stat">0.3s</span>
+            <span class="label">{t("home.how-it-works.step.1.stat")}</span>
+          </div>
+        </div>
+        <div class="card glass-card">
+          <h3>2- {t("home.how-it-works.step.2.title")}</h3>
+          <p>
+            {t("home.how-it-works.step.2.copy")}
+          </p>
+          <div class="bottom">
+            <span class="stat">45+</span>
+            <span class="label">{t("home.how-it-works.step.2.stat")}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row bottom">
+        <div class="card glass-card">
+          <h3>3- {t("home.how-it-works.step.3.title")}</h3>
+          <p>
+            {t("home.how-it-works.step.3.copy")}
+          </p>
+          <div class="bottom">
+            <span class="stat">73%</span>
+            <span class="label">{t("home.how-it-works.step.3.stat")}</span>
+          </div>
+        </div>
+        <div class="card glass-card">
+          <h3>4- {t("home.how-it-works.step.4.title")}</h3>
+          <p>{t("home.how-it-works.step.4.copy")}</p>
+          <div class="bottom">
+            <span class="stat">0</span>
+            <span class="label">{t("home.how-it-works.step.4.stat")}</span>
+          </div>
+        </div>
+        <div class="card glass-card">
+          <h3>5- {t("home.how-it-works.step.5.title")}</h3>
+          <p>{t("home.how-it-works.step.5.copy")}</p>
+          <div class="bottom">
+            <span class="stat">94%</span>
+            <span class="label">{t("home.how-it-works.step.5.stat")}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  .section__copy {
+    max-width: 670px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 22px;
+
+    @include respond-to(sm) {
+      &.top {
+        flex-direction: row;
+      }
+      &.bottom {
+        flex-direction: row;
+      }
+    }
+  }
+  .card {
+    flex: 1;
+    padding: 40px 24px;
+    color: rgb(var(--clr-white));
+
+    h3 {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.56px;
+      margin-bottom: 24px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.16;
+      letter-spacing: -0.16px;
+      margin-bottom: 32px;
+    }
+    .bottom {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .stat {
+        color: rgb(var(--clr-pink));
+        font-family: var(--font-mono);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 1.6px;
+      }
+      .label {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.16;
+        letter-spacing: -0.14px;
+      }
+    }
+  }
+  .card.footer {
+    padding: 24px;
+
+    .stats {
+      display: grid;
+      gap: 55px;
+
+      @include respond-to(sm) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include respond-to(md) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .metric {
+      color: rgb(var(--clr-gray));
+      text-align: center;
+      leading-trim: both;
+      text-edge: cap;
+      font-feature-settings: "ss03" on;
+      font-family: var(--font-mono);
+      font-size: 40px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1.2px;
+    }
+    .label {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.16;
+      letter-spacing: -0.18px;
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+interface ComparisonRow {
+  feature: string;
+  kleva: string;
+  competitor: string;
+}
+
+interface Props {
+  title: string;
+  competitorName: string;
+  rows: ComparisonRow[];
+}
+
+const { title, competitorName, rows } = Astro.props;
+---
+
+<section class="comparison-table">
+  <h2>{title}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Kleva</th>
+        <th>{competitorName}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr>
+            <td>{row.feature}</td>
+            <td>{row.kleva}</td>
+            <td>{row.competitor}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</section>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  th {
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+  }
+</style>

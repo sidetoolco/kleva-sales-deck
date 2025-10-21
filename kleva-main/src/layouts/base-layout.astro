@@ -1,0 +1,35 @@
+---
+import "@/styles/global.scss";
+import AppBaseHead from "@/components/app-base-head.astro";
+import AppNavigation from "@/components/app-navigation.astro";
+import AppFooter from "@/components/app-footer.astro";
+import AppMobileNavigation from "@/components/app-mobile-navigation.astro";
+
+const {
+  title = "Kleva",
+  description = "AI that recovers 25% more debt at 70% less cost",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <AppBaseHead title={title} description={description} />
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WZXWK8GH"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <AppNavigation />
+    <AppMobileNavigation />
+    <script src="../js/app.js"></script>
+    <main>
+      <slot />
+    </main>
+    <AppFooter />
+  </body>
+</html>

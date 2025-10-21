@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<span class="tag">
+  {label}
+  <slot />
+</span>
+
+<style lang="scss">
+  @use "../styles/mixins/" as *;
+
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+  }
+</style>

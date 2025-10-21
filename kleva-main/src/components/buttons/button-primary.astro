@@ -1,0 +1,79 @@
+---
+interface Props {
+  label: string;
+  asLink?: boolean;
+  href?: string;
+  fullWidth?: boolean;
+  size?: "sm" | "md";
+}
+
+const {
+  label,
+  asLink = false,
+  href,
+  fullWidth = false,
+  size = "md",
+} = Astro.props;
+---
+
+{
+  asLink ? (
+    <a
+      href={href}
+      class:list={[
+        "link-primary",
+        fullWidth && "full-width",
+        size && `size-${size}`,
+      ]}
+    >
+      {label}
+    </a>
+  ) : (
+    <button
+      class:list={[
+        "button-primary",
+        fullWidth && "full-width",
+        size && `size-${size}`,
+      ]}
+    >
+      {label}
+    </button>
+  )
+}
+
+<style lang="scss">
+  .link-primary,
+  .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--clr-white), 1);
+    color: rgba(var(--clr-black), 1);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    line-height: 1.5;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    height: 44px;
+
+    &.size-sm {
+      font-size: 14px;
+      height: 36px;
+      padding-inline: 16px;
+    }
+
+    &.size-md {
+      padding: 10px 20px;
+      font-size: 16px;
+      height: 44px;
+      min-width: 240px;
+    }
+
+    &.full-width {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+/* Breakpoints */
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1560px;
+$breakpoint-wide: 1920px;
+
+:root {
+  /* Colors */
+  --clr-black: 0, 0, 0;
+  --clr-white: 255, 255, 255;
+  --clr-pink: 213, 51, 156;
+  --clr-gray: 192, 192, 192;
+
+  /* Fonts */
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: "Hanken Grotesk", sans-serif;
+
+  /* Paddings */
+  --inline-padding-xs: 19px;
+  --inline-padding-sm: 20px;
+  --inline-padding-md: 24px;
+  --inline-padding-lg: 64px;
+  --inline-padding-xl: 128px;
+
+  --site-max-width: 1440px;
+
+  /* Transitions */
+  --bezier-expo: cubic-bezier(0.7, 0, 0.3, 1);
+}

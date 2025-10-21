@@ -1,0 +1,20 @@
+<svg width="81" height="80" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.2" filter="url(#filter0_g_222_464)">
+<path d="M5.5 40.0003C27.7788 40.0003 21.4099 31.0281 37.6962 31.0281C53.9824 31.0281 46.9242 40.0166 69.4671 40.0166" stroke="white" stroke-width="2" stroke-linecap="square"/>
+<path d="M5.5 40C27.7788 40 21.4099 48.9721 37.6962 48.9721C53.9824 48.9721 46.9286 40.0195 69.4715 40.0195" stroke="white" stroke-width="2" stroke-linecap="square"/>
+<path d="M5.5 40.0001C27.7788 40.0001 21.4099 22.9019 37.6962 22.9019C53.9824 22.9019 46.9286 40.0327 69.4715 40.0327" stroke="white" stroke-width="2" stroke-linecap="square"/>
+<path d="M5.5 40C27.7788 40 21.4099 57.0983 37.6962 57.0983C53.9824 57.0983 46.9366 40.0299 69.4795 40.0299" stroke="white" stroke-width="2" stroke-linecap="square"/>
+<path d="M74.6836 40.0356C48.5231 40.0356 33.856 40.0356 7.69555 40.0356" stroke="white" stroke-width="2" stroke-linecap="square"/>
+</g>
+<defs>
+<filter id="filter0_g_222_464" x="0.3" y="17.7019" width="79.5836" height="44.5963" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="10 10" numOctaves="3" seed="8525" />
+<feDisplacementMap in="shape" scale="8.3999996185302734" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_222_464">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+</defs>
+</svg>

@@ -1,0 +1,181 @@
+---
+import { Icon } from "astro-icon/components";
+import Tag from "@/components/tag.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="section__block">
+  <div class="container">
+    <div class="section__header">
+      <div class="title">
+        <Tag label={t("home.results.tag")}>
+          <Icon name="pink__wave" width={15.643} height={7.176} />
+        </Tag>
+        <h2 class="section__title">{t("home.results.title")}</h2>
+      </div>
+      <p class="section__copy">
+        {t("home.results.copy")}
+      </p>
+    </div>
+    <div class="content">
+      <div class="card glass-card current">
+        <h4>{t("home.results.current.title")}</h4>
+        <ul>
+          <li>
+            <span class="label">{t("home.results.current.agents")}</span>
+            <span class="value">50 agents</span>
+          </li>
+          <li>
+            <span class="label">{t("home.results.current.cost")}</span>
+            <span class="value">$125,000</span>
+          </li>
+          <li>
+            <span class="label">{t("home.results.current.recovery")}</span>
+            <span class="value">54%</span>
+          </li>
+        </ul>
+      </div>
+      <div class="big__card">
+        <div class="card glass-card kleva">
+          <h4>{t("home.results.kleva.title")}</h4>
+          <ul>
+            <li>
+              <span class="label">{t("home.results.kleva.agents")}</span>
+              <span class="value">{t("home.results.kleva.agents.value")}</span>
+            </li>
+            <li>
+              <span class="label">{t("home.results.kleva.reduction")}</span>
+              <span class="value">70%</span>
+            </li>
+            <li>
+              <span class="label">{t("home.results.kleva.recovery")}</span>
+              <span class="value">72%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+  }
+
+  .big__card {
+    position: relative;
+    flex: 1;
+  }
+
+  .card {
+    flex: 1;
+    color: rgb(var(--clr-white));
+    padding: 40px 24px;
+    h4 {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.4px;
+      margin-bottom: 24px;
+
+      @include respond-to(lg) {
+        font-size: 28px;
+        letter-spacing: -0.56px;
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+    }
+    .label {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.16;
+      letter-spacing: -0.14px;
+    }
+    .value {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.33;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    &.kleva {
+      position: relative;
+      box-shadow: 0 0 17.3px -2px rgba(var(--clr-pink), 1);
+    }
+    &.kleva .value {
+      color: rgba(var(--clr-pink), 1);
+    }
+  }
+  .stats {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(60%);
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    padding-inline: 12px;
+
+    @include respond-to(md) {
+      padding-inline: 24px;
+    }
+
+    .stat {
+      padding: 8px;
+      flex: 1;
+      box-shadow: 0 0 17.3px -2px rgba(var(--clr-pink), 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background-color: rgba(var(--clr-black), 1);
+
+      .value {
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        @include respond-to(lg) {
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: 2.4px;
+        }
+      }
+      .label {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.16;
+        letter-spacing: -0.12px;
+        text-align: center;
+
+        @include respond-to(lg) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+</style>

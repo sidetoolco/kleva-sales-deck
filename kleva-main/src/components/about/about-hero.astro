@@ -1,0 +1,139 @@
+---
+import { Image } from "astro:assets";
+import background from "@/assets/wave__background.png";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="about-hero">
+  <div class="background">
+    <Image
+      src={background}
+      class="lazy-img"
+      alt="background"
+      loading="lazy"
+      width={1470}
+      height={676}
+    />
+  </div>
+  <div class="container">
+    <div class="top">
+      <h1>
+        {t("about.hero.title.part1")}
+        <br />
+        <span class="enfasis">{t("about.hero.title.part2")}</span>
+      </h1>
+    </div>
+    <div class="bottom">
+      <p>
+        {t("about.hero.copy")}
+      </p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+  @use "../../styles/animations/fadeIn.scss" as *;
+
+  #about-hero {
+    position: relative;
+    padding-bottom: 48px;
+
+    @include respond-to(md) {
+      padding-bottom: 64px;
+    }
+
+    @include respond-to(lg) {
+      padding-bottom: 92px;
+    }
+
+    @include respond-to(xl) {
+      padding-bottom: 120px;
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      animation: fadeIn 0.5s var(--bezier-expo);
+    }
+  }
+
+  .container {
+    padding-top: 140px;
+
+    @include respond-to(md) {
+      padding-top: 240px;
+    }
+
+    @include respond-to(lg) {
+      padding-top: 420px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .bottom {
+    padding-top: 24px;
+    max-width: 340px;
+  }
+
+  h1 {
+    font-family: var(--font-sans);
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 24px;
+    max-width: 400px;
+
+    .enfasis {
+      font-family: var(--font-mono);
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(var(--clr-pink), 1);
+    }
+
+    @include respond-to(sm) {
+      font-size: 48px;
+      .enfasis {
+        font-size: 48px;
+      }
+    }
+
+    @include respond-to(md) {
+      font-size: 64px;
+      max-width: 640px;
+      .enfasis {
+        font-size: 64px;
+      }
+    }
+
+    @include respond-to(lg) {
+      font-size: 70px;
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.12;
+    letter-spacing: -0.18px;
+  }
+</style>

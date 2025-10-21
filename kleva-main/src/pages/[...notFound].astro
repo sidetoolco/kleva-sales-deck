@@ -1,0 +1,8 @@
+---
+/** This route catches anything not matched by other routes in SSR/hybrid. */
+export const prerender = false; // ensure it's handled at runtime
+import FourOhFour from "./404.astro";
+Astro.response.status = 404;
+---
+
+<FourOhFour />

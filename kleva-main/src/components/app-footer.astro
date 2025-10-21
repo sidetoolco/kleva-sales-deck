@@ -1,0 +1,226 @@
+---
+import { APP_PAGES } from "@/consts";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<footer class="section__block__top">
+  <div class="g-noise"></div>
+  <div class="container">
+    <div class="top">
+      <p>{t("footer.tagline")}</p>
+      <nav>
+        <ul>
+          <li>
+            <a
+              href={APP_PAGES.about.path}
+              data-path={APP_PAGES.about.path}
+              class="navigation__link"
+              >{t("nav.about")}
+            </a>
+          </li>
+          <!-- <li>
+            <a href={APP_PAGES.blog.path}>{APP_PAGES.blog.label}</a>
+          </li> -->
+          <li>
+            <a
+              href={APP_PAGES.contact.path}
+              data-path={APP_PAGES.contact.path}
+              class="navigation__link"
+              >{t("nav.contact")}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <a href="mailto:hello@kleva.co" class="get-in-touch"
+        >{t("footer.getInTouch")}</a
+      >
+    </div>
+    <div class="bottom">
+      <span class="email">hello@kleva.co</span>
+      <span class="phone">+1 704-816-9059</span>
+      <span class="cta">{t("footer.scheduleCall")}</span>
+    </div>
+  </div>
+  <div class="big__logo__container">
+    <div class="overlay"></div>
+    <div class="big__logo">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="87"
+        height="30"
+        viewBox="0 0 87 30"
+        fill="none"
+      >
+        <path
+          d="M76.3669 29.6895C70.7527 29.6895 66.502 24.9199 66.502 19.0625C66.502 13.2889 70.873 8.51929 76.6877 8.51929C82.4223 8.51929 86.9136 13.1215 86.9136 19.0625V29.2711H84.5476V24.5434C83.0639 27.5976 80.0563 29.6895 76.3669 29.6895ZM76.6877 27.221C81.0187 27.221 84.4273 23.5393 84.4273 19.1044C84.4273 14.6695 81.0187 10.9877 76.6877 10.9877C72.3969 10.9877 68.9882 14.6695 68.9882 19.1044C68.9882 23.5393 72.3969 27.221 76.6877 27.221Z"
+          fill="white"></path>
+        <path
+          d="M67.3024 10.9492C66.1231 10.9492 65.25 11.6329 64.4946 13.1739C63.7232 14.7474 63.241 16.9102 62.7868 19.2499C62.3491 21.5045 61.9335 23.9537 61.2629 25.8063C60.9251 26.7396 60.4848 27.6365 59.8585 28.3144C59.1996 29.0275 58.3296 29.4981 57.2474 29.4981C55.0822 29.4981 53.8047 27.733 53.0007 25.995C52.1635 24.1853 51.5603 21.8081 50.9917 19.5645C50.406 17.2537 49.853 15.067 49.1221 13.4093C48.3575 11.6755 47.616 11.0229 46.9258 10.9407L47.2104 8.55172C49.3011 8.80076 50.5271 10.6324 51.3235 12.4386C52.1535 14.3209 52.7551 16.73 53.3238 18.9735C53.9095 21.2843 54.4606 23.4202 55.1844 24.9849C55.9414 26.6213 56.6315 27.0921 57.2474 27.0921C57.5556 27.0921 57.8131 26.9829 58.0914 26.6817C58.4024 26.3452 58.709 25.7929 59.0006 24.9874C59.5889 23.3621 59.9623 21.174 60.4249 18.7914C60.8709 16.494 61.4005 14.0194 62.3341 12.115C63.2836 10.1782 64.8088 8.54321 67.3024 8.54321V10.9492Z"
+          fill="white"></path>
+        <path
+          d="M38.5563 29.571C37.0339 29.571 35.6775 29.308 34.4872 28.7821C33.3246 28.2561 32.3557 27.5226 31.5806 26.5814C30.8055 25.6402 30.2104 24.533 29.7952 23.2596C29.4076 21.9863 29.2139 20.6299 29.2139 19.1905C29.2139 17.7234 29.4076 16.3531 29.7952 15.0798C30.1827 13.7788 30.7502 12.6438 31.4976 11.675C32.2727 10.6784 33.2138 9.90336 34.3211 9.34973C35.456 8.7961 36.757 8.51929 38.2242 8.51929C39.7743 8.51929 41.103 8.7961 42.2103 9.34973C43.3452 9.87567 44.2587 10.6092 44.9507 11.5504C45.6705 12.4639 46.1964 13.4743 46.5286 14.5815C46.8884 15.6888 47.0684 16.8099 47.0684 17.9448C47.0684 18.1663 47.0545 18.4569 47.0269 18.8168C47.0269 19.1766 46.9992 19.4811 46.9438 19.7303H31.7882C31.8436 22.0832 32.4664 23.9101 33.6567 25.2112C34.8747 26.5122 36.5079 27.1627 38.5563 27.1627C39.8574 27.1627 40.9646 26.9689 41.8781 26.5814C42.8193 26.1662 43.7189 25.488 44.577 24.5468L46.4455 26.2077C45.6705 27.0105 44.8815 27.661 44.0788 28.1592C43.276 28.6298 42.4179 28.9897 41.5044 29.2388C40.6186 29.4603 39.6359 29.571 38.5563 29.571ZM44.4525 18.4015C44.5078 18.1801 44.5355 17.9586 44.5355 17.7372C44.5355 17.4881 44.5355 17.2528 44.5355 17.0313C44.5355 16.3116 44.411 15.578 44.1618 14.8306C43.9404 14.0832 43.5805 13.4051 43.0823 12.7961C42.584 12.1871 41.9335 11.6888 41.1307 11.3013C40.328 10.9137 39.3729 10.72 38.2657 10.72C36.9923 10.72 35.8712 11.0383 34.9024 11.675C33.9612 12.3116 33.2277 13.1559 32.7017 14.2078C32.1758 15.2597 31.8713 16.45 31.7882 17.7787H45.3244L44.4525 18.4015Z"
+          fill="white"></path>
+        <path
+          d="M26.4734 29.5707C25.3107 29.5707 24.3834 29.2108 23.6914 28.4911C22.9993 27.7437 22.6533 26.5672 22.6533 24.9617V0.339111H25.2692V24.505C25.2692 25.4461 25.4491 26.1243 25.809 26.5396C26.1689 26.9548 26.6533 27.1624 27.2623 27.1624C27.5391 27.1624 27.8436 27.1347 28.1758 27.0793C28.5079 26.9963 28.854 26.8994 29.2138 26.7887V29.0309C28.7432 29.197 28.2588 29.3215 27.7605 29.4046C27.29 29.5153 26.8609 29.5707 26.4734 29.5707Z"
+          fill="white"></path>
+        <path
+          d="M0.575195 29.2803V0.339355H3.27413V29.2803H0.575195Z"
+          fill="white"></path>
+        <path
+          d="M17.744 29.1665C17.744 27.011 17.0335 25.6672 16.0226 24.6848C14.949 23.6415 13.4668 22.9341 11.7692 22.2346C10.1714 21.5762 8.27062 20.89 6.84044 19.8903C5.30087 18.8142 4.14805 17.2756 4.14804 14.9305C4.14804 12.618 5.26645 10.9653 6.74556 9.71958C8.1641 8.52487 10.0267 7.61356 11.6723 6.77545C13.3964 5.89733 14.9266 5.0806 16.0432 4.04098C17.1034 3.05379 17.744 1.90856 17.744 0.310303L20.4033 0.310303C20.4033 2.78656 19.3445 4.60091 17.8555 5.98733C16.4228 7.32127 14.5541 8.2922 12.8793 9.14516C11.126 10.0381 9.58943 10.8014 8.45874 11.7536C7.38862 12.6549 6.80754 13.6218 6.80754 14.9305C6.80755 16.2066 7.35425 17.0049 8.36386 17.7106C9.48291 18.4928 10.9812 19.0334 12.7824 19.7755C14.4837 20.4766 16.4004 21.3436 17.8761 22.7776C19.4144 24.2726 20.4033 26.3096 20.4033 29.1665L17.744 29.1665Z"
+          fill="white"></path>
+      </svg>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "../styles/mixins/" as *;
+
+  footer {
+    position: relative;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+  .container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    margin-inline: auto;
+    z-index: 12;
+  }
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include respond-to(md) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 22px;
+
+    @include respond-to(sm) {
+      margin-top: 36px;
+    }
+
+    @include respond-to(md) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .email {
+        text-align: left;
+      }
+
+      .phone {
+        text-align: center;
+      }
+
+      .cta {
+        text-align: right;
+      }
+    }
+  }
+
+  .g-noise {
+    z-index: 11;
+  }
+
+  .big__logo__container {
+    margin-inline: auto;
+    position: relative;
+    padding-top: 15vh;
+    max-width: 1440px;
+
+    @include respond-to(md) {
+      padding-top: 40px;
+      padding-inline: 48px;
+    }
+
+    @media (min-width: 1920px) {
+      margin-inline: auto;
+      padding-inline: 64px;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--clr-black), 0.1);
+    backdrop-filter: blur(6px);
+
+    @include respond-to(md) {
+      backdrop-filter: blur(16px);
+    }
+
+    @include respond-to(lg) {
+      backdrop-filter: blur(24px);
+    }
+  }
+
+  .big__logo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      width: 100%;
+      height: auto;
+      opacity: 0.5;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: 1.4px;
+  }
+
+  ul {
+    display: flex;
+    gap: 48px;
+
+    @include respond-to(md) {
+      justify-content: center;
+    }
+  }
+
+  a {
+    color: rgb(var(--clr-white));
+    text-decoration: none;
+  }
+
+  .navigation__link {
+    transition: color 0.25s var(--bezier-expo);
+    &:hover {
+      color: rgb(var(--clr-pink));
+    }
+    &.active {
+      color: rgb(var(--clr-pink));
+    }
+  }
+  .get-in-touch {
+    color: rgb(var(--clr-pink));
+    @include respond-to(md) {
+      justify-self: end;
+    }
+  }
+</style>

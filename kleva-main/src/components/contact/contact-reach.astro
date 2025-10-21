@@ -1,0 +1,723 @@
+---
+import CTABanner from "@/components/cta-banner.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="contact-reach" class="section__block">
+  <div class="noise-area">
+    <div class="g-noise"></div>
+  </div>
+  <div class="container content">
+    <!-- Contact Form (shown initially) -->
+    <div id="contactFormContainer" class="calendly__container">
+      <div class="contact-form glass-card">
+        <header class="form-header">
+          <h2 class="form-title">
+            {t("contact.form.title")}
+          </h2>
+          <p class="form-description">
+            {t("contact.form.description")}
+          </p>
+        </header>
+        <form id="contactForm" class="validation-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName" class="form-label">
+                {t("contact.form.fullName")}
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                class="form-input"
+                placeholder="Juan Pérez"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="company" class="form-label">
+                {t("contact.form.company")}
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="form-input"
+                placeholder="Mi Empresa S.A."
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email" class="form-label">
+                {t("contact.form.email")}
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="juan@empresa.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">
+                {t("contact.form.phone")}
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-input"
+                placeholder="+52 (55) 0000-0000"
+                required
+              />
+            </div>
+          </div>
+          <span id="emailError" class="error-message"></span>
+          <button type="submit" class="submit-button">
+            <span>{t("contact.form.submit")}</span>
+            <svg
+              class="button-arrow"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                d="M7.5 15L12.5 10L7.5 5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </button>
+        </form>
+        <div class="security-note">
+          <svg
+            class="security-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M8 1L3 3V7C3 10.5 5.5 13.5 8 14.5C10.5 13.5 13 10.5 13 7V3L8 1Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <span>{t("contact.form.security")}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendly Widget (hidden initially) -->
+    <div
+      id="calendlyContainer"
+      class="calendly__container"
+      style="display: none;"
+    >
+      <div class="email-confirmed-header glass-card">
+        <div class="confirmed-info">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M16.6667 5L7.50004 14.1667L3.33337 10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+          <div class="confirmed-details">
+            <div class="confirmed-name">
+              <strong id="confirmedName"></strong>
+              <span>{t("contact.form.confirmed.from")}</span>
+              <strong id="confirmedCompany"></strong>
+            </div>
+            <div class="confirmed-contact">
+              <span id="confirmedEmail"></span> · <span id="confirmedPhone"
+              ></span>
+            </div>
+          </div>
+        </div>
+        <button id="changeInfo" class="change-info-btn">
+          {t("contact.form.changeInfo")}
+        </button>
+      </div>
+
+      <!-- Calendly inline widget begin -->
+      <div id="calendlyInlineWidget" style="min-width:320px;height:600px;">
+      </div>
+      <script
+        type="text/javascript"
+        src="https://assets.calendly.com/assets/external/widget.js"
+        async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+
+    <article class="reach glass-card">
+      <header>
+        <h2>{t("contact.reach.title")}</h2>
+        <p>{t("contact.reach.subtitle")}</p>
+      </header>
+      <ul>
+        <li>
+          <span class="label">{t("contact.reach.email")}</span>
+          <span class="value"> hi@kleva.co </span>
+        </li>
+        <li>
+          <span class="label">{t("contact.reach.whatsapp")}</span>
+          <span class="value">+1 704-816-9059</span>
+        </li>
+        <li>
+          <span class="label">{t("contact.reach.office")}</span>
+          <span class="value">Miami, Florida</span>
+        </li>
+      </ul>
+    </article>
+    <div class="banner">
+      <CTABanner
+        isSmall
+        fillAvailableHeight
+        withButton={false}
+        copy={t("contact.reach.cta.copy")}
+        >{t("contact.reach.cta.title.part1")}
+        <span class="italic">{t("contact.reach.cta.title.part2")}</span
+        ></CTABanner
+      >
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  section {
+    position: relative;
+  }
+
+  .noise-area {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+  }
+
+  .italic {
+    font-style: italic;
+    font-family: var(--font-mono);
+    font-weight: 300;
+    font-size: 28px;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 24px;
+
+    .banner {
+      grid-row-start: 1;
+    }
+    .calendly__container {
+      grid-row-start: 2;
+    }
+    .reach {
+      grid-row-start: 3;
+    }
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+
+      .banner {
+        grid-column-start: 2;
+        grid-row-start: 2;
+      }
+      .calendly__container {
+        grid-column-start: 1;
+        grid-row-start: 1;
+        grid-row-end: 3;
+      }
+      .reach {
+        grid-column-start: 2;
+        grid-row-start: 1;
+      }
+    }
+  }
+
+  .calendly__container {
+    width: 100%;
+    height: 100%;
+    padding-block: 32px;
+    padding-inline: 32px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #161616;
+    margin-inline: auto;
+
+    #calendlyInlineWidget {
+      min-width: 320px;
+      height: 600px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+  }
+
+  /* Contact Form Styles */
+  .contact-form {
+    padding: 32px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    @include respond-to(md) {
+      padding: 40px 32px;
+    }
+  }
+
+  .form-header {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  .form-title {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.56px;
+    color: rgba(var(--clr-white), 1);
+    margin-bottom: 12px;
+  }
+
+  .form-description {
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: -0.16px;
+    color: rgba(var(--clr-white), 0.7);
+  }
+
+  .validation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    gap: 20px;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-label {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -0.14px;
+    color: rgba(var(--clr-white), 0.9);
+    display: block;
+  }
+
+  .form-input {
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: rgba(var(--clr-white), 1);
+    font-size: 16px;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: rgba(var(--clr-pink), 0.5);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &::placeholder {
+      color: rgba(var(--clr-white), 0.3);
+    }
+  }
+
+  .error-message {
+    font-size: 13px;
+    color: #ff4444;
+    font-family: var(--font-mono);
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    min-height: 20px;
+    line-height: 1.4;
+  }
+
+  .submit-button {
+    margin-top: 4px;
+    padding: 16px 24px;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--clr-pink), 1),
+      rgba(var(--clr-pink), 0.8)
+    );
+    border: none;
+    border-radius: 12px;
+    color: rgba(var(--clr-white), 1);
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--clr-pink), 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: linear-gradient(
+        135deg,
+        rgba(128, 128, 128, 0.5),
+        rgba(100, 100, 100, 0.5)
+      );
+    }
+
+    .button-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover:not(:disabled) .button-arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  .security-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    color: rgba(var(--clr-white), 0.5);
+    font-family: var(--font-mono);
+
+    .security-icon {
+      flex-shrink: 0;
+      stroke: rgba(var(--clr-pink), 1);
+    }
+  }
+
+  /* Email Confirmed Header */
+  .email-confirmed-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .confirmed-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      svg {
+        flex-shrink: 0;
+        stroke: rgba(var(--clr-pink), 1);
+      }
+    }
+
+    .confirmed-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .confirmed-name {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(var(--clr-white), 1);
+    }
+
+    .confirmed-contact {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: rgba(var(--clr-white), 0.6);
+    }
+
+    .change-info-btn {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: rgba(var(--clr-white), 0.8);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(var(--clr-pink), 0.5);
+      }
+    }
+  }
+
+  .reach {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 24px;
+    color: rgba(var(--clr-white), 1);
+
+    h2 {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.56px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-weight: 400;
+      line-height: 1.16;
+      letter-spacing: -0.16px;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .label {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.16;
+      letter-spacing: -0.14px;
+    }
+
+    .value {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.16;
+      letter-spacing: -0.16px;
+    }
+
+    footer p {
+      color: rgba(var(--clr-pink), 1);
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.16;
+      letter-spacing: -0.48px;
+    }
+  }
+</style>
+
+<script>
+  // Detect user language
+  function getUserLanguage() {
+    const stored = localStorage.getItem("preferredLang");
+    if (stored) return stored;
+
+    const browserLang = navigator.language.toLowerCase();
+    if (browserLang.startsWith("es")) return "es";
+    return "en";
+  }
+
+  // List of public email domains to block
+  const publicDomains = [
+    "gmail.com",
+    "yahoo.com",
+    "outlook.com",
+    "hotmail.com",
+    "icloud.com",
+    "aol.com",
+    "mail.com",
+    "protonmail.com",
+    "zoho.com",
+    "yandex.com",
+    "gmx.com",
+    "inbox.com",
+    "fastmail.com",
+    "tutanota.com",
+    "mailfence.com",
+    "live.com",
+    "msn.com",
+    "yahoo.es",
+    "yahoo.com.mx",
+    "yahoo.com.ar",
+    "hotmail.es",
+    "hotmail.com.mx",
+    "hotmail.com.ar",
+    "outlook.es",
+    "terra.com.br",
+    "uol.com.br",
+    "bol.com.br",
+    "ig.com.br",
+    "globo.com",
+    "r7.com",
+    "terra.com",
+    "latinmail.com",
+  ];
+
+  function validateEmail(email: string) {
+    const lang = getUserLanguage();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      return {
+        valid: false,
+        error:
+          lang === "es"
+            ? "Por favor ingresa un email válido"
+            : "Please enter a valid email address",
+      };
+    }
+
+    const domain = email.split("@")[1].toLowerCase();
+
+    if (publicDomains.includes(domain)) {
+      return {
+        valid: false,
+        error:
+          lang === "es"
+            ? "Por favor usa tu email corporativo. No se aceptan correos personales."
+            : "Please use your company email address. Personal emails are not accepted.",
+      };
+    }
+
+    return { valid: true };
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm") as HTMLFormElement;
+    const emailInput = document.getElementById("email") as HTMLInputElement;
+    const emailError = document.getElementById("emailError") as HTMLSpanElement;
+    const submitButton = form.querySelector(
+      'button[type="submit"]'
+    ) as HTMLButtonElement;
+    const formContainer = document.getElementById(
+      "contactFormContainer"
+    ) as HTMLElement;
+    const calendlyContainer = document.getElementById(
+      "calendlyContainer"
+    ) as HTMLElement;
+    const changeInfoBtn = document.getElementById(
+      "changeInfo"
+    ) as HTMLButtonElement;
+    const confirmedName = document.getElementById(
+      "confirmedName"
+    ) as HTMLElement;
+    const confirmedEmail = document.getElementById(
+      "confirmedEmail"
+    ) as HTMLElement;
+    const confirmedCompany = document.getElementById(
+      "confirmedCompany"
+    ) as HTMLElement;
+    const confirmedPhone = document.getElementById(
+      "confirmedPhone"
+    ) as HTMLElement;
+
+    // Real-time email validation
+    emailInput.addEventListener("input", () => {
+      const validation = validateEmail(emailInput.value);
+
+      if (emailInput.value && !validation.valid) {
+        emailError.textContent = validation.error || "";
+        submitButton.disabled = true;
+      } else {
+        emailError.textContent = "";
+        submitButton.disabled = false;
+      }
+    });
+
+    // Form submission
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const formData = {
+        name: (document.getElementById("fullName") as HTMLInputElement).value,
+        email: emailInput.value,
+        company: (document.getElementById("company") as HTMLInputElement).value,
+        phone: (document.getElementById("phone") as HTMLInputElement).value,
+      };
+
+      const validation = validateEmail(formData.email);
+      if (!validation.valid) {
+        emailError.textContent = validation.error || "";
+        return;
+      }
+
+      // Show Calendly and hide form
+      showCalendly(formData);
+    });
+
+    // Change info button
+    changeInfoBtn.addEventListener("click", () => {
+      calendlyContainer.style.display = "none";
+      formContainer.style.display = "block";
+    });
+
+    function showCalendly(data: {
+      name: string;
+      email: string;
+      company: string;
+      phone: string;
+    }) {
+      formContainer.style.display = "none";
+      calendlyContainer.style.display = "block";
+
+      // Display confirmed info
+      confirmedName.textContent = data.name;
+      confirmedEmail.textContent = data.email;
+      confirmedCompany.textContent = data.company;
+      confirmedPhone.textContent = data.phone;
+
+      // Build Calendly URL with all parameters
+      const baseUrl =
+        "https://calendly.com/hi-sidetool/30-min-meeting-klevaco-website";
+      const calendlyUrl = `${baseUrl}?name=${encodeURIComponent(data.name)}&email=${encodeURIComponent(data.email)}&a1=${encodeURIComponent(data.company)}&a2=${encodeURIComponent(data.phone)}&hide_event_type_details=1&hide_gdpr_banner=1&background_color=161616&text_color=ffffff&primary_color=d5339c`;
+
+      // Initialize Calendly widget manually
+      if (typeof Calendly !== "undefined") {
+        Calendly.initInlineWidget({
+          url: calendlyUrl,
+          parentElement: document.getElementById(
+            "calendlyInlineWidget"
+          ) as HTMLElement,
+        });
+      } else {
+        console.error("Calendly not loaded");
+      }
+    }
+  });
+</script>

@@ -1,0 +1,254 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Tag from "@/components/tag.astro";
+import sound from "@/assets/sound.png";
+import puzzle from "@/assets/puzzle.png";
+import check from "@/assets/check.png";
+import stats from "@/assets/stats.png";
+
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="section__block">
+  <div class="container">
+    <div class="section__header">
+      <div class="title">
+        <Tag label={t("home.capabilities.tag")}>
+          <Icon name="pink__wave" width={15.643} height={7.176} />
+        </Tag>
+        <h2 class="section__title">{t("home.capabilities.title")}</h2>
+      </div>
+      <p class="section__copy">
+        {t("home.capabilities.copy")}
+      </p>
+    </div>
+    <ul class="cards">
+      <li>
+        <article class="card glass-card">
+          <header>
+            <Image
+              src={sound}
+              alt="Sound wave icon representing natural voice AI"
+              width={320}
+              height={320}
+              loading="lazy"
+            />
+            <h3>{t("home.capabilities.card.1.title")}</h3>
+          </header>
+          <p>
+            {t("home.capabilities.card.1.copy")}
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__number">94%</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.1.stat.left")}</span
+              >
+            </div>
+            <div class="divider"></div>
+            <div class="stat">
+              <span class="stat__number">45+</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.1.stat.right")}</span
+              >
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="card glass-card">
+          <header>
+            <Image
+              src={puzzle}
+              alt="Integration and customization puzzle piece icon"
+              width={320}
+              height={320}
+              loading="lazy"
+            />
+            <h3>{t("home.capabilities.card.2.title")}</h3>
+          </header>
+          <p>
+            {t("home.capabilities.card.2.copy")}
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__number">73%</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.2.stat.left")}</span
+              >
+            </div>
+            <div class="divider"></div>
+            <div class="stat">
+              <span class="stat__number">1min</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.2.stat.right")}</span
+              >
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="card glass-card">
+          <header>
+            <Image
+              src={check}
+              alt="Compliance checkmark icon"
+              width={320}
+              height={320}
+              loading="lazy"
+            />
+            <h3>{t("home.capabilities.card.3.title")}</h3>
+          </header>
+          <p>
+            {t("home.capabilities.card.3.copy")}
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__number">7</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.3.stat.left")}</span
+              >
+            </div>
+            <div class="divider"></div>
+            <div class="stat">
+              <span class="stat__number">0</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.3.stat.right")}</span
+              >
+            </div>
+          </div>
+        </article>
+      </li>
+      <li>
+        <article class="card glass-card">
+          <header>
+            <Image
+              src={stats}
+              alt="Statistics and analytics dashboard icon"
+              width={320}
+              height={320}
+              loading="lazy"
+            />
+            <h3>{t("home.capabilities.card.4.title")}</h3>
+          </header>
+          <p>
+            {t("home.capabilities.card.4.copy")}
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__number"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="31"
+                  height="25"
+                  viewBox="0 0 31 25"
+                  fill="none"
+                >
+                  <path
+                    d="M8.22144 16.3931C14.2868 16.3931 16.713 8.39307 22.7783 8.39307C24.0652 8.39307 25.2994 8.81449 26.2094 9.56464C27.1194 10.3148 27.6306 11.3322 27.6306 12.3931C27.6306 13.4539 27.1194 14.4713 26.2094 15.2215C25.2994 15.9716 24.0652 16.3931 22.7783 16.3931C16.713 16.3931 14.2868 8.39307 8.22144 8.39307C6.93453 8.39307 5.70033 8.81449 4.79034 9.56464C3.88036 10.3148 3.36914 11.3322 3.36914 12.3931C3.36914 13.4539 3.88036 14.4713 4.79034 15.2215C5.70033 15.9716 6.93453 16.3931 8.22144 16.3931Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg></span
+              >
+              <span class="stat__label"
+                >{t("home.capabilities.card.4.stat.left")}</span
+              >
+            </div>
+            <div class="divider"></div>
+            <div class="stat">
+              <span class="stat__number">0</span>
+              <span class="stat__label"
+                >{t("home.capabilities.card.4.stat.right")}</span
+              >
+            </div>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  header img {
+    width: 60px;
+    height: auto;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .card {
+    height: 100%;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px 40px 24px;
+    color: rgba(var(--clr-white), 1);
+
+    h3 {
+      margin-block: 10px 20px;
+      font-family: var(--font-sans);
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.56px;
+    }
+    p {
+      font-family: var(--font-sans);
+      line-height: 1.16;
+      letter-spacing: -0.16px;
+      margin-bottom: 32px;
+    }
+    .stats {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 17px;
+    }
+    .divider {
+      display: block;
+      width: 1px;
+      height: 30px;
+      background-color: #2a2a2a;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      &__number {
+        font-family: var(--font-mono);
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 2.4px;
+      }
+      &__label {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.16;
+        letter-spacing: -0.14px;
+        opacity: 0.75;
+      }
+    }
+  }
+</style>

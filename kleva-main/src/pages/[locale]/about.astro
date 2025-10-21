@@ -1,0 +1,35 @@
+---
+import { APP_PAGES } from "@/consts";
+import BaseLayout from "@/layouts/base-layout.astro";
+import AboutHero from "@/components/about/about-hero.astro";
+import AboutFuture from "@/components/about/about-future.astro";
+import AboutTeam from "@/components/about/about-team.astro";
+import CTABanner from "@/components/cta-banner.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export function getStaticPaths() {
+  return [{ params: { locale: "en" } }, { params: { locale: "es" } }];
+}
+---
+
+<BaseLayout
+  title={APP_PAGES.about.title}
+  description={APP_PAGES.about.description}
+>
+  <AboutHero />
+  <AboutFuture />
+  <AboutTeam />
+  <section class="section__block">
+    <div class="container">
+      <CTABanner
+        copy={t("about.cta.copy")}
+        buttonLabel={t("about.cta.buttonLabel")}
+      >
+        {t("about.cta.button")}
+      </CTABanner>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,143 @@
+---
+import BaseLayout from "@/layouts/base-layout.astro";
+import KeyTakeaways from "@/components/app-key-takeaways.astro";
+import FAQSchema from "@/components/app-faq.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "spanish-debt-collection" } },
+    // { params: { slug: "portuguese-debt-collection" } },
+    // { params: { slug: "ai-vs-traditional-collections" } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Define use case data
+const useCases = {
+  "spanish-debt-collection": {
+    title: "AI Debt Collection for Spanish Speakers | Kleva",
+    description:
+      "Automated debt recovery in Spanish with AI agents. Recover 25% more debt with culturally-aware, native Spanish AI collectors.",
+    h1: "AI Debt Collection for Spanish Speakers",
+    takeaways: [
+      "Kleva's AI speaks native Spanish with cultural nuance",
+      "25% higher recovery rates compared to English-only systems",
+      "Automated payment plans in Spanish and English",
+      "Compliant with Spanish-language debt collection regulations",
+    ],
+    faqs: [
+      {
+        question: "Can Kleva's AI handle Spanish debt collection calls?",
+        answer:
+          "Yes, Kleva's AI is trained to conduct full debt collection conversations in Spanish with native fluency and cultural awareness.",
+      },
+      {
+        question: "What Spanish dialects does Kleva support?",
+        answer:
+          "Kleva supports Mexican, Colombian, Peruvian, and other Latin American Spanish dialects, adapting to regional differences in vocabulary and tone.",
+      },
+      {
+        question: "Is Spanish AI collection FDCPA compliant?",
+        answer:
+          "Yes, Kleva's Spanish AI agents are fully compliant with FDCPA and local regulations, providing required disclosures in Spanish.",
+      },
+    ],
+  },
+  // Add other use cases...
+};
+
+const data = useCases[slug as keyof typeof useCases];
+---
+
+<BaseLayout title={data.title} description={data.description}>
+  <section class="section__block__bottom container">
+    <article class="use-case">
+      <h1>{data.h1}</h1>
+
+      <KeyTakeaways takeaways={data.takeaways} />
+
+      <section>
+        <h2>Why Spanish-Language Debt Collection Matters</h2>
+        <p>
+          Over 41 million Spanish speakers in the US represent a significant
+          portion of debtors who respond better to native-language
+          communication...
+        </p>
+      </section>
+
+      <section>
+        <h2>How Kleva's AI Handles Spanish Collections</h2>
+        <ul>
+          <li>
+            <strong>Native fluency:</strong> Not just translation, but culturally-aware
+            conversation
+          </li>
+          <li>
+            <strong>Regulatory compliance:</strong> Follows FDCPA requirements in
+            Spanish
+          </li>
+          <li>
+            <strong>Payment flexibility:</strong> Negotiates plans in Spanish or
+            English
+          </li>
+        </ul>
+      </section>
+
+      <FAQSchema faqs={data.faqs} />
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .container {
+    padding-top: 140px;
+
+    @include respond-to(md) {
+      padding-top: 180px;
+    }
+
+    @include respond-to(lg) {
+      padding-top: 240px;
+    }
+  }
+  .use-case {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+
+  section {
+    margin: 48px 0;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 16px;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--clr-pink);
+  }
+</style>

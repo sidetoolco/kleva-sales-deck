@@ -1,0 +1,243 @@
+---
+import { APP_PAGES } from "@/consts";
+import ButtonPrimary from "@/components/buttons/button-primary.astro";
+import AppLangPicker from "@/components/app-lang-picker.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Add locale prefix to paths
+const getLocalizedPath = (path: string) => {
+  return `/${lang}${path}`;
+};
+---
+
+<nav id="mobile-navigation" class="mobile__menu" data-open="false">
+  <div class="wrapper container">
+    <div class="mobile__menu__links">
+      <ul>
+        <li>
+          <a
+            href={getLocalizedPath(APP_PAGES.home.path)}
+            data-path={APP_PAGES.home.path}
+            data-localized="true"
+            class="navigation__link"
+          >
+            {t("nav.home")}
+          </a>
+        </li>
+        <li>
+          <a
+            href={getLocalizedPath(APP_PAGES.about.path)}
+            data-path={APP_PAGES.about.path}
+            data-localized="true"
+            class="navigation__link"
+          >
+            {t("nav.about")}
+          </a>
+        </li>
+        <li>
+          <a
+            href={getLocalizedPath(APP_PAGES.contact.path)}
+            data-path={APP_PAGES.contact.path}
+            data-localized="true"
+            class="navigation__link"
+          >
+            {t("nav.contact")}
+          </a>
+        </li>
+        <li>
+          <a
+            href={APP_PAGES.blog.path}
+            data-path={APP_PAGES.blog.path}
+            class="navigation__link"
+          >
+            {t("nav.blog")}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="mobile__menu__lang">
+      <AppLangPicker />
+    </div>
+    <div class="mobile__menu__cta">
+      <ButtonPrimary
+        asLink
+        href={getLocalizedPath(APP_PAGES.contact.path)}
+        data-path={APP_PAGES.contact.path}
+        data-localized="true"
+        label={t("nav.cta")}
+        size="sm"
+        fullWidth
+      />
+    </div>
+  </div>
+</nav>
+
+<style lang="scss">
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 70px;
+    padding-bottom: 48px;
+    background-color: rgba(var(--clr-black), 1);
+  }
+  .mobile__menu {
+    height: 100svh;
+    position: fixed;
+    z-index: 990;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    &[data-open="true"] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &__links {
+      flex: 1;
+      width: 100%;
+      padding-block: 16px;
+    }
+    &__lang {
+      padding-block: 16px;
+      display: flex;
+      justify-content: center;
+    }
+    &__cta {
+      padding-block: 16px;
+    }
+
+    & a {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding-block: 24px;
+      color: rgba(var(--clr-white), 0.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-family: var(--font-mono);
+      line-height: 1.42;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(var(--clr-white), 0.25);
+      transition-property: color, border-bottom, background-color;
+      transition: 0.25s var(--bezier-expo);
+      background-color: rgba(var(--clr-white), 0);
+      &:hover {
+        color: rgba(var(--clr-white), 1);
+        border-bottom: 1px solid rgba(var(--clr-white), 0.45);
+        background-color: rgba(var(--clr-white), 0.1);
+      }
+      &.active {
+        color: rgba(var(--clr-pink), 1);
+      }
+    }
+  }
+</style>
+
+<script>
+  const mobileNavigation = document.getElementById(
+    "mobile-navigation"
+  ) as HTMLElement;
+
+  function isMobileNavigationOpen() {
+    return mobileNavigation.dataset.open === "true";
+  }
+
+  function handleMobileMenuToggle(e: Event) {
+    const customEvent = e as CustomEvent<{ mobileMenuOpen: boolean }>;
+    const isOpen = isMobileNavigationOpen();
+
+    if (customEvent.detail.mobileMenuOpen && !isOpen) {
+      mobileNavigation.dataset.open = "true";
+    } else if (!customEvent.detail.mobileMenuOpen && isOpen) {
+      mobileNavigation.dataset.open = "false";
+    }
+  }
+
+  function handleResize(e: Event) {
+    const target = e.target as Window;
+    const isOpen = isMobileNavigationOpen();
+
+    if (!isOpen) return;
+
+    if (target.innerWidth >= 1024 && isOpen) {
+      window.dispatchEvent(
+        new CustomEvent("mobile-menu-toggle", {
+          detail: {
+            mobileMenuOpen: false,
+          },
+        })
+      );
+    }
+  }
+
+  function getPreferredLang() {
+    const supportedLocales = ["en", "es"];
+    const defaultLocale = "en";
+
+    // Check localStorage first
+    const saved = localStorage.getItem("preferredLang");
+    if (saved && supportedLocales.includes(saved)) {
+      return saved;
+    }
+
+    // Check URL
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts[0] && supportedLocales.includes(pathParts[0])) {
+      return pathParts[0];
+    }
+
+    // Check browser language
+    const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+    if (supportedLocales.includes(browserLang)) {
+      return browserLang;
+    }
+
+    return defaultLocale;
+  }
+
+  function updateMobileNavigationLinks() {
+    const preferredLang = getPreferredLang();
+    const localizedLinks = mobileNavigation.querySelectorAll(
+      '[data-localized="true"]'
+    );
+
+    localizedLinks.forEach((link) => {
+      const path = link.getAttribute("data-path");
+      if (path) {
+        link.setAttribute("href", `/${preferredLang}${path}`);
+      }
+    });
+  }
+
+  window.addEventListener(
+    "mobile-menu-toggle",
+    handleMobileMenuToggle as EventListener
+  );
+
+  window.addEventListener("resize", handleResize as EventListener);
+
+  // Update links on page load
+  updateMobileNavigationLinks();
+
+  // Update links after navigation (for SPA-like behavior)
+  document.addEventListener("astro:page-load", () => {
+    updateMobileNavigationLinks();
+  });
+
+  // Update links when language preference changes
+  window.addEventListener("storage", (e) => {
+    if (e.key === "preferredLang") {
+      updateMobileNavigationLinks();
+    }
+  });
+</script>

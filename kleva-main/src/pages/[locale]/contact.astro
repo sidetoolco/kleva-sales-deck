@@ -1,0 +1,18 @@
+---
+import { APP_PAGES } from "@/consts";
+import BaseLayout from "@/layouts/base-layout.astro";
+import ContactHero from "@/components/contact/contact-hero.astro";
+import ContactReach from "@/components/contact/contact-reach.astro";
+
+export function getStaticPaths() {
+  return [{ params: { locale: "en" } }, { params: { locale: "es" } }];
+}
+---
+
+<BaseLayout
+  title={APP_PAGES.contact.title}
+  description={APP_PAGES.contact.description}
+>
+  <ContactHero />
+  <ContactReach />
+</BaseLayout>

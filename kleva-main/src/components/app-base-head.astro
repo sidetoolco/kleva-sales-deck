@@ -1,0 +1,167 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <!-- Canonical -->
+  <link rel="canonical" href={Astro.url.href} />
+
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+  <!-- Preconnect to critical origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload critical fonts -->
+  <link
+    rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    as="style"
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Open Graph (for Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta
+    property="og:image"
+    content={`${Astro.site || Astro.url.origin}/opengraph-kleva.jpg`}
+  />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kleva" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta
+    name="twitter:image"
+    content={`${Astro.site || Astro.url.origin}/opengraph-kleva.jpg`}
+  />
+
+  <!-- Organizational Schema JSON-LD -->
+  <!-- JSON-LD Structured Data -->
+  <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Kleva",
+      "description": "AI-powered debt collection software that recovers 25% more debt at 70% less cost",
+      "url": "https://www.kleva.co",
+      "logo": "https://www.kleva.co/favicon.svg",
+      "sameAs": [
+        "https://twitter.com/kleva",
+        "https://linkedin.com/company/kleva"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "url": "https://www.kleva.co/contact"
+      }
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script
+    is:inline
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=AW-16725800715"></script>
+  <script>
+    // @ts-ignore
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      // @ts-ignore
+      dataLayer.push(arguments);
+    }
+    // @ts-ignore
+    gtag("js", new Date());
+
+    // @ts-ignore
+    gtag("config", "AW-16725800715");
+  </script>
+
+  <!-- 2DA Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5MZJ979RV"
+  ></script>
+  <script>
+    // @ts-ignore
+    window.dataLayer = window.dataLayer || [];
+    // @ts-ignore
+    function gtag() {
+      // @ts-ignore
+      dataLayer.push(arguments);
+    }
+    // @ts-ignore
+    gtag("js", new Date());
+    // @ts-ignore
+    gtag("config", "G-D5MZJ979RV");
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      // @ts-ignore
+      w[l] = w[l] || [];
+      // @ts-ignore
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      // @ts-ignore
+      j.async = true;
+      // @ts-ignore
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      // @ts-ignore
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-WZXWK8GH");
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <script is:inline>
+    // @ts-ignore
+    !(function (key) {
+      if (window.reb2b) return;
+      window.reb2b = { loaded: true };
+      var s = document.createElement("script");
+      s.async = true;
+      s.src =
+        "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+      document
+        .getElementsByTagName("script")[0]
+        .parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);
+    })("W6Z57HQEMWOX");
+  </script>
+
+  <script is:inline src="/ai-tracking.js" defer></script>
+</head>

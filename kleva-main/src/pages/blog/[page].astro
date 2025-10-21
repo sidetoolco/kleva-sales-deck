@@ -1,0 +1,242 @@
+---
+// Types
+import type { GetStaticPaths } from "astro";
+import type { KlevaPostsQueryResult } from "../../sanity/types";
+import { klevaPostsQuery } from "../../sanity/lib/queries";
+import { APP_PAGES } from "@/consts";
+import BaseLayout from "@/layouts/base-layout.astro";
+import { loadQuery } from "../../sanity/lib/load-query";
+import { Icon } from "astro-icon/components";
+
+import BlogHero from "@/components/blog/blog-hero.astro";
+import BlogCTA from "@/components/blog/blog-cta.astro";
+import Tag from "@/components/tag.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const { data: posts } = await loadQuery<KlevaPostsQueryResult>({
+    query: klevaPostsQuery,
+  });
+
+  return paginate(posts, {
+    pageSize: 6,
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+---
+
+<BaseLayout
+  title={APP_PAGES.blog.title}
+  description={APP_PAGES.blog.description}
+>
+  <BlogHero />
+  <div class="section__block">
+    <div class="container">
+      <div class="section__header">
+        <div class="title">
+          <Tag label="the future">
+            <Icon name="pink__wave" width={15.643} height={7.176} />
+          </Tag>
+          <h2 class="section__title">The mission driving us forward</h2>
+        </div>
+        <p class="section__copy">
+          We're not just building another collections tool. We're building the
+          AI workforce for Latin America's financial industry.
+        </p>
+      </div>
+      <div class="posts__grid" id="blog-posts">
+        {
+          page.data.length > 0 ? (
+            page.data.map((post) => (
+              <a href={`/post/${post.slug?.current ? post.slug.current : "/"}`}>
+                <article class="post__card">
+                  <header>
+                    <span class="tag">{post.category?.title}</span>
+                    <h5>{post.title}</h5>
+                  </header>
+                  <p>{post.brief}</p>
+                  <footer>
+                    <p class="author">by {post.author?.slug?.current}</p>
+                    <p class="info">
+                      {post.publishedAt ? formatDate(post.publishedAt) : ""} -{" "}
+                      <span class="strong">{post.readingTime} min read</span>
+                    </p>
+                  </footer>
+                </article>
+                <div class="bar" />
+              </a>
+            ))
+          ) : (
+            <p class="no__posts">No posts found</p>
+          )
+        }
+      </div>
+
+      {/* Pagination Navigation */}
+      {
+        page.data.length > 0 && (
+          <nav class="pagination">
+            {page.url.prev && (
+              <a href={`${page.url.prev}#blog-posts`} class="link">
+                ← Previous
+              </a>
+            )}
+            <span class="info">
+              Page {page.currentPage} of {page.lastPage}
+            </span>
+            {page.url.next && (
+              <a href={`${page.url.next}#blog-posts`} class="link">
+                Next →
+              </a>
+            )}
+          </nav>
+        )
+      }
+    </div>
+  </div>
+  <BlogCTA />
+</BaseLayout>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+  .section__copy {
+    max-width: 682px;
+  }
+
+  .posts__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 48px;
+    margin-top: 96px;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .no__posts {
+    text-align: center;
+    color: rgba(var(--clr-pink), 1);
+    font-family: var(--font-mono);
+    grid-column: 1 / -1;
+  }
+
+  a {
+    text-decoration: none;
+    display: flex;
+
+    .bar {
+      display: none;
+      height: 100%;
+      width: 1px;
+      background-color: #2a2a2a;
+      margin-inline: 16px;
+    }
+    @include respond-to(sm) {
+      &:nth-child(odd) {
+        .bar {
+          display: block;
+        }
+      }
+    }
+    @include respond-to(sm) {
+      .bar {
+        display: block;
+      }
+      &:nth-child(3n) {
+        .bar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .post__card {
+    padding: 24px 16px;
+    color: rgba(var(--clr-white), 1);
+
+    header {
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      color: rgb(var(--clr-pink));
+      font-family: var(--font-mono);
+      font-weight: 500;
+      line-height: 1.71;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    h5 {
+      margin-block: 16px;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.48px;
+    }
+
+    footer {
+      margin-top: 16px;
+
+      .author {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 2;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .info {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 1.16;
+        letter-spacing: -0.14px;
+        .strong {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-block: 24px;
+    gap: 16px;
+
+    .info {
+      font-size: 12px;
+      color: rgba(var(--clr-white), 0.75);
+    }
+
+    .link {
+      border: 1px solid rgba(var(--clr-white), 0.75);
+      color: rgba(var(--clr-white), 1);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      transition: background-color 0.25s var(--bezier-expo);
+
+      &:hover {
+        background-color: rgba(var(--clr-pink), 0.25);
+      }
+    }
+  }
+</style>

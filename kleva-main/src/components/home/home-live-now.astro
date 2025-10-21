@@ -1,0 +1,131 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="container section__block__bottom">
+  <div class="content">
+    <!-- <div class="live__now">
+      <div class="circle__pulse"></div>
+      live now
+    </div> -->
+    <div class="metrics">
+      <div class="metric calls">
+        <span class="metric__number">10,000+</span>
+        <span class="metric__label">{t("home.live.calls")}</span>
+      </div>
+      <div class="metric collected">
+        <span class="metric__number">$5M+</span>
+        <span class="metric__label">{t("home.live.collected")}</span>
+      </div>
+      <div class="metric success">
+        <span class="metric__number">73%</span>
+        <span class="metric__label">{t("home.live.success")}</span>
+      </div>
+      <div class="metric time">
+        <span class="metric__number">1 min</span>
+        <span class="metric__label">{t("home.live.time")}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  .content {
+    @include respond-to(md) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 132px;
+      max-width: 820px;
+      margin-inline: auto;
+    }
+
+    @include respond-to(lg) {
+      max-width: unset;
+      margin-inline: 0;
+    }
+  }
+
+  .live__now {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    font-family: var(--font-mono);
+
+    font-weight: 500;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+  .circle__pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background-color: rgba(var(--clr-pink), 1);
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    row-gap: 55px;
+    margin-top: 24px;
+    width: fit-content;
+    margin-inline: auto;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include respond-to(md) {
+      margin-inline: 0;
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+    }
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    .metric__number {
+      color: rgba(var(--clr-gray), 1);
+      text-align: center;
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+
+      @include respond-to(lg) {
+        font-size: 48px;
+        letter-spacing: -2px;
+      }
+
+      @include respond-to(xl) {
+        font-size: 64px;
+      }
+    }
+
+    .metric__label {
+      color: #5e5e5e;
+      font-size: 14px;
+      font-family: var(--font-mono);
+      line-height: 1.16;
+      text-transform: uppercase;
+      letter-spacing: -0.2px;
+
+      @include respond-to(lg) {
+        font-size: 18px;
+      }
+    }
+  }
+</style>

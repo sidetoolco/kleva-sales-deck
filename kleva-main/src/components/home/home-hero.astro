@@ -1,0 +1,212 @@
+---
+import ButtonPrimary from "@/components/buttons/button-primary.astro";
+import ButtonGhost from "@/components/buttons/button-ghost.astro";
+import { APP_PAGES } from "@/consts";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="home-hero" class="section__block__bottom">
+  <div class="background__video">
+    <div class="gradient"></div>
+    <video autoplay muted loop playsinline preload="none" class="hero-video">
+      <source
+        src="https://vs0b2e5bca.ufs.sh/f/nBmF7aip13QmHibvkWrMps9OQ80ePHWDTVtGFaXNY2LgrJKv"
+        type="video/mp4"
+      />
+      {t("hero.video")}
+    </video>
+  </div>
+  <div class="container content">
+    <h1>
+      {t("hero.title.part1")}
+      <br /><span class="metric">25%</span>
+      {t("hero.title.part2")}
+      <span class="metric">70%</span>
+      {t("hero.title.part3")}
+    </h1>
+    <p class="hero__copy">
+      {t("hero.copy")}*
+    </p>
+    <p class="hero__subcopy">
+      {t("hero.subcopy")}
+    </p>
+
+    <div class="hero__buttons">
+      <ButtonPrimary
+        asLink
+        href={APP_PAGES.contact.path}
+        label={t("hero.button.book")}
+        fullWidth
+      />
+      <ButtonGhost
+        scrollTo="#home-how-it-works"
+        classes="scroll-to"
+        label={t("hero.button.learn")}
+        fullWidth
+      />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  #home-hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+
+    &.loaded {
+      opacity: 0.25;
+    }
+
+    .gradient {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      margin-inline: auto;
+      max-width: 1920px;
+      height: 100%;
+      background: #000000;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 8%,
+        rgba(0, 0, 0, 0) 92%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
+
+  .hero-video {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1920px;
+    margin-inline: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .container {
+    padding-top: 140px;
+
+    @include respond-to(md) {
+      padding-top: 180px;
+    }
+
+    @include respond-to(lg) {
+      padding-top: 240px;
+    }
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  h1 {
+    font-family: var(--font-sans);
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-inline: auto;
+
+    .metric {
+      font-family: var(--font-mono);
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    @include respond-to(sm) {
+      font-size: 48px;
+      .metric {
+        font-size: 48px;
+      }
+    }
+
+    @include respond-to(md) {
+      font-size: 64px;
+      max-width: unset;
+      .metric {
+        font-size: 64px;
+      }
+    }
+
+    @include respond-to(lg) {
+      font-size: 70px;
+    }
+  }
+
+  .hero__copy {
+    margin-bottom: 32px;
+    font-size: 18px;
+    line-height: 1.16;
+    letter-spacing: -0.18px;
+    max-width: 592px;
+    margin-inline: auto;
+  }
+
+  .hero__subcopy {
+    font-family: var(--font-mono);
+    color: rgba(var(--clr-pink), 1);
+    font-size: 16px;
+    line-height: 1.16;
+    letter-spacing: -0.48px;
+  }
+
+  .hero__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 510px;
+    margin-top: 64px;
+    margin-inline: auto;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".hero-video") as HTMLVideoElement;
+    const videoContainer = document.querySelector(
+      ".background__video"
+    ) as HTMLElement;
+
+    if (video && videoContainer) {
+      const handleCanPlay = () => {
+        videoContainer.classList.add("loaded");
+        video.removeEventListener("canplay", handleCanPlay);
+      };
+
+      video.addEventListener("canplay", handleCanPlay);
+
+      if (video.readyState === 0) {
+        video.load();
+      }
+    }
+  });
+</script>

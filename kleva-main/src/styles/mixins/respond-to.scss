@@ -1,0 +1,36 @@
+@use "../vars.scss" as *;
+@use "sass:string";
+
+// Breakpoint mixin for responsive design
+@mixin respond-to($breakpoint) {
+  // Convert to lowercase for case-insensitive matching
+  $bp: string.to-lower-case($breakpoint);
+
+  @if $bp == "sm" {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $bp == "md" {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $bp == "lg" {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $bp == "xl" {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $bp == "xxl" {
+    @media (min-width: $breakpoint-xxl) {
+      @content;
+    }
+  } @else if $bp == "wide" {
+    @media (min-width: $breakpoint-wide) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}. Available breakpoints: sm, md, lg, xl, xxl";
+  }
+}

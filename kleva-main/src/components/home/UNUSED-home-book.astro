@@ -1,0 +1,134 @@
+---
+import ButtonPrimary from "@/components/buttons/button-primary.astro";
+---
+
+<section id="home-book" class="section__block">
+  <div class="background__video">
+    <div class="gradient"></div>
+    <video autoplay muted loop playsinline preload="none" class="book-video">
+      <source
+        src="https://vs0b2e5bca.ufs.sh/f/nBmF7aip13QmHibvkWrMps9OQ80ePHWDTVtGFaXNY2LgrJKv"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="container">
+    <div class="section__header">
+      <h2 class="section__title">Lets collect more money</h2>
+      <ButtonPrimary label="book an intro call" />
+    </div>
+    <div class="calendly__container">
+      <!-- Calendly inline widget begin -->
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/jack-weaver-sidetool/meeting-with-kleva?hide_event_type_details=1&hide_gdpr_banner=1&background_color=161616&text_color=ffffff&primary_color=d5339c"
+      >
+      </div>
+      <script
+        type="text/javascript"
+        src="https://assets.calendly.com/assets/external/widget.js"
+        async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  section {
+    position: relative;
+  }
+
+  .background__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min-content;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 3s ease-out;
+
+    &.loaded {
+      opacity: 0.25;
+    }
+
+    .gradient {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      margin-inline: auto;
+      max-width: 1920px;
+      height: 100%;
+      background: #000000;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 8%,
+        rgba(0, 0, 0, 0) 92%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
+
+  .book-video {
+    width: 100%;
+    max-width: 1920px;
+    margin-inline: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .section__header {
+    text-align: center;
+
+    .section__copy {
+      margin-bottom: 30px;
+    }
+  }
+
+  .calendly__container {
+    width: 100%;
+    height: 100%;
+    padding-block: 32px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #161616;
+    margin-inline: auto;
+  }
+
+  .calendly-inline-widget {
+    min-width: 320px;
+    height: 700px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(
+      "#home-book .book-video"
+    ) as HTMLVideoElement;
+    const videoContainer = document.querySelector(
+      "#home-book .background__video"
+    ) as HTMLElement;
+
+    if (video && videoContainer) {
+      const handleCanPlay = () => {
+        videoContainer.classList.add("loaded");
+        video.removeEventListener("canplay", handleCanPlay);
+      };
+
+      video.addEventListener("canplay", handleCanPlay);
+
+      if (video.readyState === 0) {
+        video.load();
+      }
+    }
+  });
+</script>

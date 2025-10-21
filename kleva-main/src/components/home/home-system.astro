@@ -1,0 +1,387 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const sections = [
+  {
+    selector: "analyze",
+    main: {
+      title: t("home.system.analyze.title"),
+      copy: t("home.system.analyze.copy"),
+    },
+    cards: [
+      {
+        title: t("home.system.analyze.card.1.title"),
+        copy: t("home.system.analyze.card.1.copy"),
+        isNew: true,
+      },
+      {
+        title: t("home.system.analyze.card.2.title"),
+        copy: t("home.system.analyze.card.2.copy"),
+        isNew: true,
+      },
+      {
+        title: t("home.system.analyze.card.3.title"),
+        copy: t("home.system.analyze.card.3.copy"),
+        isNew: false,
+      },
+    ],
+  },
+  {
+    selector: "configure",
+    main: {
+      title: t("home.system.configure.title"),
+      copy: t("home.system.configure.copy"),
+    },
+    cards: [
+      {
+        title: t("home.system.configure.card.1.title"),
+        copy: t("home.system.configure.card.1.copy"),
+        isNew: false,
+      },
+      {
+        title: t("home.system.configure.card.2.title"),
+        copy: t("home.system.configure.card.2.copy"),
+        isNew: false,
+      },
+      {
+        title: t("home.system.configure.card.3.title"),
+        copy: t("home.system.configure.card.3.copy"),
+        isNew: false,
+      },
+    ],
+  },
+  {
+    selector: "test",
+    main: {
+      title: t("home.system.test.title"),
+      copy: t("home.system.test.copy"),
+    },
+    cards: [
+      {
+        title: t("home.system.test.card.1.title"),
+        copy: t("home.system.test.card.1.copy"),
+        isNew: true,
+      },
+      {
+        title: t("home.system.test.card.2.title"),
+        copy: t("home.system.test.card.2.copy"),
+        isNew: false,
+      },
+      {
+        title: t("home.system.test.card.3.title"),
+        copy: t("home.system.test.card.3.copy"),
+        isNew: false,
+      },
+    ],
+  },
+  {
+    selector: "deploy",
+    main: {
+      title: t("home.system.deploy.title"),
+      copy: t("home.system.deploy.copy"),
+    },
+    cards: [
+      {
+        title: t("home.system.deploy.card.1.title"),
+        copy: t("home.system.deploy.card.1.copy"),
+        isNew: false,
+      },
+      {
+        title: t("home.system.deploy.card.2.title"),
+        copy: t("home.system.deploy.card.2.copy"),
+        isNew: false,
+      },
+      {
+        title: t("home.system.deploy.card.3.title"),
+        copy: t("home.system.deploy.card.3.copy"),
+        isNew: false,
+      },
+    ],
+  },
+];
+---
+
+<section id="home-system" class="section__block">
+  <div class="container">
+    <div class="section__header">
+      <div class="title">
+        <h2 class="section__title">
+          {t("home.system.title")}
+        </h2>
+      </div>
+      <p class="section__copy">
+        {t("home.system.copy")}
+      </p>
+    </div>
+    <div class="selectors">
+      <div class="selector active" data-selector="analyze">
+        {t("home.system.selector.analyze")}
+      </div>
+      <div class="selector" data-selector="configure">
+        {t("home.system.selector.configure")}
+      </div>
+      <div class="selector" data-selector="test">
+        {t("home.system.selector.test")}
+      </div>
+      <div class="selector" data-selector="deploy">
+        {t("home.system.selector.deploy")}
+      </div>
+    </div>
+    <div class="content">
+      {
+        sections.map((section, index) => (
+          <article
+            data-selector={section.selector}
+            class={index === 0 ? "active" : ""}
+          >
+            <div class="card main glass-card">
+              <h3>{section.main.title}</h3>
+              <p>{section.main.copy}</p>
+            </div>
+            <div class="cards">
+              {section.cards.map((card) => (
+                <div class="card glass-card">
+                  <h4>
+                    {card.title}{" "}
+                    {card.isNew && (
+                      <span class="new">{t("home.system.badge.new")}</span>
+                    )}
+                  </h4>
+                  <p>{card.copy}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  .section__header {
+    max-width: 640px;
+  }
+
+  .selectors {
+    display: flex;
+
+    .selector {
+      color: rgb(var(--clr-white));
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.42;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      flex: 1;
+      border-bottom: 2px solid rgba(var(--clr-white), 0.2);
+      transition: border-color 0.3s ease-out;
+      cursor: pointer;
+
+      &:not(.active):hover {
+        border-color: rgba(var(--clr-white), 0.4);
+      }
+
+      &.active {
+        border-color: rgb(var(--clr-pink));
+        cursor: default;
+      }
+    }
+  }
+
+  .content {
+    margin-top: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include respond-to(lg) {
+      margin-top: 54px;
+    }
+  }
+
+  article {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+
+    &.active {
+      display: block;
+      opacity: 1;
+    }
+
+    &.fade-in {
+      .card {
+        animation: fadeInUp 0.5s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+
+        &.main {
+          animation-delay: 0.1s;
+        }
+      }
+
+      .cards .card {
+        &:nth-child(1) {
+          animation-delay: 0.2s;
+        }
+        &:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+        &:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+  }
+  .card {
+    padding: 40px 24px;
+
+    &.main {
+      margin-bottom: 20px;
+
+      @include respond-to(md) {
+        text-align: center;
+      }
+
+      p {
+        max-width: 720px;
+        margin-inline: auto;
+      }
+    }
+
+    h4 {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.48px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 8px;
+
+      .new {
+        border: 1px solid rgb(var(--clr-pink));
+        border-radius: 4px;
+        padding: 0 8px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 2;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.16;
+      letter-spacing: -0.16px;
+    }
+  }
+</style>
+
+<script>
+  const selectors = document.querySelectorAll("#home-system .selector");
+  const content = document.querySelector(
+    "#home-system .content"
+  ) as HTMLElement;
+  const articles = document.querySelectorAll("#home-system article");
+
+  // Set initial height
+  function setInitialHeight() {
+    const activeArticle = document.querySelector(
+      "article.active"
+    ) as HTMLElement;
+    if (activeArticle) {
+      content.style.height = `${activeArticle.offsetHeight}px`;
+    }
+  }
+
+  function handleSelectorClick(selector: HTMLElement) {
+    const targetSelector = selector.dataset.selector;
+    const currentActive = document.querySelector(
+      "article.active"
+    ) as HTMLElement;
+    const newActive = document.querySelector(
+      `article[data-selector="${targetSelector}"]`
+    ) as HTMLElement;
+
+    if (!newActive || newActive === currentActive) return;
+
+    // Update selector active state
+    selectors.forEach((s) => s.classList.remove("active"));
+    selector.classList.add("active");
+
+    // Step 1: Fade out current article
+    if (currentActive) {
+      currentActive.style.opacity = "0";
+
+      setTimeout(() => {
+        // Step 2: Hide current and show new to measure
+        currentActive.classList.remove("active");
+        newActive.style.display = "block";
+        newActive.style.opacity = "0";
+
+        // Step 3: Get new height and animate container
+        const newHeight = newActive.offsetHeight;
+        content.style.height = `${newHeight}px`;
+
+        // Step 4: Fade in new article
+        setTimeout(() => {
+          newActive.classList.add("active");
+          newActive.classList.add("fade-in");
+          newActive.style.opacity = "1";
+
+          // Clean up after animation
+          setTimeout(() => {
+            newActive.classList.remove("fade-in");
+            newActive.style.display = "";
+            newActive.style.opacity = "";
+          }, 600);
+        }, 100);
+      }, 300);
+    } else {
+      // No current active, just show new one
+      newActive.classList.add("active");
+      newActive.classList.add("fade-in");
+
+      setTimeout(() => {
+        newActive.classList.remove("fade-in");
+      }, 600);
+    }
+  }
+
+  selectors.forEach((selector) => {
+    selector.addEventListener("click", (e) => {
+      handleSelectorClick(e.currentTarget as HTMLElement);
+    });
+  });
+
+  // Set initial height when page loads
+  document.addEventListener("DOMContentLoaded", setInitialHeight);
+  window.addEventListener("resize", setInitialHeight);
+</script>

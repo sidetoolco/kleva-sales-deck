@@ -1,0 +1,58 @@
+---
+interface Props {
+  label: string;
+  asLink?: boolean;
+  href?: string;
+  fullWidth?: boolean;
+  classes?: string;
+  scrollTo?: string;
+}
+
+const {
+  label,
+  asLink = false,
+  href,
+  fullWidth = false,
+  classes,
+  scrollTo,
+} = Astro.props;
+---
+
+{
+  asLink ? (
+    <a href={href} class:list={["link-primary", fullWidth && "full-width"]}>
+      {label}
+    </a>
+  ) : (
+    <button
+      {...(scrollTo && { "data-scroll": scrollTo })}
+      class:list={[classes, "button-primary", fullWidth && "full-width"]}
+    >
+      {label}
+    </button>
+  )
+}
+
+<style lang="scss">
+  .link-primary,
+  .button-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(var(--clr-black), 0);
+    color: rgba(var(--clr-white), 1);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    line-height: 1.5;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    min-width: 240px;
+    height: 44px;
+
+    &.full-width {
+      width: 100%;
+    }
+  }
+</style>

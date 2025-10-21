@@ -1,0 +1,157 @@
+---
+
+---
+
+<button id="mobile-menu-button" data-open="false">
+  <div class="bars">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <div class="cross">
+    <div class="cross__line bar"></div>
+    <div class="cross__line bar"></div>
+  </div>
+</button>
+
+<style lang="scss">
+  #mobile-menu-button {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid rgba(var(--clr-pink), 0);
+    outline-offset: 2px;
+    transition: outline 0.25s var(--bezier-expo);
+
+    &:hover {
+      outline: 1px solid rgba(var(--clr-pink), 0.25);
+    }
+
+    &[data-open="true"] {
+      .bars {
+        opacity: 0;
+        transform: rotate(180deg) scale(0.8);
+
+        .bar {
+          transform: translateX(20px) scaleX(0);
+        }
+      }
+      .cross {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+
+        .bar {
+          &:first-child {
+            transform: rotate(45deg) scale(1);
+          }
+          &:last-child {
+            transform: rotate(-45deg) scale(1);
+          }
+        }
+      }
+    }
+  }
+  .bar {
+    background-color: rgba(var(--clr-white), 1);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .bars,
+  .cross {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .bars {
+    gap: 3px;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    .bar {
+      width: 18px;
+      height: 2px;
+      transform: translateX(0) scaleX(1);
+
+      &:nth-child(1) {
+        transition-delay: 0ms;
+      }
+      &:nth-child(2) {
+        transition-delay: 50ms;
+      }
+      &:nth-child(3) {
+        transition-delay: 100ms;
+      }
+    }
+  }
+
+  .cross {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    .bar {
+      position: absolute;
+      width: 14px;
+      height: 2px;
+      transform-origin: center;
+
+      &:first-child {
+        transform: rotate(45deg) scale(0);
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s;
+      }
+      &:last-child {
+        transform: rotate(-45deg) scale(0);
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenu = document.getElementById(
+      "mobile-menu-button"
+    ) as HTMLElement;
+
+    function isMobileMenuOpen() {
+      return mobileMenu?.dataset.open === "true";
+    }
+
+    function openMobileMenu() {
+      mobileMenu.dataset.open = "true";
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.dataset.open = "false";
+    }
+
+    function handleMobileMenuClick() {
+      window.dispatchEvent(
+        new CustomEvent("mobile-menu-toggle", {
+          detail: {
+            mobileMenuOpen: !isMobileMenuOpen(),
+          },
+        })
+      );
+    }
+
+    function handleMobileMenuToggle(e: Event) {
+      const customEvent = e as CustomEvent<{ mobileMenuOpen: boolean }>;
+      const isOpen = isMobileMenuOpen();
+      if (customEvent.detail.mobileMenuOpen && !isOpen) {
+        openMobileMenu();
+      } else if (!customEvent.detail.mobileMenuOpen && isOpen) {
+        closeMobileMenu();
+      }
+    }
+
+    mobileMenu.addEventListener("click", handleMobileMenuClick);
+    window.addEventListener("mobile-menu-toggle", handleMobileMenuToggle);
+  });
+</script>

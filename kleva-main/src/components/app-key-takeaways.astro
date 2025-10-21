@@ -1,0 +1,36 @@
+---
+interface Props {
+  takeaways: string[];
+}
+
+const { takeaways } = Astro.props;
+---
+
+<aside class="key-takeaways">
+  <h3>Key Takeaways</h3>
+  <ul>
+    {takeaways.map((takeaway) => <li>{takeaway}</li>)}
+  </ul>
+</aside>
+
+<style>
+  .key-takeaways {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--clr-pink);
+    padding: 24px;
+    margin: 32px 0;
+  }
+  .key-takeaways h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .key-takeaways ul {
+    list-style: disc;
+    padding-left: 24px;
+  }
+  .key-takeaways li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+</style>

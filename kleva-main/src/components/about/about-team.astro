@@ -1,0 +1,239 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Tag from "@/components/tag.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+import luna from "@/assets/team__luna.webp";
+import santiago from "@/assets/team__santi.webp";
+import lila from "@/assets/team__lila.webp";
+import juli from "@/assets/team__juli.webp";
+import jm from "@/assets/team__jm.webp";
+import ed from "@/assets/team__ed.webp";
+import mateo from "@/assets/team__mateo.webp";
+import nahuel from "@/assets/team__nahuel.webp";
+import max from "@/assets/team__max.webp";
+import nico from "@/assets/team__nico.webp";
+import salvador from "@/assets/team__salvador.webp";
+import facundo from "@/assets/team__facundo.webp";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const team = [
+  {
+    name: "Santi",
+    title: t("about.team.member.santi.title"),
+    copy: t("about.team.member.santi.copy"),
+    image: santiago,
+  },
+  {
+    name: "Ed",
+    title: t("about.team.member.ed.title"),
+    copy: t("about.team.member.ed.copy"),
+    image: ed,
+  },
+  {
+    name: "Lila",
+    title: t("about.team.member.lila.title"),
+    copy: t("about.team.member.lila.copy"),
+    image: lila,
+  },
+  {
+    name: "Juli",
+    title: t("about.team.member.juli.title"),
+    copy: t("about.team.member.juli.copy"),
+    image: juli,
+  },
+  {
+    name: "JM",
+    title: t("about.team.member.jm.title"),
+    copy: t("about.team.member.jm.copy"),
+    image: jm,
+  },
+  {
+    name: "Luna",
+    title: t("about.team.member.luna.title"),
+    copy: t("about.team.member.luna.copy"),
+    image: luna,
+  },
+  {
+    name: "Mateo",
+    title: t("about.team.member.mateo.title"),
+    copy: t("about.team.member.mateo.copy"),
+    image: mateo,
+  },
+  {
+    name: "Nahuel",
+    title: t("about.team.member.nahuel.title"),
+    copy: t("about.team.member.nahuel.copy"),
+    image: nahuel,
+  },
+  {
+    name: "Max",
+    title: t("about.team.member.max.title"),
+    copy: t("about.team.member.max.copy"),
+    image: max,
+  },
+  {
+    name: "Nico",
+    title: t("about.team.member.nico.title"),
+    copy: t("about.team.member.nico.copy"),
+    image: nico,
+  },
+  {
+    name: "Salvador",
+    title: t("about.team.member.salvador.title"),
+    copy: t("about.team.member.salvador.copy"),
+    image: salvador,
+  },
+  {
+    name: "Facundo",
+    title: t("about.team.member.facundo.title"),
+    copy: t("about.team.member.facundo.copy"),
+    image: facundo,
+  },
+];
+---
+
+<section class="section__block">
+  <div class="container">
+    <div class="section__header">
+      <div class="title">
+        <Tag label={t("about.team.tag")}>
+          <Icon name="pink__wave" width={15.643} height={7.176} />
+        </Tag>
+        <h2 class="section__title">{t("about.team.title")}</h2>
+      </div>
+      <p class="section__copy">
+        {t("about.team.copy")}
+      </p>
+    </div>
+    <div class="team">
+      {
+        team.map((member) => (
+          <div class="card">
+            <div class="image__wrapper">
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={309}
+                height={385}
+                loading="lazy"
+              />
+            </div>
+            <div class="member">
+              <p class="name">{member.name}</p>
+              <p class="title">{member.title}</p>
+              <p class="copy">{member.copy}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  .team {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    width: fit-content;
+    margin-inline: auto;
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      gap: 64px;
+    }
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    max-width: 309px;
+    aspect-ratio: 309 / 385;
+    overflow: hidden;
+    border-radius: 8px;
+
+    .image__wrapper {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      opacity: 1;
+      transition: opacity 0.3s ease-out;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition-property: rotate, scale;
+        transition: 0.3s ease-out;
+      }
+    }
+
+    &:hover {
+      .image__wrapper {
+        opacity: 0;
+      }
+      img {
+        rotate: 5deg;
+        scale: 1.05;
+      }
+    }
+
+    @include respond-to(lg) {
+      &:nth-child(6n + 1) {
+        rotate: -3deg;
+      }
+      &:nth-child(6n + 3) {
+        rotate: 3deg;
+      }
+      &:nth-child(6n + 4) {
+        rotate: -2deg;
+      }
+      &:nth-child(6n) {
+        rotate: 2deg;
+      }
+    }
+    .member {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      padding: 48px;
+
+      .name {
+        font-size: 28px;
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: -0.56px;
+      }
+      .title {
+        color: rgba(var(--clr-pink), 1);
+        font-family: var(--font-mono);
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+      }
+      .copy {
+        line-height: 1.16;
+        letter-spacing: -0.16px;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+const supportedLocales = ["en", "es"];
+---
+
+<div class="lang-picker">
+  {
+    supportedLocales.map((locale) => (
+      <button class="lang-btn" data-lang={locale}>
+        {locale}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  function getCurrentLang() {
+    const supportedLocales = ["en", "es"];
+    const defaultLocale = "en";
+
+    // 1. Check localStorage first (user preference)
+    const saved = localStorage.getItem("preferredLang");
+    if (saved && supportedLocales.includes(saved)) {
+      return saved;
+    }
+
+    // 2. Check URL (for pages with locale)
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts[0] && supportedLocales.includes(pathParts[0])) {
+      return pathParts[0];
+    }
+
+    // 3. Check browser language
+    const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+    if (supportedLocales.includes(browserLang)) {
+      return browserLang;
+    }
+
+    // 4. Default to English
+    return defaultLocale;
+  }
+
+  function updateActiveButton() {
+    const currentLang = getCurrentLang();
+    const buttons = document.querySelectorAll(".lang-btn");
+
+    buttons.forEach((button) => {
+      const lang = button.getAttribute("data-lang");
+      if (lang === currentLang) {
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
+    });
+  }
+
+  function initLangPicker() {
+    const buttons = document.querySelectorAll(".lang-btn");
+
+    // Set initial active state based on localStorage/URL/browser
+    updateActiveButton();
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const newLang = button.getAttribute("data-lang");
+
+        if (!newLang) return;
+
+        // Save preference to localStorage
+        localStorage.setItem("preferredLang", newLang);
+
+        // Get current path without the language prefix
+        const currentPath = window.location.pathname;
+        const pathParts = currentPath.split("/").filter(Boolean);
+
+        // Remove the current language from the path (first segment)
+        const supportedLocales = ["en", "es"];
+        if (supportedLocales.includes(pathParts[0])) {
+          pathParts.shift();
+        }
+
+        // Build new path with selected language
+        const newPath = `/${newLang}/${pathParts.join("/")}`;
+
+        // Navigate to new path
+        window.location.pathname = newPath;
+      });
+    });
+  }
+
+  // Initialize on page load
+  initLangPicker();
+
+  // Reinitialize after navigation (for SPA-like behavior if needed)
+  document.addEventListener("astro:page-load", () => {
+    initLangPicker();
+  });
+</script>
+
+<style lang="scss">
+  .lang-picker {
+    display: flex;
+    gap: 8px;
+  }
+
+  .lang-btn {
+    padding: 4px 8px;
+    background: transparent;
+    border: 1px solid rgba(var(--clr-white), 0.3);
+    color: rgba(var(--clr-white), 0.7);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: rgba(var(--clr-white), 1);
+      border-color: rgba(var(--clr-white), 0.5);
+    }
+
+    &.active {
+      color: rgba(var(--clr-pink), 1);
+      border-color: rgba(var(--clr-pink), 1);
+    }
+  }
+</style>

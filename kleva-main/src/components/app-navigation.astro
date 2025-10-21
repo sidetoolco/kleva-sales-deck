@@ -1,0 +1,291 @@
+---
+import { APP_PAGES } from "@/consts";
+import ButtonPrimary from "@/components/buttons/button-primary.astro";
+import AppMobileMenuButton from "@/components/app-mobile-menu-button.astro";
+import AppLangPicker from "@/components/app-lang-picker.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Add locale prefix to paths
+const getLocalizedPath = (path: string) => {
+  return `/${lang}${path}`;
+};
+---
+
+<header>
+  <div class="container">
+    <div class="top__menu">
+      <div class="logo">
+        <a
+          href={getLocalizedPath(APP_PAGES.home.path)}
+          data-path={APP_PAGES.home.path}
+          data-localized="true"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="19"
+            height="16"
+            viewBox="0 0 19 16"
+            fill="none"
+          >
+            <path
+              d="M0.502275 7.54468C1.37175 7.54468 1.91658 7.21003 2.33434 6.6931C2.78545 6.13488 3.09195 5.35813 3.39388 4.46726C3.67752 3.63034 3.96878 2.64608 4.39902 1.90355C4.85467 1.1172 5.55375 0.450068 6.68332 0.45006C7.80967 0.45006 8.51606 1.11338 8.98315 1.89578C9.42585 2.63732 9.73297 3.61933 10.03 4.4583C10.3456 5.34971 10.6631 6.12946 11.121 6.69057C11.5465 7.212 12.0921 7.54469 12.9463 7.54469L12.9463 8.92857C11.6336 8.92857 10.7088 8.37444 10.0488 7.56563C9.4211 6.7965 9.03774 5.80241 8.72536 4.92016C8.39443 3.98551 8.14633 3.19381 7.79489 2.60512C7.46784 2.05732 7.14098 1.83395 6.68332 1.83395C6.22891 1.83395 5.91153 2.05353 5.59641 2.59735C5.25587 3.18507 5.02193 3.97463 4.70445 4.91138C4.40529 5.79409 4.03464 6.79092 3.41077 7.56293C2.75349 8.37624 1.82534 8.92857 0.502275 8.92857L0.502275 7.54468Z"
+              fill="white"></path>
+            <path
+              d="M6.09648 11.1904C7.0688 11.1904 7.65811 11.4287 8.06403 11.7332C8.48745 12.0508 8.77736 12.4876 9.07863 13.0194C9.35595 13.509 9.68132 14.1649 10.1449 14.6534C10.6592 15.1953 11.3453 15.5502 12.3236 15.5502C14.2963 15.5502 15.2397 14.1167 15.9741 13.0777C16.7633 11.9612 17.3661 11.1904 18.6172 11.1904L18.6172 9.80653C16.5746 9.80653 15.5955 11.2157 14.8439 12.279C14.0375 13.4199 13.4809 14.1663 12.3236 14.1663C11.7371 14.1663 11.4102 13.9763 11.1487 13.7007C10.8365 13.3718 10.6229 12.9377 10.2828 12.3373C9.96663 11.7792 9.56072 11.126 8.89449 10.6262C8.21076 10.1133 7.31667 9.80654 6.09648 9.80653L6.09648 11.1904Z"
+              fill="white"></path>
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="87"
+            height="30"
+            viewBox="0 0 87 30"
+            fill="none"
+          >
+            <path
+              d="M76.3669 29.6896C70.7527 29.6896 66.502 24.92 66.502 19.0626C66.502 13.2889 70.873 8.51936 76.6877 8.51936C82.4223 8.51936 86.9136 13.1216 86.9136 19.0626V29.2712H84.5476V24.5434C83.0639 27.5976 80.0563 29.6896 76.3669 29.6896ZM76.6877 27.2211C81.0187 27.2211 84.4273 23.5393 84.4273 19.1045C84.4273 14.6696 81.0187 10.9878 76.6877 10.9878C72.3969 10.9878 68.9882 14.6696 68.9882 19.1045C68.9882 23.5393 72.3969 27.2211 76.6877 27.2211Z"
+              fill="white"></path>
+            <path
+              d="M67.3024 10.9492C66.1231 10.9492 65.25 11.6329 64.4946 13.1739C63.7232 14.7474 63.241 16.9102 62.7868 19.2499C62.3491 21.5045 61.9335 23.9537 61.2629 25.8063C60.9251 26.7396 60.4848 27.6365 59.8585 28.3144C59.1996 29.0275 58.3296 29.4981 57.2474 29.4981C55.0822 29.4981 53.8047 27.733 53.0007 25.995C52.1635 24.1853 51.5603 21.8081 50.9917 19.5645C50.406 17.2537 49.853 15.067 49.1221 13.4093C48.3575 11.6755 47.616 11.0229 46.9258 10.9407L47.2104 8.55172C49.3011 8.80076 50.5271 10.6324 51.3235 12.4386C52.1535 14.3209 52.7551 16.73 53.3238 18.9735C53.9095 21.2843 54.4606 23.4202 55.1844 24.9849C55.9414 26.6213 56.6315 27.0921 57.2474 27.0921C57.5556 27.0921 57.8131 26.9829 58.0914 26.6817C58.4024 26.3452 58.709 25.7929 59.0006 24.9874C59.5889 23.3621 59.9623 21.174 60.4249 18.7914C60.8709 16.494 61.4005 14.0194 62.3341 12.115C63.2836 10.1782 64.8088 8.54321 67.3024 8.54321V10.9492Z"
+              fill="white"></path>
+            <path
+              d="M38.5563 29.5711C37.0339 29.5711 35.6775 29.3081 34.4872 28.7822C33.3246 28.2562 32.3557 27.5226 31.5806 26.5815C30.8055 25.6403 30.2104 24.5331 29.7952 23.2597C29.4076 21.9864 29.2139 20.63 29.2139 19.1905C29.2139 17.7234 29.4076 16.3532 29.7952 15.0799C30.1827 13.7788 30.7502 12.6439 31.4976 11.675C32.2727 10.6785 33.2138 9.90343 34.3211 9.3498C35.456 8.79618 36.757 8.51936 38.2242 8.51936C39.7743 8.51936 41.103 8.79618 42.2103 9.3498C43.3452 9.87575 44.2587 10.6093 44.9507 11.5505C45.6705 12.464 46.1964 13.4743 46.5286 14.5816C46.8884 15.6888 47.0684 16.8099 47.0684 17.9449C47.0684 18.1663 47.0545 18.457 47.0269 18.8168C47.0269 19.1767 46.9992 19.4812 46.9438 19.7303H31.7882C31.8436 22.0833 32.4664 23.9102 33.6567 25.2113C34.8747 26.5123 36.5079 27.1628 38.5563 27.1628C39.8574 27.1628 40.9646 26.969 41.8781 26.5815C42.8193 26.1663 43.7189 25.4881 44.577 24.5469L46.4455 26.2078C45.6705 27.0105 44.8815 27.6611 44.0788 28.1593C43.276 28.6299 42.4179 28.9898 41.5044 29.2389C40.6186 29.4603 39.6359 29.5711 38.5563 29.5711ZM44.4525 18.4016C44.5078 18.1802 44.5355 17.9587 44.5355 17.7373C44.5355 17.4881 44.5355 17.2528 44.5355 17.0314C44.5355 16.3117 44.411 15.5781 44.1618 14.8307C43.9404 14.0833 43.5805 13.4051 43.0823 12.7961C42.584 12.1871 41.9335 11.6889 41.1307 11.3013C40.328 10.9138 39.3729 10.72 38.2657 10.72C36.9923 10.72 35.8712 11.0384 34.9024 11.675C33.9612 12.3117 33.2277 13.156 32.7017 14.2079C32.1758 15.2598 31.8713 16.4501 31.7882 17.7788H45.3244L44.4525 18.4016Z"
+              fill="white"></path>
+            <path
+              d="M26.4734 29.5708C25.3107 29.5708 24.3834 29.2109 23.6914 28.4912C22.9993 27.7438 22.6533 26.5673 22.6533 24.9618V0.339188H25.2692V24.5051C25.2692 25.4462 25.4491 26.1244 25.809 26.5396C26.1689 26.9549 26.6533 27.1625 27.2623 27.1625C27.5391 27.1625 27.8436 27.1348 28.1758 27.0794C28.5079 26.9964 28.854 26.8995 29.2138 26.7888V29.031C28.7432 29.1971 28.2588 29.3216 27.7605 29.4047C27.29 29.5154 26.8609 29.5708 26.4734 29.5708Z"
+              fill="white"></path>
+            <path
+              d="M0.575195 29.2805V0.339554H3.27413V29.2805H0.575195Z"
+              fill="white"></path>
+            <path
+              d="M17.744 29.1666C17.744 27.0111 17.0335 25.6674 16.0226 24.685C14.949 23.6417 13.4668 22.9342 11.7692 22.2347C10.1714 21.5763 8.27062 20.8902 6.84044 19.8905C5.30087 18.8144 4.14805 17.2758 4.14804 14.9307C4.14804 12.6181 5.26645 10.9655 6.74556 9.71975C8.1641 8.52504 10.0267 7.61373 11.6723 6.77561C13.3964 5.8975 14.9266 5.08077 16.0432 4.04115C17.1034 3.05396 17.744 1.90873 17.744 0.31047L20.4033 0.310471C20.4033 2.78673 19.3445 4.60108 17.8555 5.9875C16.4228 7.32144 14.5541 8.29237 12.8793 9.14533C11.126 10.0383 9.58943 10.8015 8.45874 11.7538C7.38862 12.6551 6.80754 13.622 6.80754 14.9307C6.80755 16.2068 7.35425 17.0051 8.36386 17.7108C9.48291 18.493 10.9812 19.0335 12.7824 19.7757C14.4837 20.4768 16.4004 21.3438 17.8761 22.7778C19.4144 24.2728 20.4033 26.3097 20.4033 29.1666L17.744 29.1666Z"
+              fill="white"></path>
+          </svg>
+        </a>
+      </div>
+      <nav>
+        <a
+          href={getLocalizedPath(APP_PAGES.home.path)}
+          data-path={APP_PAGES.home.path}
+          data-localized="true"
+          class="navigation__link"
+        >
+          {t("nav.home")}
+        </a>
+        <a
+          href={getLocalizedPath(APP_PAGES.about.path)}
+          data-path={APP_PAGES.about.path}
+          data-localized="true"
+          class="navigation__link"
+        >
+          {t("nav.about")}
+        </a>
+        <a
+          href={getLocalizedPath(APP_PAGES.contact.path)}
+          data-path={APP_PAGES.contact.path}
+          data-localized="true"
+          class="navigation__link"
+        >
+          {t("nav.contact")}
+        </a>
+        <a
+          href={APP_PAGES.blog.path}
+          data-path={APP_PAGES.blog.path}
+          class="navigation__link"
+        >
+          {t("nav.blog")}
+        </a>
+      </nav>
+      <div class="mobile__menu">
+        <AppMobileMenuButton />
+      </div>
+
+      <div class="cta">
+        <div class="lang-picker-wrapper">
+          <AppLangPicker />
+        </div>
+        <ButtonPrimary
+          asLink
+          href={getLocalizedPath(APP_PAGES.contact.path)}
+          data-path={APP_PAGES.contact.path}
+          data-localized="true"
+          label={t("nav.cta")}
+          size="sm"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  function getPreferredLang() {
+    const supportedLocales = ["en", "es"];
+    const defaultLocale = "en";
+
+    // Check localStorage first
+    const saved = localStorage.getItem("preferredLang");
+    if (saved && supportedLocales.includes(saved)) {
+      return saved;
+    }
+
+    // Check URL
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts[0] && supportedLocales.includes(pathParts[0])) {
+      return pathParts[0];
+    }
+
+    // Check browser language
+    const browserLang = navigator.language?.slice(0, 2).toLowerCase();
+    if (supportedLocales.includes(browserLang)) {
+      return browserLang;
+    }
+
+    return defaultLocale;
+  }
+
+  function updateNavigationLinks() {
+    const preferredLang = getPreferredLang();
+    const localizedLinks = document.querySelectorAll('[data-localized="true"]');
+
+    localizedLinks.forEach((link) => {
+      const path = link.getAttribute("data-path");
+      if (path) {
+        link.setAttribute("href", `/${preferredLang}${path}`);
+      }
+    });
+  }
+
+  // Update links on page load
+  updateNavigationLinks();
+
+  // Update links after navigation (for SPA-like behavior)
+  document.addEventListener("astro:page-load", () => {
+    updateNavigationLinks();
+  });
+
+  // Update links when language preference changes
+  window.addEventListener("storage", (e) => {
+    if (e.key === "preferredLang") {
+      updateNavigationLinks();
+    }
+  });
+</script>
+
+<style lang="scss">
+  @use "../styles/mixins/" as *;
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    padding: 20px 0px;
+    background-color: rgba(var(--clr-black), 0.15);
+    backdrop-filter: blur(16px);
+  }
+
+  .top__menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    svg:last-child {
+      width: 48px;
+      transition: width 0.25s var(--bezier-expo);
+
+      @include respond-to(md) {
+        width: 64px;
+      }
+
+      @include respond-to(lg) {
+        width: auto;
+      }
+    }
+  }
+
+  nav {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  nav a {
+    display: none;
+    text-decoration: none;
+    color: rgba(var(--clr-white), 0.7);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.42;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    transition: color 0.25s var(--bezier-expo);
+    animation: showUp 0.3s ease-out forwards;
+
+    &.active {
+      color: rgba(var(--clr-pink), 1);
+    }
+
+    &:hover {
+      color: rgba(var(--clr-white), 1);
+    }
+
+    @include respond-to(lg) {
+      display: inline-block;
+    }
+  }
+
+  .mobile__menu {
+    display: block;
+    animation: showUp 0.3s ease-out forwards;
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  .lang-picker-wrapper {
+    display: none;
+    animation: showUp 0.3s ease-out forwards;
+
+    @include respond-to(lg) {
+      display: block;
+    }
+  }
+
+  .cta {
+    display: none;
+    animation: showUp 0.3s ease-out forwards;
+
+    @include respond-to(lg) {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+  }
+
+  @keyframes showUp {
+    from {
+      transform: translateX(-15%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>

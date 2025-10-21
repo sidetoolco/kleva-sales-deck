@@ -1,0 +1,210 @@
+---
+import { Icon } from "astro-icon/components";
+import Tag from "@/components/tag.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const questions = [
+  {
+    question: t("home.qa.q1.question"),
+    answer: t("home.qa.q1.answer"),
+  },
+  {
+    question: t("home.qa.q2.question"),
+    answer: t("home.qa.q2.answer"),
+  },
+  {
+    question: t("home.qa.q3.question"),
+    answer: t("home.qa.q3.answer"),
+  },
+  {
+    question: t("home.qa.q4.question"),
+    answer: t("home.qa.q4.answer"),
+  },
+  {
+    question: t("home.qa.q5.question"),
+    answer: t("home.qa.q5.answer"),
+  },
+  {
+    question: t("home.qa.q6.question"),
+    answer: t("home.qa.q6.answer"),
+  },
+  {
+    question: t("home.qa.q7.question"),
+    answer: t("home.qa.q7.answer"),
+  },
+  {
+    question: t("home.qa.q8.question"),
+    answer: t("home.qa.q8.answer"),
+  },
+  {
+    question: t("home.qa.q9.question"),
+    answer: t("home.qa.q9.answer"),
+  },
+  {
+    question: t("home.qa.q10.question"),
+    answer: t("home.qa.q10.answer"),
+  },
+  {
+    question: t("home.qa.q11.question"),
+    answer: t("home.qa.q11.answer"),
+  },
+  {
+    question: t("home.qa.q12.question"),
+    answer: t("home.qa.q12.answer"),
+  },
+  {
+    question: t("home.qa.q13.question"),
+    answer: t("home.qa.q13.answer"),
+  },
+  {
+    question: t("home.qa.q14.question"),
+    answer: t("home.qa.q14.answer"),
+  },
+  {
+    question: t("home.qa.q15.question"),
+    answer: t("home.qa.q15.answer"),
+  },
+];
+---
+
+<section class="home-qa">
+  <div class="container">
+    <div class="section__header">
+      <div class="title">
+        <Tag label={t("home.qa.tag")}>
+          <Icon name="pink__wave" width={15.643} height={7.176} />
+        </Tag>
+        <h2 class="section__title">{t("home.qa.title")}</h2>
+      </div>
+      <p class="section__copy">
+        {t("home.qa.contact")}
+        <a href="mailto:hello@kleva.co">hello@kleva.co</a>
+      </p>
+    </div>
+    <div class="qa__list">
+      {
+        questions.map((question, index) => (
+          <div
+            class="qa__block"
+            data-qa-index={index}
+            role="button"
+            tabindex="0"
+          >
+            <div class="qa__question">
+              {question.question} <Icon name="chevron-right" size={24} />
+            </div>
+            <div class="qa__answer">{question.answer}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../../styles/mixins/" as *;
+
+  .section__header {
+    a {
+      margin-left: 12px;
+    }
+  }
+
+  .qa__block {
+    padding-block: 32px;
+    border-bottom: 1px solid rgba(var(--clr-white), 0.1);
+    cursor: pointer;
+    user-select: none;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      .qa__question {
+        color: rgba(var(--clr-white), 1);
+      }
+    }
+
+    .qa__question {
+      display: flex;
+      justify-content: space-between;
+      color: rgba(var(--clr-white), 0.7);
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.09;
+      transition: color 0.3s ease-out;
+
+      @include respond-to(md) {
+        font-size: 20px;
+      }
+
+      [data-icon] {
+        transform: rotate(90deg);
+        transition: transform 0.3s ease-out;
+        flex-shrink: 0;
+      }
+    }
+
+    .qa__answer {
+      max-height: 0;
+      overflow: hidden;
+      padding-right: 24px;
+      color: rgba(var(--clr-white), 1);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      opacity: 0.7;
+      transition:
+        max-height 0.3s ease-out,
+        padding-top 0.3s ease-out;
+    }
+
+    &.is-open {
+      .qa__question {
+        color: rgba(var(--clr-white), 1);
+      }
+
+      .qa__question [data-icon] {
+        transform: rotate(0deg);
+      }
+
+      .qa__answer {
+        max-height: 200px;
+        padding-top: 8px;
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const qaBlocks = document.querySelectorAll(
+      ".qa__block"
+    ) as NodeListOf<HTMLElement>;
+
+    qaBlocks.forEach((block) => {
+      block.addEventListener("click", function () {
+        const isCurrentlyOpen = block.classList.contains("is-open");
+
+        qaBlocks.forEach((otherBlock) => {
+          otherBlock.classList.remove("is-open");
+        });
+
+        if (!isCurrentlyOpen) {
+          block.classList.add("is-open");
+        }
+      });
+
+      block.addEventListener("keydown", function (e: KeyboardEvent) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          block.click();
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,55 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  {
+    faqs.map((faq) => (
+      <div class="faq-item">
+        <h3>{faq.question}</h3>
+        <p>{faq.answer}</p>
+      </div>
+    ))
+  }
+</section>
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  })}
+/>
+
+<style>
+  .faq-section {
+    margin: 48px 0;
+  }
+  .faq-item {
+    margin-bottom: 24px;
+  }
+  .faq-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+</style>

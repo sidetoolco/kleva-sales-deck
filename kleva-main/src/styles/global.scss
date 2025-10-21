@@ -1,0 +1,120 @@
+@use "./reset.scss";
+@use "./vars.scss";
+@use "./mixins/" as *;
+@use "./utilities.scss";
+@use "./app/noise.scss";
+
+body {
+  background-color: rgb(var(--clr-black));
+  color: rgb(var(--clr-white));
+  font-family: var(--font-sans), var(--font-mono), sans-serif, system-ui;
+  font-weight: 400;
+}
+
+main {
+  overflow-x: hidden;
+}
+
+.post__body {
+  font-size: 16px;
+  @include respond-to(lg) {
+    font-size: 18px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.75em; // 28px ÷ 16px = 1.75em
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+
+    @include respond-to(md) {
+      font-size: 1.78em; // 32px ÷ 18px ≈ 1.78em (scales with parent)
+    }
+  }
+  h1 {
+    font-size: 0.875em; // 14px ÷ 16px = 0.875em
+    font-family: var(--font-mono);
+    color: rgba(var(--clr-pink), 1);
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-bottom: 1.5em; // 24px ÷ 16px = 1.5em
+    line-height: 1.4;
+
+    @include respond-to(md) {
+      font-size: 1.11em; // 20px ÷ 18px ≈ 1.11em (scales with parent)
+    }
+  }
+  h2 {
+    font-size: 2em;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin-block: 3.2rem 1.6rem;
+
+    @include respond-to(md) {
+      font-size: 2.75em;
+    }
+  }
+  h3 {
+    font-size: 1.25em;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-block: 3rem 1rem;
+    color: rgba(var(--clr-white), 1);
+  }
+  p {
+    margin-bottom: 1.2em;
+    color: rgba(var(--clr-white), 0.85);
+
+    & strong {
+      font-weight: 500;
+      color: rgba(var(--clr-white), 1);
+    }
+
+    &:not(:has(+ p)) {
+      margin-bottom: 2.4em;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: rgba(var(--clr-pink), 1);
+    font-family: var(--font-mono);
+    transition: color 0.25s var(--bezier-expo);
+
+    &:hover {
+      color: rgba(var(--clr-pink), 0.8);
+    }
+  }
+  ul li {
+    font-size: 0.95rem;
+    margin-block: 0.25rem;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-block: 0.25rem;
+    color: rgba(var(--clr-white), 0.85);
+
+    &:not(:has(+ li)) {
+      margin-bottom: 1.2em;
+    }
+  }
+  img {
+    margin-block: 1rem 2rem;
+  }
+  blockquote {
+    position: relative;
+    padding-left: 1rem;
+    margin-block: 2rem;
+  }
+  blockquote::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    height: 100%;
+    width: 2px;
+    background-color: rgba(var(--clr-pink), 1);
+  }
+}
