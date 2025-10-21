@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kleva - AI Collections for Latin American Finance</title>
+    <title>Kleva - AI Collections Pilot Program</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -54,7 +54,7 @@
             position: absolute;
             bottom: 30px;
             right: 30px;
-            color: var(--kleva-gray);
+            color: rgba(var(--clr-white), 0.6);
             font-size: 14px;
             font-weight: 500;
             font-family: 'IBM Plex Mono', monospace;
@@ -66,7 +66,6 @@
             width: 100%;
         }
         
-        /* Typography */
         h1 {
             font-family: var(--font-sans);
             font-size: 64px;
@@ -107,90 +106,15 @@
         .accent-text {
             color: rgba(var(--clr-pink), 1);
             font-family: var(--font-mono);
-            font-weight: 400;
-        }
-        
-        .metric {
-            font-family: var(--font-mono);
-            font-style: italic;
-            font-weight: 300;
-        }
-        
-        /* Logo */
-        .kleva-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0;
-            margin-bottom: 40px;
-        }
-        
-        .kleva-logo svg {
-            width: 180px;
-            height: auto;
-            max-width: 100%;
-        }
-        
-        .kleva-logo-mark {
-            display: none;
-        }
-        
-        .kleva-logo-text {
-            display: none;
-        }
-        
-        /* Metrics */
-        .big-metric {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            margin: 30px 0;
-        }
-        
-        .big-metric-value {
-            font-size: 80px;
-            font-weight: 300;
-            letter-spacing: -3px;
-            color: rgba(var(--clr-pink), 1);
-            font-family: var(--font-mono);
-            font-style: italic;
-        }
-        
-        .big-metric-label {
-            font-size: 16px;
-            font-weight: 400;
-            color: rgba(var(--clr-gray), 1);
-            font-family: var(--font-mono);
-        }
-        
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .metric-card {
-            background: rgba(var(--clr-white), 0.05);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s var(--bezier-expo);
-            border: 1px solid rgba(var(--clr-white), 0.1);
-        }
-        
-        .metric-card:hover {
-            transform: translateY(-5px);
-            background: rgba(var(--clr-white), 0.08);
+            font-weight: 600;
         }
         
         .metric-value {
-            font-size: 48px;
-            font-weight: 300;
-            color: rgba(var(--clr-white), 1);
-            display: block;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
             font-family: var(--font-mono);
+            font-style: italic;
+            font-weight: 300;
+            font-size: 48px;
+            color: rgba(var(--clr-pink), 1);
         }
         
         .metric-label {
@@ -201,255 +125,36 @@
             letter-spacing: 0.5px;
         }
         
-        /* Visual Elements */
-        .gradient-bg {
+        .kleva-logo svg {
+            width: 180px;
+            height: auto;
+            max-width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .slide-gradient {
             background: linear-gradient(135deg, rgba(var(--clr-black), 1) 0%, rgba(var(--clr-black), 0.95) 100%);
         }
         
-        .problem-solution-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .problem-card, .solution-card {
-            padding: 40px;
-            border-radius: 20px;
-            min-height: 400px;
-        }
-        
-        .problem-card {
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 0.8) 0%, rgba(var(--clr-pink), 0.6) 100%);
-        }
-        
-        .solution-card {
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 1) 0%, rgba(var(--clr-pink), 0.9) 100%);
-        }
-        
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .card-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .card-list {
-            list-style: none;
-            padding: 0;
-            font-size: 18px;
-            line-height: 2;
-        }
-        
-        .card-list li {
-            padding-left: 30px;
-            position: relative;
-            color: white;
-        }
-        
-        .card-list li::before {
-            content: "×";
-            position: absolute;
-            left: 0;
-            font-weight: 700;
-            font-size: 24px;
-        }
-        
-        .solution-card .card-list li::before {
-            content: "✓";
-        }
-        
-        /* Timeline */
-        .timeline {
-            display: flex;
-            justify-content: space-between;
-            margin: 60px 0;
-            position: relative;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 60px;
-            right: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--kleva-blue) 0%, var(--kleva-green) 100%);
-            z-index: 0;
-        }
-        
-        .timeline-item {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            flex: 1;
-        }
-        
-        .timeline-dot {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--kleva-black);
-            border: 4px solid var(--kleva-blue);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 16px;
-            color: white;
-        }
-        
-        .timeline-dot.completed {
-            background: var(--kleva-blue);
-        }
-        
-        .timeline-dot.future {
-            border-color: var(--kleva-gray);
-            color: var(--kleva-gray);
-        }
-        
-        /* Team Grid */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .team-member {
+        .slide-center {
             text-align: center;
         }
         
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.8));
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: 700;
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
         
-        .team-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out forwards;
         }
         
-        .team-role {
-            font-size: 16px;
-            color: rgba(var(--clr-pink), 1);
-            margin-bottom: 12px;
-            font-family: var(--font-mono);
-        }
-        
-        .team-bio {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
-        }
-        
-        /* Tables */
-        .comparison-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 40px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .comparison-table th {
-            background: var(--kleva-dark-gray);
-            color: white;
-            padding: 20px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .comparison-table td {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 16px;
-        }
-        
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .comparison-table tr.highlight {
-            background: rgba(213, 51, 156, 0.1);
-        }
-        
-        .comparison-table tr.highlight td {
-            font-weight: 600;
-        }
-        
-        /* Call to Action */
-        .cta-section {
-            text-align: center;
-            padding: 60px;
-            background: linear-gradient(135deg, rgba(var(--clr-black), 0.8) 0%, rgba(var(--clr-black), 0.9) 100%);
-            border: 2px solid rgba(var(--clr-pink), 0.5);
-            border-radius: 20px;
-            margin: 40px 0;
-        }
-        
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section p {
-            color: rgba(255,255,255,0.9);
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .cta-button {
-            background: white;
-            color: var(--kleva-blue);
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
-        .cta-button.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .cta-button.secondary:hover {
-            background: white;
-            color: var(--kleva-blue);
-        }
-        
-        /* Navigation */
         .nav-dots {
             position: fixed;
             right: 30px;
@@ -473,71 +178,192 @@
             transform: scale(1.3);
         }
         
-        /* Slide specific styles */
-        .slide-center {
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .problem-card {
+            background: rgba(var(--clr-white), 0.05);
+            border: 1px solid rgba(var(--clr-pink), 0.3);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
         }
         
-        .slide-gradient {
-            background: linear-gradient(135deg, rgba(var(--clr-black), 1) 0%, rgba(var(--clr-black), 0.95) 100%);
+        .problem-card h3 {
+            color: rgba(var(--clr-pink), 1);
+            margin-bottom: 20px;
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(40px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
+        .problem-card ul {
+            list-style: none;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.8;
         }
         
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.6;
-                transform: scale(1.05);
-            }
+        .problem-card li {
+            color: rgba(var(--clr-white), 0.8);
+            margin-bottom: 10px;
         }
         
-        .animate-in {
-            animation: fadeInUp 0.8s ease-out forwards;
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin: 60px 0;
         }
         
-        /* Language Switcher */
-        .language-switcher {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 200;
-            display: flex;
-            gap: 10px;
+        .capability-item {
+            padding: 40px;
+            background: rgba(var(--clr-white), 0.05);
+            border-radius: 16px;
+            border-left: 4px solid rgba(var(--clr-pink), 1);
         }
         
-        .lang-button {
-            padding: 8px 16px;
-            background: rgba(var(--clr-white), 0.1);
-            border: 1px solid rgba(var(--clr-white), 0.2);
-            color: rgba(var(--clr-white), 0.7);
-            text-decoration: none;
-            border-radius: 20px;
+        .capability-item h3 {
+            color: rgba(var(--clr-pink), 1);
+            margin-bottom: 15px;
+        }
+        
+        .capability-item p {
+            font-size: 16px;
+            color: rgba(var(--clr-white), 0.8);
+        }
+        
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .proof-card {
+            background: rgba(var(--clr-white), 0.08);
+            border: 1px solid rgba(var(--clr-pink), 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .proof-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .proof-card p {
             font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            color: rgba(var(--clr-gray), 1);
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
         
-        .lang-button:hover, .lang-button.active {
+        .proof-stat {
+            font-size: 36px;
+            color: rgba(var(--clr-pink), 1);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .proof-metric {
+            font-size: 14px;
+            color: rgba(var(--clr-white), 0.8);
+        }
+        
+        .pilot-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-box {
+            background: rgba(var(--clr-white), 0.05);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .feature-box h4 {
+            color: rgba(var(--clr-pink), 1);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-box ul {
+            list-style: none;
+            font-size: 15px;
+            line-height: 2;
+        }
+        
+        .feature-box li {
+            color: rgba(var(--clr-white), 0.8);
+        }
+        
+        .feature-box li:before {
+            content: "→ ";
+            color: rgba(var(--clr-pink), 1);
+            margin-right: 8px;
+        }
+        
+        .urgency-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .urgency-card {
+            background: rgba(var(--clr-pink), 0.1);
+            border: 1px solid rgba(var(--clr-pink), 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .urgency-card h4 {
+            font-size: 20px;
+            color: rgba(var(--clr-pink), 1);
+            margin-bottom: 15px;
+        }
+        
+        .urgency-card p {
+            font-size: 15px;
+            color: rgba(var(--clr-white), 0.8);
+        }
+        
+        .cta-button {
+            display: inline-block;
             background: rgba(var(--clr-pink), 1);
-            color: white;
-            border-color: rgba(var(--clr-pink), 1);
+            color: rgb(var(--clr-white));
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
         
-        /* Responsive */
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(var(--clr-pink), 0.3);
+        }
+        
+        .cta-button.secondary {
+            background: rgba(var(--clr-white), 0.1);
+            border: 1px solid rgba(var(--clr-pink), 1);
+        }
+        
+        .cta-buttons {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
         @media (max-width: 768px) {
             .slide { 
                 padding: 40px 20px; 
@@ -545,122 +371,102 @@
             h1 { 
                 font-size: 36px; 
             }
-            h2 { 
-                font-size: 28px; 
-            }
-            .nav-dots { 
-                display: none; 
-            }
-        }
-                flex-direction: column; 
-                gap: 20px;
-            }
-            .timeline::before {
-                display: none;
-            }
-            .nav-dots { 
-                display: none; 
-            }
-            .team-grid {
+            .problem-grid,
+            .proof-grid {
                 grid-template-columns: 1fr;
+            }
+            .capability-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-dots { 
+                display: none; 
             }
         }
     </style>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <a href="index.html" class="lang-button active">EN</a>
-        <a href="index-es.html" class="lang-button">ES</a>
-    </div>
-
     <div class="deck-container" id="deck">
         
-        <!-- Slide 1: Title -->
+        <!-- Slide 1: Hook -->
         <div class="slide slide-gradient slide-center">
             <div class="container">
-                <div class="kleva-logo" style="justify-content: center;">
-                    <svg width="200" height="auto" viewBox="0 0 1157 293" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 40px;">
-                        <path d="M-8.99583e-05 140.144C11.4584 140.144 18.6384 135.734 24.144 128.922C30.089 121.565 34.1282 111.329 38.1072 99.588C41.8452 88.5586 45.6836 75.5874 51.3536 65.8019C57.3584 55.439 66.5713 46.6471 81.4574 46.647C96.3011 46.647 105.61 55.3887 111.766 65.6995C117.6 75.472 121.648 88.4136 125.562 99.47C129.722 111.218 133.905 121.493 139.94 128.888C145.548 135.76 152.737 140.144 163.995 140.144L163.995 158.382C146.695 158.382 134.508 151.079 125.809 140.42C117.538 130.284 112.485 117.183 108.369 105.557C104.007 93.2393 100.738 82.8058 96.1063 75.0477C91.7963 67.8284 87.4888 64.8847 81.4574 64.8847C75.469 64.8848 71.2863 67.7785 67.1335 74.9453C62.6456 82.6906 59.5626 93.0959 55.3787 105.441C51.4362 117.074 46.5515 130.211 38.3298 140.385C29.6678 151.103 17.4361 158.382 -9.15527e-05 158.382L-8.99583e-05 140.144Z" fill="white"/>
-                        <path d="M73.7323 188.189C86.5462 188.189 94.3125 191.329 99.6619 195.342C105.242 199.529 109.063 205.284 113.033 212.293C116.688 218.745 120.976 227.388 127.085 233.826C133.863 240.967 142.904 245.645 155.798 245.645C181.794 245.645 194.227 226.753 203.905 213.061C214.307 198.347 222.25 188.189 238.738 188.189L238.738 169.952C211.819 169.952 198.917 188.523 189.012 202.536C178.383 217.571 171.048 227.408 155.798 227.408C148.067 227.408 143.76 224.903 140.314 221.272C136.199 216.937 133.384 211.216 128.902 203.304C124.736 195.949 119.386 187.34 110.606 180.754C101.596 173.994 89.8127 169.952 73.7323 169.952L73.7323 188.189Z" fill="white"/>
-                        <path d="M1052.06 292.292C996.202 292.292 953.911 244.839 953.911 186.564C953.911 129.122 997.399 81.6694 1055.25 81.6694C1112.3 81.6694 1156.99 127.457 1156.99 186.564V288.129H1133.45V241.093C1118.69 271.479 1088.76 292.292 1052.06 292.292ZM1055.25 267.733C1098.34 267.733 1132.25 231.103 1132.25 186.981C1132.25 142.858 1098.34 106.228 1055.25 106.228C1012.56 106.228 978.647 142.858 978.647 186.981C978.647 231.103 1012.56 267.733 1055.25 267.733Z" fill="white"/>
-                        <path d="M961.882 105.844C950.149 105.844 941.463 112.646 933.947 127.978C926.273 143.632 921.475 165.15 916.956 188.428C912.601 210.859 908.467 235.226 901.795 253.658C898.434 262.943 894.054 271.867 887.823 278.61C881.267 285.705 872.611 290.387 861.844 290.387C840.304 290.387 827.593 272.826 819.594 255.535C811.265 237.53 805.264 213.88 799.606 191.558C793.779 168.568 788.278 146.812 781.006 130.32C773.399 113.07 766.022 106.577 759.155 105.759L761.987 81.9915C782.787 84.4692 794.984 102.692 802.908 120.662C811.166 139.389 817.151 163.357 822.809 185.678C828.636 208.668 834.119 229.918 841.32 245.485C848.852 261.765 855.717 266.45 861.844 266.45C864.911 266.45 867.473 265.364 870.242 262.367C873.336 259.019 876.386 253.524 879.287 245.51C885.14 229.34 888.856 207.57 893.458 183.866C897.895 161.009 903.164 136.39 912.452 117.443C921.899 98.1732 937.073 81.9069 961.882 81.9069V105.844Z" fill="white"/>
-                        <path d="M675.884 291.113C660.737 291.113 647.242 288.497 635.4 283.264C623.833 278.031 614.194 270.733 606.482 261.37C598.771 252.006 592.85 240.99 588.719 228.321C584.863 215.653 582.936 202.158 582.936 187.837C582.936 173.241 584.863 159.608 588.719 146.94C592.575 133.996 598.22 122.704 605.656 113.065C613.368 103.151 622.731 95.4396 633.747 89.9315C645.039 84.4235 657.983 81.6694 672.579 81.6694C688.002 81.6694 701.221 84.4235 712.237 89.9315C723.529 95.1641 732.617 102.462 739.502 111.826C746.662 120.914 751.895 130.966 755.2 141.983C758.78 152.999 760.57 164.153 760.57 175.444C760.57 177.647 760.433 180.539 760.157 184.119C760.157 187.699 759.882 190.729 759.331 193.207H608.548C609.099 216.617 615.295 234.793 627.138 247.737C639.255 260.681 655.504 267.153 675.884 267.153C688.828 267.153 699.844 265.225 708.932 261.37C718.296 257.239 727.247 250.491 735.784 241.128L754.374 257.652C746.662 265.638 738.813 272.11 730.827 277.068C722.84 281.749 714.303 285.33 705.214 287.808C696.401 290.011 686.625 291.113 675.884 291.113ZM734.545 179.988C735.095 177.785 735.371 175.582 735.371 173.378C735.371 170.9 735.371 168.559 735.371 166.356C735.371 159.195 734.132 151.897 731.653 144.461C729.45 137.025 725.869 130.278 720.912 124.219C715.955 118.16 709.483 113.203 701.496 109.347C693.51 105.492 684.008 103.564 672.992 103.564C660.324 103.564 649.17 106.731 639.531 113.065C630.167 119.4 622.869 127.799 617.636 138.265C612.404 148.73 609.374 160.572 608.548 173.792H743.22L734.545 179.988Z" fill="white"/>
-                        <path d="M555.672 291.113C544.105 291.113 534.879 287.533 527.994 280.372C521.109 272.937 517.667 261.232 517.667 245.259V0.287964H543.692V240.714C543.692 250.078 545.482 256.826 549.062 260.957C552.643 265.088 557.462 267.153 563.521 267.153C566.275 267.153 569.304 266.878 572.609 266.327C575.914 265.501 579.357 264.537 582.937 263.435V285.743C578.255 287.395 573.436 288.634 568.478 289.461C563.796 290.562 559.528 291.113 555.672 291.113Z" fill="white"/>
-                        <path d="M298.01 288.221V0.287964H324.862V288.221H298.01Z" fill="white"/>
-                        <path d="M468.822 287.09C468.822 265.645 461.753 252.277 451.695 242.502C441.014 232.122 426.268 225.084 409.378 218.125C393.482 211.574 374.571 204.748 360.342 194.802C345.025 184.096 333.555 168.788 333.555 145.456C333.555 122.449 344.682 106.007 359.398 93.613C373.511 81.7269 392.042 72.6602 408.414 64.3218C425.568 55.5854 440.792 47.4597 451.9 37.1166C462.448 27.295 468.822 15.9011 468.822 -1.15648e-06L495.279 0C495.279 24.6363 484.745 42.6873 469.931 56.4808C455.677 69.7522 437.085 79.412 420.423 87.8981C402.979 96.7824 387.692 104.376 376.442 113.85C365.796 122.817 360.015 132.436 360.015 145.456C360.015 158.152 365.454 166.095 375.499 173.116C386.632 180.898 401.539 186.276 419.459 193.66C436.385 200.635 455.455 209.26 470.136 223.528C485.44 238.401 495.279 258.667 495.279 287.09L468.822 287.09Z" fill="white"/>
-                    </svg>
-                </div>
+                <svg width="180" height="46" viewBox="0 0 1157 293" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 40px; display: block; margin-left: auto; margin-right: auto;">
+                    <path d="M-8.99583e-05 140.144C11.4584 140.144 18.6384 135.734 24.144 128.922C30.089 121.565 34.1282 111.329 38.1072 99.588C41.8452 88.5586 45.6836 75.5874 51.3536 65.8019C57.3584 55.439 66.5713 46.6471 81.4574 46.647C96.3011 46.647 105.61 55.3887 111.766 65.6995C117.6 75.472 121.648 88.4136 125.562 99.47C129.722 111.218 133.905 121.493 139.94 128.888C145.548 135.76 152.737 140.144 163.995 140.144L163.995 158.382C146.695 158.382 134.508 151.079 125.809 140.42C117.538 130.284 112.485 117.183 108.369 105.557C104.007 93.2393 100.738 82.8058 96.1063 75.0477C91.7963 67.8284 87.4888 64.8847 81.4574 64.8847C75.469 64.8848 71.2863 67.7785 67.1335 74.9453C62.6456 82.6906 59.5626 93.0959 55.3787 105.441C51.4362 117.074 46.5515 130.211 38.3298 140.385C29.6678 151.103 17.4361 158.382 -9.15527e-05 158.382L-8.99583e-05 140.144Z" fill="white"/>
+                    <path d="M73.7323 188.189C86.5462 188.189 94.3125 191.329 99.6619 195.342C105.242 199.529 109.063 205.284 113.033 212.293C116.688 218.745 120.976 227.388 127.085 233.826C133.863 240.967 142.904 245.645 155.798 245.645C181.794 245.645 194.227 226.753 203.905 213.061C214.307 198.347 222.25 188.189 238.738 188.189L238.738 169.952C211.819 169.952 198.917 188.523 189.012 202.536C178.383 217.571 171.048 227.408 155.798 227.408C148.067 227.408 143.76 224.903 140.314 221.272C136.199 216.937 133.384 211.216 128.902 203.304C124.736 195.949 119.386 187.34 110.606 180.754C101.596 173.994 89.8127 169.952 73.7323 169.952L73.7323 188.189Z" fill="white"/>
+                    <path d="M1052.06 292.292C996.202 292.292 953.911 244.839 953.911 186.564C953.911 129.122 997.399 81.6694 1055.25 81.6694C1112.3 81.6694 1156.99 127.457 1156.99 186.564V288.129H1133.45V241.093C1118.69 271.479 1088.76 292.292 1052.06 292.292ZM1055.25 267.733C1098.34 267.733 1132.25 231.103 1132.25 186.981C1132.25 142.858 1098.34 106.228 1055.25 106.228C1012.56 106.228 978.647 142.858 978.647 186.981C978.647 231.103 1012.56 267.733 1055.25 267.733Z" fill="white"/>
+                    <path d="M961.882 105.844C950.149 105.844 941.463 112.646 933.947 127.978C926.273 143.632 921.475 165.15 916.956 188.428C912.601 210.859 908.467 235.226 901.795 253.658C898.434 262.943 894.054 271.867 887.823 278.61C881.267 285.705 872.611 290.387 861.844 290.387C840.304 290.387 827.593 272.826 819.594 255.535C811.265 237.53 805.264 213.88 799.606 191.558C793.779 168.568 788.278 146.812 781.006 130.32C773.399 113.07 766.022 106.577 759.155 105.759L761.987 81.9915C782.787 84.4692 794.984 102.692 802.908 120.662C811.166 139.389 817.151 163.357 822.809 185.678C828.636 208.668 834.119 229.918 841.32 245.485C848.852 261.765 855.717 266.45 861.844 266.45C864.911 266.45 867.473 265.364 870.242 262.367C873.336 259.019 876.386 253.524 879.287 245.51C885.14 229.34 888.856 207.57 893.458 183.866C897.895 161.009 903.164 136.39 912.452 117.443C921.899 98.1732 937.073 81.9069 961.882 81.9069V105.844Z" fill="white"/>
+                    <path d="M675.884 291.113C660.737 291.113 647.242 288.497 635.4 283.264C623.833 278.031 614.194 270.733 606.482 261.37C598.771 252.006 592.85 240.99 588.719 228.321C584.863 215.653 582.936 202.158 582.936 187.837C582.936 173.241 584.863 159.608 588.719 146.94C592.575 133.996 598.22 122.704 605.656 113.065C613.368 103.151 622.731 95.4396 633.747 89.9315C645.039 84.4235 657.983 81.6694 672.579 81.6694C688.002 81.6694 701.221 84.4235 712.237 89.9315C723.529 95.1641 732.617 102.462 739.502 111.826C746.662 120.914 751.895 130.966 755.2 141.983C758.78 152.999 760.57 164.153 760.57 175.444C760.57 177.647 760.433 180.539 760.157 184.119C760.157 187.699 759.882 190.729 759.331 193.207H608.548C609.099 216.617 615.295 234.793 627.138 247.737C639.255 260.681 655.504 267.153 675.884 267.153C688.828 267.153 699.844 265.225 708.932 261.37C718.296 257.239 727.247 250.491 735.784 241.128L754.374 257.652C746.662 265.638 738.813 272.11 730.827 277.068C722.84 281.749 714.303 285.33 705.214 287.808C696.401 290.011 686.625 291.113 675.884 291.113ZM734.545 179.988C735.095 177.785 735.371 175.582 735.371 173.378C735.371 170.9 735.371 168.559 735.371 166.356C735.371 159.195 734.132 151.897 731.653 144.461C729.45 137.025 725.869 130.278 720.912 124.219C715.955 118.16 709.483 113.203 701.496 109.347C693.51 105.492 684.008 103.564 672.992 103.564C660.324 103.564 649.17 106.731 639.531 113.065C630.167 119.4 622.869 127.799 617.636 138.265C612.404 148.73 609.374 160.572 608.548 173.792H743.22L734.545 179.988Z" fill="white"/>
+                    <path d="M555.672 291.113C544.105 291.113 534.879 287.533 527.994 280.372C521.109 272.937 517.667 261.232 517.667 245.259V0.287964H543.692V240.714C543.692 250.078 545.482 256.826 549.062 260.957C552.643 265.088 557.462 267.153 563.521 267.153C566.275 267.153 569.304 266.878 572.609 266.327C575.914 265.501 579.357 264.537 582.937 263.435V285.743C578.255 287.395 573.436 288.634 568.478 289.461C563.796 290.562 559.528 291.113 555.672 291.113Z" fill="white"/>
+                    <path d="M298.01 288.221V0.287964H324.862V288.221H298.01Z" fill="white"/>
+                    <path d="M468.822 287.09C468.822 265.645 461.753 252.277 451.695 242.502C441.014 232.122 426.268 225.084 409.378 218.125C393.482 211.574 374.571 204.748 360.342 194.802C345.025 184.096 333.555 168.788 333.555 145.456C333.555 122.449 344.682 106.007 359.398 93.613C373.511 81.7269 392.042 72.6602 408.414 64.3218C425.568 55.5854 440.792 47.4597 451.9 37.1166C462.448 27.295 468.822 15.9011 468.822 -1.15648e-06L495.279 0C495.279 24.6363 484.745 42.6873 469.931 56.4808C455.677 69.7522 437.085 79.412 420.423 87.8981C402.979 96.7824 387.692 104.376 376.442 113.85C365.796 122.817 360.015 132.436 360.015 145.456C360.015 158.152 365.454 166.095 375.499 173.116C386.632 180.898 401.539 186.276 419.459 193.66C436.385 200.635 455.455 209.26 470.136 223.528C485.44 238.401 495.279 258.667 495.279 287.09L468.822 287.09Z" fill="white"/>
+                </svg>
                 
-                <h1 class="animate-in" style="color: white; font-size: 70px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    AI Collections Agent<br>
-                    for Banks
+                <h1 class="animate-in" style="font-size: 70px; max-width: 900px; margin: 0 auto 30px;">
+                    Your customers answer the phone.<br><span class="accent-text">Your agent needs to earn the conversation in 3 seconds.</span>
                 </h1>
                 
-                <p class="subtitle" style="color: rgba(255,255,255,0.85); font-size: 18px; max-width: 592px; margin: 0 auto 32px;">
-                    Recover more debt at lower cost with AI that speaks your customers' language
+                <p class="subtitle" style="max-width: 700px; margin: 0 auto;">
+                    Contact rate determines recovery rate. Kleva's AI calls at the moments your customers are most likely to answer.
                 </p>
                 
-                <p style="margin-bottom: 40px; font-size: 16px; letter-spacing: -0.48px; color: white; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 20px; display: inline-block;">
-                    25% better recovery | 70% cost savings | 100% compliant
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 600px; margin: 60px auto;">
                     <div style="text-align: center;">
-                        <div class="big-metric-value" style="color: white; font-size: 48px;">$0.17</div>
-                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">per minute</div>
+                        <div class="metric-value">73%</div>
+                        <div class="metric-label">contact rate</div>
                     </div>
                     <div style="text-align: center;">
-                        <div class="big-metric-value" style="color: white; font-size: 48px;">73%</div>
-                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">success rate</div>
+                        <div class="metric-value">+25%</div>
+                        <div class="metric-label">recovery gain</div>
                     </div>
                     <div style="text-align: center;">
-                        <div class="big-metric-value" style="color: white; font-size: 48px;">24/7</div>
-                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">available</div>
+                        <div class="metric-value">65%</div>
+                        <div class="metric-label">cost savings</div>
                     </div>
                 </div>
             </div>
-            <span class="slide-number" style="color: rgba(255,255,255,0.6);">1</span>
+            <span class="slide-number">1</span>
         </div>
 
-        <!-- Slide 2: The Problem -->
+        <!-- Slide 2: Problem -->
         <div class="slide">
             <div class="container">
-                <div class="kleva-logo">
-                    <div class="kleva-logo-mark">K</div>
-                    <span class="kleva-logo-text">KLEVA</span>
-                </div>
+                <h2 style="margin-bottom: 20px;">Your Collections Blind Spot</h2>
+                <p class="subtitle">Most strategies fail because they ignore the single factor that drives revenue: getting someone to pick up the phone.</p>
                 
-                <h1>Your Collections Challenge</h1>
-                <p class="subtitle">Human agents are expensive and ineffective</p>
-                
-                <div style="background: rgba(var(--clr-white), 0.05); border-radius: 16px; padding: 40px; margin: 40px 0;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                        <div>
-                            <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">High Costs</h2>
-                            <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2;">
-                                <li><strong>$0.40 per minute</strong> for human agents</li>
-                                <li><strong>156% turnover rate</strong> requires constant hiring</li>
-                                <li><strong>Infrastructure costs</strong> for call centers</li>
-                                <li><strong>Training expenses</strong> for new agents</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">Poor Results</h2>
-                            <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2;">
-                                <li><strong>Low success rates</strong> of 15-30%</li>
-                                <li><strong>Limited hours</strong> miss customer availability</li>
-                                <li><strong>Compliance violations</strong> from human error</li>
-                                <li><strong>Customer complaints</strong> hurt brand reputation</li>
-                            </ul>
-                        </div>
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <h3>Human Agents</h3>
+                        <ul>
+                            <li>15-30% contact rate</li>
+                            <li>Miss optimal calling times</li>
+                            <li>156% annual turnover</li>
+                            <li>Expensive to scale</li>
+                        </ul>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Chatbots & IVR</h3>
+                        <ul>
+                            <li>Zero native language skills</li>
+                            <li>Sound robotic & deflect calls</li>
+                            <li>No real negotiation</li>
+                            <li>High compliance risk</li>
+                        </ul>
+                    </div>
+                    <div class="problem-card">
+                        <h3>Status Quo</h3>
+                        <ul>
+                            <li>$0.40/min + infrastructure</li>
+                            <li>Compliance violations</li>
+                            <li>Leave money on table</li>
+                            <li>Competitive disadvantage</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 40px;">
-                    <h3 style="color: rgba(var(--clr-gray), 1); font-weight: 400;">
-                        You need better recovery rates at lower cost
-                    </h3>
+                <div style="background: rgba(var(--clr-pink), 0.15); border: 1px solid rgba(var(--clr-pink), 0.3); border-radius: 12px; padding: 30px; margin-top: 40px; text-align: center;">
+                    <p style="font-size: 20px; color: rgba(var(--clr-white), 0.9);">
+                        <span class="accent-text">Reality check:</span> You're calling at 9am. Your customer answers at 6pm.
+                    </p>
                 </div>
             </div>
             <span class="slide-number">2</span>
@@ -669,308 +475,184 @@
         <!-- Slide 3: Solution -->
         <div class="slide">
             <div class="container">
-                <div class="kleva-logo">
-                    <div class="kleva-logo-mark">K</div>
-                    <span class="kleva-logo-text">KLEVA</span>
-                </div>
+                <h2 style="margin-bottom: 20px;">Kleva AI Agent</h2>
+                <p class="subtitle">The collections agent that calls smarter, not harder.</p>
                 
-                <h1>AI Collections Agent</h1>
-                <p class="subtitle">Smart automation that recovers more debt at lower cost</p>
-                
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0;">
-                    <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Better Results</h3>
-                        <p style="margin-bottom: 20px;">AI analyzes customer data to personalize every conversation.</p>
-                        <div style="display: flex; gap: 40px;">
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">73%</div>
-                                <div class="metric-label">success rate</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">25%</div>
-                                <div class="metric-label">better recovery</div>
-                            </div>
-                        </div>
+                <div class="capability-grid">
+                    <div class="capability-item">
+                        <h3>Smart Timing</h3>
+                        <p>Behavioral analysis predicts when your customer will answer. Call probability peaks at different times per person, per portfolio segment. Kleva learns and adapts in real-time.</p>
                     </div>
-                    
-                    <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Instant Scale</h3>
-                        <p style="margin-bottom: 20px;">From 10 to 10,000 calls instantly. No hiring needed.</p>
-                        <div style="display: flex; gap: 40px;">
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 24px;">∞</div>
-                                <div class="metric-label">capacity</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">24/7</div>
-                                <div class="metric-label">available</div>
-                            </div>
-                        </div>
+                    <div class="capability-item">
+                        <h3>Native Language Mastery</h3>
+                        <p>45+ regional dialects, local idioms, cultural context. Speaks Spanish like a native across Latin America. No "please hold" delays. Instant conversation.</p>
+                    </div>
+                    <div class="capability-item">
+                        <h3>Negotiation Logic</h3>
+                        <p>Real-time strategy adaptation based on customer response. Offers payment plans that maximize recovery and stick. Zero defaulted agreements.</p>
+                    </div>
+                    <div class="capability-item">
+                        <h3>Always Available</h3>
+                        <p>24/7 operation at $0.17/min. 65% cheaper than human agents. No turnover. No training. Scales from 10 to 10,000 calls instantly.</p>
                     </div>
                 </div>
                 
-                <div class="big-metric" style="justify-content: center;">
-                    <span class="big-metric-value">$0.17</span>
-                    <span class="big-metric-label">per minute vs $0.40 for human agents</span>
+                <div style="background: rgba(var(--clr-white), 0.05); border-radius: 12px; padding: 30px; margin-top: 40px; text-align: center;">
+                    <p style="font-size: 18px; color: rgba(var(--clr-white), 0.9);">
+                        Result: <span class="accent-text">Higher contact rate → Better recovery → Lower cost</span>
+                    </p>
                 </div>
             </div>
             <span class="slide-number">3</span>
         </div>
 
-        <!-- Slide 4: Capabilities -->
+        <!-- Slide 4: Proof -->
         <div class="slide">
             <div class="container">
-                <div class="kleva-logo">
-                    <div class="kleva-logo-mark">K</div>
-                    <span class="kleva-logo-text">KLEVA</span>
+                <h2 style="margin-bottom: 20px;">Proven Results</h2>
+                <p class="subtitle">Real companies, real revenue recovery. Right now, in your region.</p>
+                
+                <div class="proof-grid">
+                    <div class="proof-card">
+                        <div style="width: 80px; height: 40px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                            <img src="logos/vana-logo.png" alt="VANA" style="width: 80px; height: 40px; object-fit: contain;">
+                        </div>
+                        <h3>VANA</h3>
+                        <p>Microfinance, Guatemala</p>
+                        <div class="proof-stat">+25%</div>
+                        <div class="proof-metric">recovery rate increase month 1</div>
+                    </div>
+                    <div class="proof-card">
+                        <div style="width: 80px; height: 40px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                            <img src="logos/adt.png" alt="ADT" style="width: 80px; height: 40px; object-fit: contain;">
+                        </div>
+                        <h3>ADT</h3>
+                        <p>Security Services, Argentina</p>
+                        <div class="proof-stat">73%</div>
+                        <div class="proof-metric">contact rate sustained</div>
+                    </div>
+                    <div class="proof-card">
+                        <div style="width: 100px; height: 40px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                            <img src="logos/directv.png" alt="DIRECTV" style="width: 100px; height: 40px; object-fit: contain;">
+                        </div>
+                        <h3>DIRECTV</h3>
+                        <p>Telecom, Argentina</p>
+                        <div class="proof-stat">$9M</div>
+                        <div class="proof-metric">recovered in November (up from $4M Oct)</div>
+                    </div>
                 </div>
                 
-                <h1>How It Works</h1>
-                <p class="subtitle">Simple AI that delivers results</p>
-                
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin: 60px 0;">
-                    <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Natural Voice AI</h3>
-                        <p style="margin-bottom: 20px;">Speaks Spanish like a native. Understands regional slang, accents, and cultural nuances.</p>
-                        <div style="display: flex; gap: 40px;">
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">94%</div>
-                                <div class="metric-label">comprehension</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">45+</div>
-                                <div class="metric-label">dialects</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Smart Negotiation</h3>
-                        <p style="margin-bottom: 20px;">Adapts strategy in real-time based on debtor responses. Offers payment plans that maximize recovery.</p>
-                        <div style="display: flex; gap: 40px;">
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">73%</div>
-                                <div class="metric-label">success rate</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">1min</div>
-                                <div class="metric-label">avg. call</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Instant Scale</h3>
-                        <p style="margin-bottom: 20px;">From 10 to 10,000 calls instantly. No hiring, no training, no infrastructure needed.</p>
-                        <div style="display: flex; gap: 40px;">
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 24px;">∞</div>
-                                <div class="metric-label">capacity</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div class="metric-value" style="font-size: 36px;">0</div>
-                                <div class="metric-label">downtime</div>
-                            </div>
-                        </div>
-                    </div>
+                <div style="margin-top: 60px; text-align: center; background: rgba(var(--clr-white), 0.05); border-radius: 12px; padding: 40px;">
+                    <p style="font-size: 18px; margin-bottom: 20px;">
+                        <span class="accent-text">400K+ minutes processed monthly</span> across 3 countries
+                    </p>
+                    <p style="font-size: 14px; color: rgba(var(--clr-white), 0.7);">
+                        Active collections agents across fintech, banking, telecom, and debt collection services
+                    </p>
                 </div>
             </div>
             <span class="slide-number">4</span>
         </div>
-        
-        <!-- Slide 5: How It Works -->
-        <div class="slide slide-gradient">
-            <div class="container slide-center">
-                <div class="kleva-logo" style="justify-content: center;">
-                    <svg width="200" height="auto" viewBox="0 0 1157 293" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 40px;">
-                        <path d="M-8.99583e-05 140.144C11.4584 140.144 18.6384 135.734 24.144 128.922C30.089 121.565 34.1282 111.329 38.1072 99.588C41.8452 88.5586 45.6836 75.5874 51.3536 65.8019C57.3584 55.439 66.5713 46.6471 81.4574 46.647C96.3011 46.647 105.61 55.3887 111.766 65.6995C117.6 75.472 121.648 88.4136 125.562 99.47C129.722 111.218 133.905 121.493 139.94 128.888C145.548 135.76 152.737 140.144 163.995 140.144L163.995 158.382C146.695 158.382 134.508 151.079 125.809 140.42C117.538 130.284 112.485 117.183 108.369 105.557C104.007 93.2393 100.738 82.8058 96.1063 75.0477C91.7963 67.8284 87.4888 64.8847 81.4574 64.8847C75.469 64.8848 71.2863 67.7785 67.1335 74.9453C62.6456 82.6906 59.5626 93.0959 55.3787 105.441C51.4362 117.074 46.5515 130.211 38.3298 140.385C29.6678 151.103 17.4361 158.382 -9.15527e-05 158.382L-8.99583e-05 140.144Z" fill="white"/>
-                        <path d="M73.7323 188.189C86.5462 188.189 94.3125 191.329 99.6619 195.342C105.242 199.529 109.063 205.284 113.033 212.293C116.688 218.745 120.976 227.388 127.085 233.826C133.863 240.967 142.904 245.645 155.798 245.645C181.794 245.645 194.227 226.753 203.905 213.061C214.307 198.347 222.25 188.189 238.738 188.189L238.738 169.952C211.819 169.952 198.917 188.523 189.012 202.536C178.383 217.571 171.048 227.408 155.798 227.408C148.067 227.408 143.76 224.903 140.314 221.272C136.199 216.937 133.384 211.216 128.902 203.304C124.736 195.949 119.386 187.34 110.606 180.754C101.596 173.994 89.8127 169.952 73.7323 169.952L73.7323 188.189Z" fill="white"/>
-                        <path d="M1052.06 292.292C996.202 292.292 953.911 244.839 953.911 186.564C953.911 129.122 997.399 81.6694 1055.25 81.6694C1112.3 81.6694 1156.99 127.457 1156.99 186.564V288.129H1133.45V241.093C1118.69 271.479 1088.76 292.292 1052.06 292.292ZM1055.25 267.733C1098.34 267.733 1132.25 231.103 1132.25 186.981C1132.25 142.858 1098.34 106.228 1055.25 106.228C1012.56 106.228 978.647 142.858 978.647 186.981C978.647 231.103 1012.56 267.733 1055.25 267.733Z" fill="white"/>
-                        <path d="M961.882 105.844C950.149 105.844 941.463 112.646 933.947 127.978C926.273 143.632 921.475 165.15 916.956 188.428C912.601 210.859 908.467 235.226 901.795 253.658C898.434 262.943 894.054 271.867 887.823 278.61C881.267 285.705 872.611 290.387 861.844 290.387C840.304 290.387 827.593 272.826 819.594 255.535C811.265 237.53 805.264 213.88 799.606 191.558C793.779 168.568 788.278 146.812 781.006 130.32C773.399 113.07 766.022 106.577 759.155 105.759L761.987 81.9915C782.787 84.4692 794.984 102.692 802.908 120.662C811.166 139.389 817.151 163.357 822.809 185.678C828.636 208.668 834.119 229.918 841.32 245.485C848.852 261.765 855.717 266.45 861.844 266.45C864.911 266.45 867.473 265.364 870.242 262.367C873.336 259.019 876.386 253.524 879.287 245.51C885.14 229.34 888.856 207.57 893.458 183.866C897.895 161.009 903.164 136.39 912.452 117.443C921.899 98.1732 937.073 81.9069 961.882 81.9069V105.844Z" fill="white"/>
-                        <path d="M675.884 291.113C660.737 291.113 647.242 288.497 635.4 283.264C623.833 278.031 614.194 270.733 606.482 261.37C598.771 252.006 592.85 240.99 588.719 228.321C584.863 215.653 582.936 202.158 582.936 187.837C582.936 173.241 584.863 159.608 588.719 146.94C592.575 133.996 598.22 122.704 605.656 113.065C613.368 103.151 622.731 95.4396 633.747 89.9315C645.039 84.4235 657.983 81.6694 672.579 81.6694C688.002 81.6694 701.221 84.4235 712.237 89.9315C723.529 95.1641 732.617 102.462 739.502 111.826C746.662 120.914 751.895 130.966 755.2 141.983C758.78 152.999 760.57 164.153 760.57 175.444C760.57 177.647 760.433 180.539 760.157 184.119C760.157 187.699 759.882 190.729 759.331 193.207H608.548C609.099 216.617 615.295 234.793 627.138 247.737C639.255 260.681 655.504 267.153 675.884 267.153C688.828 267.153 699.844 265.225 708.932 261.37C718.296 257.239 727.247 250.491 735.784 241.128L754.374 257.652C746.662 265.638 738.813 272.11 730.827 277.068C722.84 281.749 714.303 285.33 705.214 287.808C696.401 290.011 686.625 291.113 675.884 291.113ZM734.545 179.988C735.095 177.785 735.371 175.582 735.371 173.378C735.371 170.9 735.371 168.559 735.371 166.356C735.371 159.195 734.132 151.897 731.653 144.461C729.45 137.025 725.869 130.278 720.912 124.219C715.955 118.16 709.483 113.203 701.496 109.347C693.51 105.492 684.008 103.564 672.992 103.564C660.324 103.564 649.17 106.731 639.531 113.065C630.167 119.4 622.869 127.799 617.636 138.265C612.404 148.73 609.374 160.572 608.548 173.792H743.22L734.545 179.988Z" fill="white"/>
-                        <path d="M555.672 291.113C544.105 291.113 534.879 287.533 527.994 280.372C521.109 272.937 517.667 261.232 517.667 245.259V0.287964H543.692V240.714C543.692 250.078 545.482 256.826 549.062 260.957C552.643 265.088 557.462 267.153 563.521 267.153C566.275 267.153 569.304 266.878 572.609 266.327C575.914 265.501 579.357 264.537 582.937 263.435V285.743C578.255 287.395 573.436 288.634 568.478 289.461C563.796 290.562 559.528 291.113 555.672 291.113Z" fill="white"/>
-                        <path d="M298.01 288.221V0.287964H324.862V288.221H298.01Z" fill="white"/>
-                        <path d="M468.822 287.09C468.822 265.645 461.753 252.277 451.695 242.502C441.014 232.122 426.268 225.084 409.378 218.125C393.482 211.574 374.571 204.748 360.342 194.802C345.025 184.096 333.555 168.788 333.555 145.456C333.555 122.449 344.682 106.007 359.398 93.613C373.511 81.7269 392.042 72.6602 408.414 64.3218C425.568 55.5854 440.792 47.4597 451.9 37.1166C462.448 27.295 468.822 15.9011 468.822 -1.15648e-06L495.279 0C495.279 24.6363 484.745 42.6873 469.931 56.4808C455.677 69.7522 437.085 79.412 420.423 87.8981C402.979 96.7824 387.692 104.376 376.442 113.85C365.796 122.817 360.015 132.436 360.015 145.456C360.015 158.152 365.454 166.095 375.499 173.116C386.632 180.898 401.539 186.276 419.459 193.66C436.385 200.635 455.455 209.26 470.136 223.528C485.44 238.401 495.279 258.667 495.279 287.09L468.822 287.09Z" fill="white"/>
-                    </svg>
+
+        <!-- Slide 5: The Pilot Offer -->
+        <div class="slide">
+            <div class="container">
+                <h2 style="margin-bottom: 20px;">30-Day Pilot Program</h2>
+                <p class="subtitle">Test drive with real data. See results before commitment.</p>
+                
+                <div class="pilot-features">
+                    <div class="feature-box">
+                        <h4>What You Get</h4>
+                        <ul>
+                            <li>Full AI agent deployment on test portfolio</li>
+                            <li>Real-time performance dashboard</li>
+                            <li>Dedicated success manager</li>
+                            <li>Technical support + onboarding</li>
+                            <li>Weekly performance reports</li>
+                            <li>Zero long-term commitment</li>
+                        </ul>
+                    </div>
+                    <div class="feature-box">
+                        <h4>What We Measure</h4>
+                        <ul>
+                            <li>Contact rate vs. your baseline</li>
+                            <li>Recovery rate improvement</li>
+                            <li>Cost per recovery</li>
+                            <li>Payment plan acceptance</li>
+                            <li>Customer satisfaction score</li>
+                            <li>Compliance audit results</li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <h1 style="color: white; margin-bottom: 20px;">AI Process That Never Stops Learning</h1>
-                <p class="subtitle" style="color: rgba(255,255,255,0.85);">
-                    Kleva's AI engine processes thousands of conversations simultaneously, improving with every interaction.
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; margin: 60px 0;">
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">1</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Analyze</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Instantly assess debtor profile, payment history, and behavioral patterns</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">0.3s response time</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">2</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Personalize</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Tailor approach based on cultural context and individual circumstances</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">45+ dialects supported</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">3</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Negotiate</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Dynamically adjust payment plans to maximize recovery probability</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">73% success rate</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">4</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Ensure</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Maintain 100% compliance with local regulations automatically</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">0 violations</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">5</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Optimize</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Learn from every interaction to improve future performance</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">94% first call resolution</span>
-                        </div>
-                    </div>
+                <div style="background: rgba(var(--clr-pink), 0.1); border: 2px solid rgba(var(--clr-pink), 1); border-radius: 16px; padding: 40px; text-align: center; margin-top: 40px;">
+                    <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Pilot Timeline: 30 Days</h3>
+                    <p style="font-size: 18px; color: rgba(var(--clr-white), 0.9);">
+                        Week 1: Setup & integration | Weeks 2-3: Live calling & data gathering | Week 4: Analysis & decision
+                    </p>
                 </div>
             </div>
-            <span class="slide-number" style="color: rgba(255,255,255,0.6);">5</span>
+            <span class="slide-number">5</span>
         </div>
 
-        <!-- Slide 6: Traction -->
-        <div class="slide" style="background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%);">
+        <!-- Slide 6: Urgency -->
+        <div class="slide">
             <div class="container">
-                <div class="kleva-logo">
-                    <svg width="180" height="46" viewBox="0 0 1157 293" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 40px;">
-                        <path d="M-8.99583e-05 140.144C11.4584 140.144 18.6384 135.734 24.144 128.922C30.089 121.565 34.1282 111.329 38.1072 99.588C41.8452 88.5586 45.6836 75.5874 51.3536 65.8019C57.3584 55.439 66.5713 46.6471 81.4574 46.647C96.3011 46.647 105.61 55.3887 111.766 65.6995C117.6 75.472 121.648 88.4136 125.562 99.47C129.722 111.218 133.905 121.493 139.94 128.888C145.548 135.76 152.737 140.144 163.995 140.144L163.995 158.382C146.695 158.382 134.508 151.079 125.809 140.42C117.538 130.284 112.485 117.183 108.369 105.557C104.007 93.2393 100.738 82.8058 96.1063 75.0477C91.7963 67.8284 87.4888 64.8847 81.4574 64.8847C75.469 64.8848 71.2863 67.7785 67.1335 74.9453C62.6456 82.6906 59.5626 93.0959 55.3787 105.441C51.4362 117.074 46.5515 130.211 38.3298 140.385C29.6678 151.103 17.4361 158.382 -9.15527e-05 158.382L-8.99583e-05 140.144Z" fill="white"/>
-                        <path d="M73.7323 188.189C86.5462 188.189 94.3125 191.329 99.6619 195.342C105.242 199.529 109.063 205.284 113.033 212.293C116.688 218.745 120.976 227.388 127.085 233.826C133.863 240.967 142.904 245.645 155.798 245.645C181.794 245.645 194.227 226.753 203.905 213.061C214.307 198.347 222.25 188.189 238.738 188.189L238.738 169.952C211.819 169.952 198.917 188.523 189.012 202.536C178.383 217.571 171.048 227.408 155.798 227.408C148.067 227.408 143.76 224.903 140.314 221.272C136.199 216.937 133.384 211.216 128.902 203.304C124.736 195.949 119.386 187.34 110.606 180.754C101.596 173.994 89.8127 169.952 73.7323 169.952L73.7323 188.189Z" fill="white"/>
-                        <path d="M1052.06 292.292C996.202 292.292 953.911 244.839 953.911 186.564C953.911 129.122 997.399 81.6694 1055.25 81.6694C1112.3 81.6694 1156.99 127.457 1156.99 186.564V288.129H1133.45V241.093C1118.69 271.479 1088.76 292.292 1052.06 292.292ZM1055.25 267.733C1098.34 267.733 1132.25 231.103 1132.25 186.981C1132.25 142.858 1098.34 106.228 1055.25 106.228C1012.56 106.228 978.647 142.858 978.647 186.981C978.647 231.103 1012.56 267.733 1055.25 267.733Z" fill="white"/>
-                        <path d="M961.882 105.844C950.149 105.844 941.463 112.646 933.947 127.978C926.273 143.632 921.475 165.15 916.956 188.428C912.601 210.859 908.467 235.226 901.795 253.658C898.434 262.943 894.054 271.867 887.823 278.61C881.267 285.705 872.611 290.387 861.844 290.387C840.304 290.387 827.593 272.826 819.594 255.535C811.265 237.53 805.264 213.88 799.606 191.558C793.779 168.568 788.278 146.812 781.006 130.32C773.399 113.07 766.022 106.577 759.155 105.759L761.987 81.9915C782.787 84.4692 794.984 102.692 802.908 120.662C811.166 139.389 817.151 163.357 822.809 185.678C828.636 208.668 834.119 229.918 841.32 245.485C848.852 261.765 855.717 266.45 861.844 266.45C864.911 266.45 867.473 265.364 870.242 262.367C873.336 259.019 876.386 253.524 879.287 245.51C885.14 229.34 888.856 207.57 893.458 183.866C897.895 161.009 903.164 136.39 912.452 117.443C921.899 98.1732 937.073 81.9069 961.882 81.9069V105.844Z" fill="white"/>
-                        <path d="M675.884 291.113C660.737 291.113 647.242 288.497 635.4 283.264C623.833 278.031 614.194 270.733 606.482 261.37C598.771 252.006 592.85 240.99 588.719 228.321C584.863 215.653 582.936 202.158 582.936 187.837C582.936 173.241 584.863 159.608 588.719 146.94C592.575 133.996 598.22 122.704 605.656 113.065C613.368 103.151 622.731 95.4396 633.747 89.9315C645.039 84.4235 657.983 81.6694 672.579 81.6694C688.002 81.6694 701.221 84.4235 712.237 89.9315C723.529 95.1641 732.617 102.462 739.502 111.826C746.662 120.914 751.895 130.966 755.2 141.983C758.78 152.999 760.57 164.153 760.57 175.444C760.57 177.647 760.433 180.539 760.157 184.119C760.157 187.699 759.882 190.729 759.331 193.207H608.548C609.099 216.617 615.295 234.793 627.138 247.737C639.255 260.681 655.504 267.153 675.884 267.153C688.828 267.153 699.844 265.225 708.932 261.37C718.296 257.239 727.247 250.491 735.784 241.128L754.374 257.652C746.662 265.638 738.813 272.11 730.827 277.068C722.84 281.749 714.303 285.33 705.214 287.808C696.401 290.011 686.625 291.113 675.884 291.113ZM734.545 179.988C735.095 177.785 735.371 175.582 735.371 173.378C735.371 170.9 735.371 168.559 735.371 166.356C735.371 159.195 734.132 151.897 731.653 144.461C729.45 137.025 725.869 130.278 720.912 124.219C715.955 118.16 709.483 113.203 701.496 109.347C693.51 105.492 684.008 103.564 672.992 103.564C660.324 103.564 649.17 106.731 639.531 113.065C630.167 119.4 622.869 127.799 617.636 138.265C612.404 148.73 609.374 160.572 608.548 173.792H743.22L734.545 179.988Z" fill="white"/>
-                        <path d="M555.672 291.113C544.105 291.113 534.879 287.533 527.994 280.372C521.109 272.937 517.667 261.232 517.667 245.259V0.287964H543.692V240.714C543.692 250.078 545.482 256.826 549.062 260.957C552.643 265.088 557.462 267.153 563.521 267.153C566.275 267.153 569.304 266.878 572.609 266.327C575.914 265.501 579.357 264.537 582.937 263.435V285.743C578.255 287.395 573.436 288.634 568.478 289.461C563.796 290.562 559.528 291.113 555.672 291.113Z" fill="white"/>
-                        <path d="M298.01 288.221V0.287964H324.862V288.221H298.01Z" fill="white"/>
-                        <path d="M468.822 287.09C468.822 265.645 461.753 252.277 451.695 242.502C441.014 232.122 426.268 225.084 409.378 218.125C393.482 211.574 374.571 204.748 360.342 194.802C345.025 184.096 333.555 168.788 333.555 145.456C333.555 122.449 344.682 106.007 359.398 93.613C373.511 81.7269 392.042 72.6602 408.414 64.3218C425.568 55.5854 440.792 47.4597 451.9 37.1166C462.448 27.295 468.822 15.9011 468.822 -1.15648e-06L495.279 0C495.279 24.6363 484.745 42.6873 469.931 56.4808C455.677 69.7522 437.085 79.412 420.423 87.8981C402.979 96.7824 387.692 104.376 376.442 113.85C365.796 122.817 360.015 132.436 360.015 145.456C360.015 158.152 365.454 166.095 375.499 173.116C386.632 180.898 401.539 186.276 419.459 193.66C436.385 200.635 455.455 209.26 470.136 223.528C485.44 238.401 495.279 258.667 495.279 287.09L468.822 287.09Z" fill="white"/>
-                    </svg>
-                </div>
+                <h2 style="margin-bottom: 40px;">Why Start This Month</h2>
                 
-                <h1 style="background: linear-gradient(135deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Proven Results</h1>
-                <p class="subtitle" style="color: rgba(var(--clr-white), 0.9);">Real companies, real results across Latin America</p>
-                
-                <div style="text-align: center; margin: 40px 0; position: relative;">
-                    <div style="background: linear-gradient(135deg, rgba(var(--clr-pink), 0.1), rgba(var(--clr-pink), 0.05)); border: 2px solid rgba(var(--clr-pink), 0.3); border-radius: 24px; padding: 30px; display: inline-block; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(var(--clr-pink), 0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite;"></div>
-                        <div class="big-metric" style="justify-content: center; position: relative; z-index: 1;">
-                            <span class="big-metric-value" style="color: rgba(var(--clr-pink), 1); text-shadow: 0 0 20px rgba(var(--clr-pink), 0.5);">400K+</span>
-                            <span class="big-metric-label" style="color: rgba(var(--clr-white), 0.9);">minutes processed monthly</span>
-                        </div>
+                <div class="urgency-grid">
+                    <div class="urgency-card">
+                        <h4>Q4 Collections Push</h4>
+                        <p>Peak calling season with highest contact rates. Maximize your window before year-end.</p>
+                    </div>
+                    <div class="urgency-card">
+                        <h4>Budget Allocation</h4>
+                        <p>Pilot results inform Q1 planning and budget approval. Early data secures resources for scale.</p>
+                    </div>
+                    <div class="urgency-card">
+                        <h4>Competitive Edge</h4>
+                        <p>Early adopters already seeing results. Your competitors are evaluating. Don't get left behind.</p>
                     </div>
                 </div>
                 
-                <div style="background: linear-gradient(135deg, rgba(var(--clr-white), 0.08), rgba(var(--clr-white), 0.03)); border: 1px solid rgba(var(--clr-pink), 0.2); border-radius: 24px; padding: 40px; margin: 40px 0; text-align: center; position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.5), rgba(var(--clr-pink), 1));"></div>
-                    <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px; font-size: 28px; text-shadow: 0 0 10px rgba(var(--clr-pink), 0.3);">Recent Performance</h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 600px; margin: 0 auto;">
-                        <div style="background: rgba(var(--clr-white), 0.02); border-radius: 16px; padding: 20px; border: 1px solid rgba(var(--clr-white), 0.1);">
-                            <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1); text-shadow: 0 0 15px rgba(var(--clr-pink), 0.4);">$4M</div>
-                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recovered in October</div>
-                        </div>
-                        <div style="background: rgba(var(--clr-white), 0.02); border-radius: 16px; padding: 20px; border: 1px solid rgba(var(--clr-white), 0.1);">
-                            <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1); text-shadow: 0 0 15px rgba(var(--clr-pink), 0.4);">$9M</div>
-                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recovered in November</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0;">
-                    <div class="metric-card">
-                        <div style="width: 80px; height: 40px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
-                            <img src="logos/vana-logo.png" alt="VANA" style="width: 80px; height: 40px; object-fit: contain;">
-                        </div>
-                        <h3>VANA</h3>
-                        <p style="color: var(--kleva-gray); margin: 10px 0;">Microfinance</p>
-                        <span class="metric-value" style="color: var(--kleva-blue);">Active</span>
-                        <span class="metric-label">Guatemala</span>
-                    </div>
-                    <div class="metric-card">
-                        <div style="width: 80px; height: 40px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
-                            <img src="logos/adt.png" alt="ADT" style="width: 80px; height: 40px; object-fit: contain;">
-                        </div>
-                        <h3>ADT</h3>
-                        <p style="color: var(--kleva-gray); margin: 10px 0;">Security Services</p>
-                        <span class="metric-value" style="color: var(--kleva-blue);">Active</span>
-                        <span class="metric-label">Argentina</span>
-                    </div>
-                    <div class="metric-card">
-                        <div style="width: 100px; height: 40px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;">
-                            <img src="logos/directv.png" alt="DIRECTV" style="width: 100px; height: 40px; object-fit: contain;">
-                        </div>
-                        <h3>DIRECTV</h3>
-                        <p style="color: var(--kleva-gray); margin: 10px 0;">Pay TV</p>
-                        <span class="metric-value" style="color: var(--kleva-blue);">Active</span>
-                        <span class="metric-label">Argentina</span>
-                    </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
-                    <div class="metric-card">
-                        <span class="metric-value" style="color: var(--kleva-green);">25%</span>
-                        <span class="metric-label">Better Recovery</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-value" style="color: var(--kleva-green);">70%</span>
-                        <span class="metric-label">Cost Reduction</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-value" style="color: var(--kleva-green);">0%</span>
-                        <span class="metric-label">Agent Turnover</span>
-                    </div>
+                <div style="background: rgba(var(--clr-white), 0.05); border-radius: 12px; padding: 30px; text-align: center; margin-top: 60px;">
+                    <p style="font-size: 18px; color: rgba(var(--clr-white), 0.9);">
+                        Companies that pilot in Q4 typically go full-scale by Q1.<br>
+                        <span class="accent-text">That's 3-4 months to see ROI before year-end 2025.</span>
+                    </p>
                 </div>
             </div>
             <span class="slide-number">6</span>
         </div>
 
-        <!-- Slide 6: Contact -->
-        <div class="slide slide-gradient slide-center" style="position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; right: -100px; width: 500px; height: 300px; opacity: 0.3;">
-                <img src="Vector 11.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div class="container" style="position: relative; z-index: 2;">
-                <div class="kleva-logo" style="justify-content: center; margin-bottom: 60px; display: flex; align-items: center;">
-                    <svg width="200" height="52" viewBox="0 0 1157 293" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M-8.99583e-05 140.144C11.4584 140.144 18.6384 135.734 24.144 128.922C30.089 121.565 34.1282 111.329 38.1072 99.588C41.8452 88.5586 45.6836 75.5874 51.3536 65.8019C57.3584 55.439 66.5713 46.6471 81.4574 46.647C96.3011 46.647 105.61 55.3887 111.766 65.6995C117.6 75.472 121.648 88.4136 125.562 99.47C129.722 111.218 133.905 121.493 139.94 128.888C145.548 135.76 152.737 140.144 163.995 140.144L163.995 158.382C146.695 158.382 134.508 151.079 125.809 140.42C117.538 130.284 112.485 117.183 108.369 105.557C104.007 93.2393 100.738 82.8058 96.1063 75.0477C91.7963 67.8284 87.4888 64.8847 81.4574 64.8847C75.469 64.8848 71.2863 67.7785 67.1335 74.9453C62.6456 82.6906 59.5626 93.0959 55.3787 105.441C51.4362 117.074 46.5515 130.211 38.3298 140.385C29.6678 151.103 17.4361 158.382 -9.15527e-05 158.382L-8.99583e-05 140.144Z" fill="white"/>
-                        <path d="M73.7323 188.189C86.5462 188.189 94.3125 191.329 99.6619 195.342C105.242 199.529 109.063 205.284 113.033 212.293C116.688 218.745 120.976 227.388 127.085 233.826C133.863 240.967 142.904 245.645 155.798 245.645C181.794 245.645 194.227 226.753 203.905 213.061C214.307 198.347 222.25 188.189 238.738 188.189L238.738 169.952C211.819 169.952 198.917 188.523 189.012 202.536C178.383 217.571 171.048 227.408 155.798 227.408C148.067 227.408 143.76 224.903 140.314 221.272C136.199 216.937 133.384 211.216 128.902 203.304C124.736 195.949 119.386 187.34 110.606 180.754C101.596 173.994 89.8127 169.952 73.7323 169.952L73.7323 188.189Z" fill="white"/>
-                        <path d="M1052.06 292.292C996.202 292.292 953.911 244.839 953.911 186.564C953.911 129.122 997.399 81.6694 1055.25 81.6694C1112.3 81.6694 1156.99 127.457 1156.99 186.564V288.129H1133.45V241.093C1118.69 271.479 1088.76 292.292 1052.06 292.292ZM1055.25 267.733C1098.34 267.733 1132.25 231.103 1132.25 186.981C1132.25 142.858 1098.34 106.228 1055.25 106.228C1012.56 106.228 978.647 142.858 978.647 186.981C978.647 231.103 1012.56 267.733 1055.25 267.733Z" fill="white"/>
-                        <path d="M961.882 105.844C950.149 105.844 941.463 112.646 933.947 127.978C926.273 143.632 921.475 165.15 916.956 188.428C912.601 210.859 908.467 235.226 901.795 253.658C898.434 262.943 894.054 271.867 887.823 278.61C881.267 285.705 872.611 290.387 861.844 290.387C840.304 290.387 827.593 272.826 819.594 255.535C811.265 237.53 805.264 213.88 799.606 191.558C793.779 168.568 788.278 146.812 781.006 130.32C773.399 113.07 766.022 106.577 759.155 105.759L761.987 81.9915C782.787 84.4692 794.984 102.692 802.908 120.662C811.166 139.389 817.151 163.357 822.809 185.678C828.636 208.668 834.119 229.918 841.32 245.485C848.852 261.765 855.717 266.45 861.844 266.45C864.911 266.45 867.473 265.364 870.242 262.367C873.336 259.019 876.386 253.524 879.287 245.51C885.14 229.34 888.856 207.57 893.458 183.866C897.895 161.009 903.164 136.39 912.452 117.443C921.899 98.1732 937.073 81.9069 961.882 81.9069V105.844Z" fill="white"/>
-                        <path d="M675.884 291.113C660.737 291.113 647.242 288.497 635.4 283.264C623.833 278.031 614.194 270.733 606.482 261.37C598.771 252.006 592.85 240.99 588.719 228.321C584.863 215.653 582.936 202.158 582.936 187.837C582.936 173.241 584.863 159.608 588.719 146.94C592.575 133.996 598.22 122.704 605.656 113.065C613.368 103.151 622.731 95.4396 633.747 89.9315C645.039 84.4235 657.983 81.6694 672.579 81.6694C688.002 81.6694 701.221 84.4235 712.237 89.9315C723.529 95.1641 732.617 102.462 739.502 111.826C746.662 120.914 751.895 130.966 755.2 141.983C758.78 152.999 760.57 164.153 760.57 175.444C760.57 177.647 760.433 180.539 760.157 184.119C760.157 187.699 759.882 190.729 759.331 193.207H608.548C609.099 216.617 615.295 234.793 627.138 247.737C639.255 260.681 655.504 267.153 675.884 267.153C688.828 267.153 699.844 265.225 708.932 261.37C718.296 257.239 727.247 250.491 735.784 241.128L754.374 257.652C746.662 265.638 738.813 272.11 730.827 277.068C722.84 281.749 714.303 285.33 705.214 287.808C696.401 290.011 686.625 291.113 675.884 291.113ZM734.545 179.988C735.095 177.785 735.371 175.582 735.371 173.378C735.371 170.9 735.371 168.559 735.371 166.356C735.371 159.195 734.132 151.897 731.653 144.461C729.45 137.025 725.869 130.278 720.912 124.219C715.955 118.16 709.483 113.203 701.496 109.347C693.51 105.492 684.008 103.564 672.992 103.564C660.324 103.564 649.17 106.731 639.531 113.065C630.167 119.4 622.869 127.799 617.636 138.265C612.404 148.73 609.374 160.572 608.548 173.792H743.22L734.545 179.988Z" fill="white"/>
-                        <path d="M555.672 291.113C544.105 291.113 534.879 287.533 527.994 280.372C521.109 272.937 517.667 261.232 517.667 245.259V0.287964H543.692V240.714C543.692 250.078 545.482 256.826 549.062 260.957C552.643 265.088 557.462 267.153 563.521 267.153C566.275 267.153 569.304 266.878 572.609 266.327C575.914 265.501 579.357 264.537 582.937 263.435V285.743C578.255 287.395 573.436 288.634 568.478 289.461C563.796 290.562 559.528 291.113 555.672 291.113Z" fill="white"/>
-                        <path d="M298.01 288.221V0.287964H324.862V288.221H298.01Z" fill="white"/>
-                        <path d="M468.822 287.09C468.822 265.645 461.753 252.277 451.695 242.502C441.014 232.122 426.268 225.084 409.378 218.125C393.482 211.574 374.571 204.748 360.342 194.802C345.025 184.096 333.555 168.788 333.555 145.456C333.555 122.449 344.682 106.007 359.398 93.613C373.511 81.7269 392.042 72.6602 408.414 64.3218C425.568 55.5854 440.792 47.4597 451.9 37.1166C462.448 27.295 468.822 15.9011 468.822 -1.15648e-06L495.279 0C495.279 24.6363 484.745 42.6873 469.931 56.4808C455.677 69.7522 437.085 79.412 420.423 87.8981C402.979 96.7824 387.692 104.376 376.442 113.85C365.796 122.817 360.015 132.436 360.015 145.456C360.015 158.152 365.454 166.095 375.499 173.116C386.632 180.898 401.539 186.276 419.459 193.66C436.385 200.635 455.455 209.26 470.136 223.528C485.44 238.401 495.279 258.667 495.279 287.09L468.822 287.09Z" fill="white"/>
-                    </svg>
+        <!-- Slide 7: CTA -->
+        <div class="slide slide-gradient slide-center">
+            <div class="container">
+                <h2 style="margin-bottom: 30px;">Ready to run the numbers on your portfolio?</h2>
+                
+                <p class="subtitle" style="margin-bottom: 50px;">
+                    Two ways to get started:
+                </p>
+                
+                <div class="cta-buttons">
+                    <button class="cta-button" onclick="alert('Scheduling integration coming soon')">
+                        Start Your 30-Day Pilot
+                    </button>
+                    <button class="cta-button secondary" onclick="alert('Portfolio analysis tool coming soon')">
+                        See Your Recovery Potential
+                    </button>
                 </div>
                 
-                
-                <div style="margin-top: 40px;">
-                    <p style="color: rgba(255,255,255,0.8); font-size: 16px;">
-                        ed@kleva.co | linkedin.com/in/edjescobar
+                <div style="margin-top: 60px; border-top: 1px solid rgba(var(--clr-white), 0.1); padding-top: 40px;">
+                    <p style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">
+                        Questions? Let's talk.<br>
+                        <span class="accent-text">ed@kleva.co</span> | 
+                        <a href="https://linkedin.com/in/edjescobar" style="color: rgba(var(--clr-pink), 1); text-decoration: none;">linkedin.com/in/edjescobar</a>
                     </p>
                 </div>
             </div>
-            <span class="slide-number" style="color: rgba(255,255,255,0.6);">6</span>
+            <span class="slide-number">7</span>
         </div>
-        </div>
-
 
     </div>
 
@@ -978,12 +660,10 @@
     <div class="nav-dots" id="navDots"></div>
 
     <script>
-        // Initialize navigation
         const slides = document.querySelectorAll('.slide');
         const navDotsContainer = document.getElementById('navDots');
         const deck = document.getElementById('deck');
         
-        // Create navigation dots
         slides.forEach((slide, index) => {
             const dot = document.createElement('div');
             dot.className = 'nav-dot';
@@ -994,12 +674,10 @@
         
         const dots = document.querySelectorAll('.nav-dot');
         
-        // Scroll to slide
         function scrollToSlide(index) {
             slides[index].scrollIntoView({ behavior: 'smooth' });
         }
         
-        // Update active slide on scroll
         let isScrolling;
         deck.addEventListener('scroll', () => {
             clearTimeout(isScrolling);
@@ -1014,7 +692,6 @@
             }, 50);
         });
         
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const currentSlide = Array.from(dots).findIndex(dot => dot.classList.contains('active'));
             
@@ -1031,31 +708,6 @@
             }
         });
         
-        // Add animation on scroll into view
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const animateElements = entry.target.querySelectorAll('.animate-in');
-                    animateElements.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.style.opacity = '1';
-                            el.style.transform = 'translateY(0)';
-                        }, index * 200);
-                    });
-                }
-            });
-        }, observerOptions);
-        
-        slides.forEach(slide => {
-            observer.observe(slide);
-        });
-        
-        // Initialize animations
         document.querySelectorAll('.animate-in').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(40px)';
