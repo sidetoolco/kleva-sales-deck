@@ -498,6 +498,17 @@
             }
         }
         
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+        }
+        
         .animate-in {
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -793,38 +804,44 @@
         </div>
 
         <!-- Slide 6: Traction -->
-        <div class="slide">
+        <div class="slide" style="background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%);">
             <div class="container">
                 <div class="kleva-logo">
                     <div class="kleva-logo-mark">K</div>
                     <span class="kleva-logo-text">KLEVA</span>
                 </div>
                 
-                <h1>Proven Results</h1>
-                <p class="subtitle">Banks across Latin America are using Kleva</p>
+                <h1 style="background: linear-gradient(135deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Proven Results</h1>
+                <p class="subtitle" style="color: rgba(var(--clr-white), 0.9);">Real companies, real results across Latin America</p>
                 
-                <div style="text-align: center; margin: 60px 0;">
-                    <div class="big-metric" style="justify-content: center;">
-                        <span class="big-metric-value">900K+</span>
-                        <span class="big-metric-label">minutes processed monthly</span>
+                <div style="text-align: center; margin: 40px 0; position: relative;">
+                    <div style="background: linear-gradient(135deg, rgba(var(--clr-pink), 0.1), rgba(var(--clr-pink), 0.05)); border: 2px solid rgba(var(--clr-pink), 0.3); border-radius: 24px; padding: 30px; display: inline-block; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(var(--clr-pink), 0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite;"></div>
+                        <div class="big-metric" style="justify-content: center; position: relative; z-index: 1;">
+                            <span class="big-metric-value" style="color: rgba(var(--clr-pink), 1); text-shadow: 0 0 20px rgba(var(--clr-pink), 0.5);">400K+</span>
+                            <span class="big-metric-label" style="color: rgba(var(--clr-white), 0.9);">minutes processed monthly</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div style="background: rgba(var(--clr-white), 0.05); border-radius: 20px; padding: 40px; margin: 40px 0; text-align: center;">
-                    <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">Recent Performance</h2>
+                <div style="background: linear-gradient(135deg, rgba(var(--clr-white), 0.08), rgba(var(--clr-white), 0.03)); border: 1px solid rgba(var(--clr-pink), 0.2); border-radius: 24px; padding: 40px; margin: 40px 0; text-align: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.5), rgba(var(--clr-pink), 1));"></div>
+                    <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px; font-size: 28px; text-shadow: 0 0 10px rgba(var(--clr-pink), 0.3);">Recent Performance</h2>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 600px; margin: 0 auto;">
-                        <div>
-                            <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1);">$4M</div>
-                            <div class="big-metric-label" style="font-size: 16px;">recovered in October</div>
+                        <div style="background: rgba(var(--clr-white), 0.02); border-radius: 16px; padding: 20px; border: 1px solid rgba(var(--clr-white), 0.1);">
+                            <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1); text-shadow: 0 0 15px rgba(var(--clr-pink), 0.4);">$4M</div>
+                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recovered in October</div>
                         </div>
-                        <div>
-                            <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1);">$9M</div>
-                            <div class="big-metric-label" style="font-size: 16px;">recovered in November</div>
+                        <div style="background: rgba(var(--clr-white), 0.02); border-radius: 16px; padding: 20px; border: 1px solid rgba(var(--clr-white), 0.1);">
+                            <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1); text-shadow: 0 0 15px rgba(var(--clr-pink), 0.4);">$9M</div>
+                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recovered in November</div>
                         </div>
                     </div>
-                    <p style="margin-top: 20px; color: rgba(var(--clr-gray), 1); font-style: italic;">
-                        More than doubled recovery performance month-over-month
-                    </p>
+                    <div style="margin-top: 25px; padding: 15px; background: rgba(var(--clr-pink), 0.1); border-radius: 12px; border: 1px solid rgba(var(--clr-pink), 0.2);">
+                        <p style="color: rgba(var(--clr-pink), 0.9); font-style: italic; font-size: 18px; margin: 0;">
+                            ✨ More than doubled recovery performance month-over-month
+                        </p>
+                    </div>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0;">
