@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kleva - Sales Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            --kleva-black: #000000;
+            --kleva-white: #ffffff;
+            --kleva-pink: #d5339c;
+            --kleva-blue: #0066FF;
+            --kleva-green: #00D37F;
+            --kleva-gray: #8E8E93;
+            --kleva-light-gray: #F2F2F7;
+            --kleva-dark-gray: #1C1C1E;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--kleva-black);
+            color: var(--kleva-white);
+            overflow: hidden;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .deck-container {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 60px;
+            position: relative;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            color: var(--kleva-gray);
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 0.9;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .accent-text {
+            color: var(--kleva-pink);
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+        }
+        
+        /* Logo */
+        .kleva-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .kleva-logo-mark {
+            width: 50px;
+            height: 50px;
+            background: var(--kleva-white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--kleva-black);
+            font-size: 28px;
+            font-weight: 800;
+        }
+        
+        .kleva-logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Metrics */
+        .big-metric {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 30px 0;
+        }
+        
+        .big-metric-value {
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            color: var(--kleva-pink);
+        }
+        
+        .big-metric-label {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--kleva-gray);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .metric-value {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--kleva-white);
+            display: block;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--kleva-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Visual Elements */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--kleva-blue) 0%, var(--kleva-green) 100%);
+        }
+        
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .problem-card, .solution-card {
+            padding: 40px;
+            border-radius: 20px;
+            min-height: 400px;
+        }
+        
+        .problem-card {
+            background: linear-gradient(135deg, #FF3B30 0%, #FF6B6B 100%);
+        }
+        
+        .solution-card {
+            background: linear-gradient(135deg, var(--kleva-green) 0%, #00E68C 100%);
+        }
+        
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .card-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .card-list {
+            list-style: none;
+            padding: 0;
+            font-size: 18px;
+            line-height: 2;
+        }
+        
+        .card-list li {
+            padding-left: 30px;
+            position: relative;
+            color: white;
+        }
+        
+        .card-list li::before {
+            content: "×";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 24px;
+        }
+        
+        .solution-card .card-list li::before {
+            content: "✓";
+        }
+        
+        /* Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 60px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            right: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--kleva-blue) 0%, var(--kleva-green) 100%);
+            z-index: 0;
+        }
+        
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        
+        .timeline-dot {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--kleva-black);
+            border: 4px solid var(--kleva-blue);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: white;
+        }
+        
+        .timeline-dot.completed {
+            background: var(--kleva-blue);
+        }
+        
+        .timeline-dot.future {
+            border-color: var(--kleva-gray);
+            color: var(--kleva-gray);
+        }
+        
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--kleva-blue), var(--kleva-pink));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+        }
+        
+        .team-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .team-role {
+            font-size: 16px;
+            color: var(--kleva-pink);
+            margin-bottom: 12px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        
+        .team-bio {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+        
+        /* Tables */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .comparison-table th {
+            background: var(--kleva-dark-gray);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table tr.highlight {
+            background: rgba(213, 51, 156, 0.1);
+        }
+        
+        .comparison-table tr.highlight td {
+            font-weight: 600;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            padding: 60px;
+            background: linear-gradient(135deg, var(--kleva-blue) 0%, var(--kleva-green) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            background: white;
+            color: var(--kleva-blue);
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--kleva-blue);
+        }
+        
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            margin: 12px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot.active {
+            background: var(--kleva-pink);
+            transform: scale(1.3);
+        }
+        
+        /* Slide specific styles */
+        .slide-center {
+            text-align: center;
+        }
+        
+        .slide-gradient {
+            background: linear-gradient(135deg, var(--kleva-blue) 0%, var(--kleva-green) 100%);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide { 
+                padding: 40px 20px; 
+            }
+            h1 { 
+                font-size: 36px; 
+            }
+            h2 { 
+                font-size: 28px; 
+            }
+            .problem-solution-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .timeline { 
+                flex-direction: column; 
+                gap: 20px;
+            }
+            .timeline::before {
+                display: none;
+            }
+            .nav-dots { 
+                display: none; 
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-container" id="deck">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide slide-gradient slide-center">
+            <div class="container">
+                <div class="kleva-logo" style="justify-content: center;">
+                    <div class="kleva-logo-mark" style="background: white; color: black;">K</div>
+                    <span class="kleva-logo-text" style="color: white;">KLEVA</span>
+                </div>
+                
+                <h1 class="animate-in" style="color: white; font-size: 72px; margin-bottom: 30px;">
+                    AI Collections for<br>
+                    Latin American Finance
+                </h1>
+                
+                <p class="subtitle" style="color: rgba(255,255,255,0.9); font-size: 24px;">
+                    25% better recovery • 70% lower cost • Proven at scale
+                </p>
+                
+                <div style="display: flex; justify-content: center; gap: 60px; margin-top: 50px;">
+                    <div>
+                        <div class="big-metric-value" style="color: white;">$37K</div>
+                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">MRR</div>
+                    </div>
+                    <div>
+                        <div class="big-metric-value" style="color: white;">900K</div>
+                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">min/month</div>
+                    </div>
+                    <div>
+                        <div class="big-metric-value" style="color: white;">25%</div>
+                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">better</div>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number" style="color: rgba(255,255,255,0.6);">1</span>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>The Collections Crisis</h1>
+                <p class="subtitle">Every bank in Latin America faces the same problem</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; margin: 60px 0;">
+                    <div style="text-align: center;">
+                        <div style="width: 200px; height: 200px; background: linear-gradient(135deg, #FF3B30, #FF6B6B); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <span style="font-size: 80px;">😔</span>
+                        </div>
+                        <h3>Maria Rodriguez</h3>
+                        <p style="color: var(--kleva-gray);">Collections Agent</p>
+                    </div>
+                    
+                    <div>
+                        <h2 style="color: var(--kleva-pink); margin-bottom: 30px;">Daily Reality</h2>
+                        <div style="font-size: 20px; line-height: 2;">
+                            <p>📞 <strong>80 calls</strong> per day</p>
+                            <p>😤 Gets yelled at <strong>40 times</strong></p>
+                            <p>✅ <strong>5 people</strong> actually pay</p>
+                            <p>📅 Quits after <strong>3 months</strong></p>
+                            <p>💰 <strong>$400/month</strong> salary</p>
+                        </div>
+                        
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; margin-top: 30px; border-left: 4px solid var(--kleva-pink);">
+                            <p style="font-style: italic; color: var(--kleva-pink);">
+                                "I go home crying every day. But I need this job to feed my family."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; margin-top: 40px;">This is happening at every bank in Latin America</h3>
+            </div>
+            <span class="slide-number">2</span>
+        </div>
+
+        <!-- Slide 3: Market Size -->
+        <div class="slide">
+            <div class="container slide-center">
+                <div class="kleva-logo" style="justify-content: center;">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>A $67 Billion Crisis</h1>
+                
+                <div style="margin: 60px 0;">
+                    <div class="big-metric" style="justify-content: center;">
+                        <span class="big-metric-value" style="font-size: 120px;">$67B</span>
+                    </div>
+                    <p class="subtitle" style="font-size: 24px;">
+                        Total collections market in Latin America
+                    </p>
+                </div>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <span class="metric-value">77%</span>
+                        <span class="metric-label">Brazilian families in debt</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">500M</span>
+                        <span class="metric-label">Delinquent accounts</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">23%</span>
+                        <span class="metric-label">Annual growth rate</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">$0.20</span>
+                        <span class="metric-label">Recovery per dollar</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 60px;">
+                    <p style="font-size: 24px; color: var(--kleva-green);">
+                        If we capture just <span class="accent-text">1%</span> = $670M opportunity
+                    </p>
+                </div>
+            </div>
+            <span class="slide-number">3</span>
+        </div>
+
+        <!-- Slide 4: Solution -->
+        <div class="slide slide-gradient">
+            <div class="container slide-center">
+                <div class="kleva-logo" style="justify-content: center;">
+                    <div class="kleva-logo-mark" style="background: white; color: black;">K</div>
+                    <span class="kleva-logo-text" style="color: white;">KLEVA</span>
+                </div>
+                
+                <h1 style="color: white; margin-bottom: 20px;">AI That Debtors Prefer</h1>
+                <p class="subtitle" style="color: rgba(255,255,255,0.9);">
+                    Our AI collects 25% more debt than humans at 70% less cost
+                </p>
+                
+                <div style="margin: 60px 0; padding: 60px; background: rgba(255,255,255,0.1); border-radius: 20px;">
+                    <div style="font-size: 120px; margin-bottom: 30px;">🤖</div>
+                    <p style="color: white; font-size: 24px;">Kleva AI Agent</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
+                    <div style="text-align: center;">
+                        <span style="font-size: 48px; font-weight: 800; color: white;">5,000</span>
+                        <p style="color: rgba(255,255,255,0.9); margin-top: 8px;">Calls/Day</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 48px; font-weight: 800; color: white;">24/7</span>
+                        <p style="color: rgba(255,255,255,0.9); margin-top: 8px;">Always On</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 48px; font-weight: 800; color: white;">0.3s</span>
+                        <p style="color: rgba(255,255,255,0.9); margin-top: 8px;">Response</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="font-size: 48px; font-weight: 800; color: white;">∞</span>
+                        <p style="color: rgba(255,255,255,0.9); margin-top: 8px;">Patience</p>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number" style="color: rgba(255,255,255,0.6);">4</span>
+        </div>
+
+        <!-- Slide 5: Traction -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>Proven Traction</h1>
+                <p class="subtitle">Real customers, real revenue, real results</p>
+                
+                <div class="metric-grid" style="margin: 60px 0;">
+                    <div class="metric-card">
+                        <h3>VANA</h3>
+                        <p style="color: var(--kleva-gray); margin: 10px 0;">Microfinance</p>
+                        <span class="metric-value" style="color: var(--kleva-blue);">$17K</span>
+                        <span class="metric-label">per month</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>ADT</h3>
+                        <p style="color: var(--kleva-gray); margin: 10px 0;">Security</p>
+                        <span class="metric-value" style="color: var(--kleva-blue);">$15K</span>
+                        <span class="metric-label">per month</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>DIRECTV</h3>
+                        <p style="color: var(--kleva-gray); margin: 10px 0;">Satellite TV</p>
+                        <span class="metric-value" style="color: var(--kleva-blue);">$5K</span>
+                        <span class="metric-label">per month</span>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h2>Pipeline Closing Q4</h2>
+                    <div class="big-metric" style="justify-content: center; color: white;">
+                        <span class="big-metric-value" style="color: white;">$158K</span>
+                        <span class="big-metric-label" style="color: rgba(255,255,255,0.8);">Additional MRR</span>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+                    <div class="metric-card">
+                        <span class="metric-value" style="color: var(--kleva-green);">25%</span>
+                        <span class="metric-label">Better Recovery</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value" style="color: var(--kleva-green);">70%</span>
+                        <span class="metric-label">Cost Reduction</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value" style="color: var(--kleva-green);">0%</span>
+                        <span class="metric-label">Agent Turnover</span>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">5</span>
+        </div>
+
+        <!-- Slide 6: Business Model -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>Simple Economics</h1>
+                <p class="subtitle">Usage-based pricing with strong unit economics</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0;">
+                    <div class="metric-card">
+                        <h3>Cost per Minute</h3>
+                        <span class="metric-value" style="color: var(--kleva-pink);">$0.17</span>
+                        <span class="metric-label">vs $3.00 human</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Gross Margin</h3>
+                        <span class="metric-value" style="color: var(--kleva-green);">48%</span>
+                        <span class="metric-label">→ 65% at scale</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Payback Period</h3>
+                        <span class="metric-value" style="color: var(--kleva-blue);"><30</span>
+                        <span class="metric-label">days</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 40px 0 20px;">Pricing Tiers</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Minutes/Month</th>
+                            <th>Price/Minute</th>
+                            <th>Monthly Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Starter</td>
+                            <td>0 - 50K</td>
+                            <td>$0.197</td>
+                            <td>~$10K</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><strong>Growth</strong></td>
+                            <td><strong>50K - 200K</strong></td>
+                            <td><strong>$0.177</strong></td>
+                            <td><strong>~$35K</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Enterprise</td>
+                            <td>200K+</td>
+                            <td>$0.158</td>
+                            <td>$50K+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <span class="slide-number">6</span>
+        </div>
+
+        <!-- Slide 7: Go-to-Market -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>Path to $2M MRR</h1>
+                <p class="subtitle">Clear expansion roadmap across Latin America</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot completed">NOW</div>
+                        <h3>$37K MRR</h3>
+                        <p>Guatemala<br>Ecuador<br>Argentina</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot">Q1'25</div>
+                        <h3>$150K MRR</h3>
+                        <p>+Mexico<br>+Colombia</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot future">Q3'25</div>
+                        <h3>$500K MRR</h3>
+                        <p>+Brazil</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot future">Q1'26</div>
+                        <h3>$1M MRR</h3>
+                        <p>Full LATAM</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot future">Q3'26</div>
+                        <h3>$2M MRR</h3>
+                        <p>+US Hispanic</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px;">
+                    <div style="background: linear-gradient(135deg, var(--kleva-blue), #0052CC); border-radius: 16px; padding: 40px; color: white;">
+                        <h3 style="color: white; margin-bottom: 20px;">Direct Sales</h3>
+                        <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2;">
+                            <li>✓ Top 20 neobanks</li>
+                            <li>✓ Land & expand model</li>
+                            <li>✓ Enterprise contracts</li>
+                            <li>✓ Strategic partnerships</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, var(--kleva-green), #00B86B); border-radius: 16px; padding: 40px; color: white;">
+                        <h3 style="color: white; margin-bottom: 20px;">Agency Partners</h3>
+                        <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2;">
+                            <li>✓ 300+ agencies LATAM</li>
+                            <li>✓ White-label offering</li>
+                            <li>✓ Revenue share model</li>
+                            <li>✓ Instant distribution</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">7</span>
+        </div>
+
+        <!-- Slide 8: Team -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>The Right Team</h1>
+                <p class="subtitle">Proven operators with deep domain expertise</p>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-avatar">EE</div>
+                        <div class="team-name">Ed Escobar</div>
+                        <div class="team-role">CEO & Co-founder</div>
+                        <div class="team-bio">Built Sidetool, 20+ AI implementations. Former McKinsey.</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">NM</div>
+                        <div class="team-name">Nicolás Mencia</div>
+                        <div class="team-role">Collections Expert</div>
+                        <div class="team-bio">10 years collections, ex-MercadoPago. Deep LATAM expertise.</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">9</div>
+                        <div class="team-name">Engineering Team</div>
+                        <div class="team-role">From Sidetool</div>
+                        <div class="team-bio">2 years building production AI agents at scale.</div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px;">
+                    <div class="metric-card">
+                        <span class="metric-value">$100K</span>
+                        <span class="metric-label">Self-Funded</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">3mo</span>
+                        <span class="metric-label">To Revenue</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">0%</span>
+                        <span class="metric-label">Churn Rate</span>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">8</span>
+        </div>
+
+        <!-- Slide 9: Competition -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>We Own Voice Collections</h1>
+                <p class="subtitle">Voice is the hardest channel—and most effective</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Channel</th>
+                            <th>Cost/Min</th>
+                            <th>Recovery vs Human</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Traditional Call Centers</td>
+                            <td>Voice (Human)</td>
+                            <td>$3.00</td>
+                            <td>Baseline</td>
+                            <td>Dying</td>
+                        </tr>
+                        <tr>
+                            <td>Colektia ($15.6M raised)</td>
+                            <td>WhatsApp only</td>
+                            <td>$1.00</td>
+                            <td>-5%</td>
+                            <td>Limited</td>
+                        </tr>
+                        <tr>
+                            <td>Altur (YC S25)</td>
+                            <td>Voice AI (US)</td>
+                            <td>$0.25</td>
+                            <td>Unknown</td>
+                            <td>Early</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><strong>Kleva</strong></td>
+                            <td><strong>Voice AI (LATAM)</strong></td>
+                            <td><strong>$0.17</strong></td>
+                            <td><strong>+25%</strong></td>
+                            <td><strong>Proven</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 40px;">
+                    <h3 style="color: var(--kleva-pink);">Why Voice Wins</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 20px;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">🎯</div>
+                            <h4>3x Higher Recovery</h4>
+                            <p>Voice converts better than text</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">🤝</div>
+                            <h4>Personal Connection</h4>
+                            <p>Builds rapport and trust</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">⚡</div>
+                            <h4>Real-time Negotiation</h4>
+                            <p>Immediate payment plans</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">9</span>
+        </div>
+
+        <!-- Slide 10: Financials -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>Financial Projections</h1>
+                <p class="subtitle">Strong unit economics driving profitable growth</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 60px 0;">
+                    <div class="metric-card">
+                        <h3>Today</h3>
+                        <span class="metric-value">$37K</span>
+                        <span class="metric-label">MRR</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Dec 2025</h3>
+                        <span class="metric-value">$150K</span>
+                        <span class="metric-label">MRR Target</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Dec 2026</h3>
+                        <span class="metric-value">$2M</span>
+                        <span class="metric-label">MRR Target</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Margin</h3>
+                        <span class="metric-value">48%</span>
+                        <span class="metric-label">Gross Today</span>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 40px;">
+                    <h3 style="margin-bottom: 30px;">Revenue Drivers</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
+                        <div>
+                            <h4 style="color: var(--kleva-pink); margin-bottom: 20px;">Volume Growth</h4>
+                            <p>• 150K → 900K → 5M minutes/month</p>
+                            <p>• New markets: Mexico, Colombia, Brazil</p>
+                            <p>• Existing client expansion</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--kleva-pink); margin-bottom: 20px;">Pricing Power</h4>
+                            <p>• Premium for superior results</p>
+                            <p>• Performance-based pricing</p>
+                            <p>• Value-based partnerships</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <p style="font-size: 20px; color: var(--kleva-green);">
+                        Path to <span class="accent-text">$24M ARR</span> by end of 2026
+                    </p>
+                </div>
+            </div>
+            <span class="slide-number">10</span>
+        </div>
+
+        <!-- Slide 11: The Ask -->
+        <div class="slide">
+            <div class="container">
+                <div class="kleva-logo">
+                    <div class="kleva-logo-mark">K</div>
+                    <span class="kleva-logo-text">KLEVA</span>
+                </div>
+                
+                <h1>The Ask</h1>
+                <p class="subtitle">$2M Seed to scale the AI collections revolution</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 60px 0;">
+                    <div>
+                        <h2 style="margin-bottom: 30px;">Use of Funds</h2>
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Engineering Team</span>
+                                <span class="accent-text">40%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                <div style="width: 40%; height: 100%; background: linear-gradient(90deg, var(--kleva-blue), var(--kleva-green)); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Sales & Marketing</span>
+                                <span class="accent-text">30%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                <div style="width: 30%; height: 100%; background: linear-gradient(90deg, var(--kleva-pink), var(--kleva-blue)); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Infrastructure</span>
+                                <span class="accent-text">20%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                <div style="width: 20%; height: 100%; background: var(--kleva-green); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Operations</span>
+                                <span class="accent-text">10%</span>
+                            </div>
+                            <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px;">
+                                <div style="width: 10%; height: 100%; background: var(--kleva-gray); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 style="margin-bottom: 30px;">12-Month Goals</h2>
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px;">
+                            <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2.5;">
+                                <li>📈 <strong>$500K MRR</strong> (from $37K)</li>
+                                <li>🏢 <strong>15 enterprise</strong> clients</li>
+                                <li>📞 <strong>1M minutes</strong> monthly</li>
+                                <li>🌎 <strong>5 countries</strong> operational</li>
+                                <li>🛡️ <strong>SOC 2</strong> certified</li>
+                                <li>👥 <strong>20 person</strong> team</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cta-section">
+                    <h2>Ready to Transform Collections?</h2>
+                    <p>Every bank in LATAM will use AI collections. Let's build the infrastructure together.</p>
+                    <a href="mailto:ed@kleva.co" class="cta-button">Let's Talk</a>
+                    <a href="#" class="cta-button secondary">Schedule Demo</a>
+                </div>
+            </div>
+            <span class="slide-number">11</span>
+        </div>
+
+        <!-- Slide 12: Contact -->
+        <div class="slide slide-gradient slide-center">
+            <div class="container">
+                <div class="kleva-logo" style="justify-content: center; margin-bottom: 60px;">
+                    <div class="kleva-logo-mark" style="background: white; color: black; width: 80px; height: 80px; font-size: 40px;">K</div>
+                </div>
+                
+                <h1 style="color: white; font-size: 56px; margin-bottom: 40px;">
+                    Let's Build the Future<br>
+                    of Collections Together
+                </h1>
+                
+                <div style="margin: 60px 0;">
+                    <h2 style="color: white; font-weight: 400; margin-bottom: 30px;">Ed Escobar</h2>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 20px;">CEO & Co-founder</p>
+                    <p style="margin: 20px 0;">
+                        <a href="mailto:ed@kleva.co" style="color: white; font-size: 24px; text-decoration: none;">ed@kleva.co</a>
+                    </p>
+                    <p>
+                        <a href="https://www.linkedin.com/in/edjescobar/" style="color: white; font-size: 18px; text-decoration: none;">linkedin.com/in/edjescobar</a>
+                    </p>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 50px;">
+                    <a href="https://kleva.co" class="cta-button">Visit kleva.co</a>
+                    <a href="https://calendly.com/kleva-demo" class="cta-button secondary">Book a Demo</a>
+                </div>
+            </div>
+            <span class="slide-number" style="color: rgba(255,255,255,0.6);">12</span>
+        </div>
+
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots" id="navDots"></div>
+
+    <script>
+        // Initialize navigation
+        const slides = document.querySelectorAll('.slide');
+        const navDotsContainer = document.getElementById('navDots');
+        const deck = document.getElementById('deck');
+        
+        // Create navigation dots
+        slides.forEach((slide, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.onclick = () => scrollToSlide(index);
+            navDotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.nav-dot');
+        
+        // Scroll to slide
+        function scrollToSlide(index) {
+            slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Update active slide on scroll
+        let isScrolling;
+        deck.addEventListener('scroll', () => {
+            clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                const scrollPos = deck.scrollTop;
+                const windowHeight = window.innerHeight;
+                const currentSlide = Math.round(scrollPos / windowHeight);
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }, 50);
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentSlide = Array.from(dots).findIndex(dot => dot.classList.contains('active'));
+            
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentSlide < slides.length - 1) {
+                    scrollToSlide(currentSlide + 1);
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlide > 0) {
+                    scrollToSlide(currentSlide - 1);
+                }
+            }
+        });
+        
+        // Add animation on scroll into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const animateElements = entry.target.querySelectorAll('.animate-in');
+                    animateElements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        slides.forEach(slide => {
+            observer.observe(slide);
+        });
+        
+        // Initialize animations
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'all 0.8s ease-out';
+        });
+    </script>
+</body>
+</html>
