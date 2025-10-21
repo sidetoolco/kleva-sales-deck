@@ -1,131 +1,201 @@
-# WARP.md
+# WARP.md - Kleva Sales Deck Project Guide
 
-This file provides guidance to WARP (warp.dev) when working with code in this repository.
+This file provides guidance to WARP when working with the Kleva Sales Deck project.
 
 ## Project Overview
 
-**Kleva Sales Deck** is a single-file interactive HTML presentation for Kleva's AI collections platform. This is a static website built with vanilla HTML, CSS, and JavaScript without any build process or external dependencies.
+**Kleva Sales Deck** is a conversion-focused interactive HTML presentation designed to convert leads into 30-day pilot program signups for Kleva's AI collections agent platform. This is a static website built with vanilla HTML, CSS, and JavaScript without any build process or external dependencies.
+
+### Target Audience
+- Fintechs
+- Banks  
+- Services companies
+- Debt collection agencies
+
+### Primary Goal
+Sign leads up for a 30-day pilot program with zero pricing commitment.
 
 ## Architecture & Structure
 
-- **Single-File Application**: The entire presentation is contained in `index.html` (1,380 lines)
-- **Pure Web Technologies**: No frameworks, no build tools, no package.json - just vanilla HTML/CSS/JS
-- **Self-Contained**: All CSS and JavaScript are embedded within the HTML file
-- **Static Deployment Ready**: Can be served directly from any web server or static hosting
+- **Single-File Application**: Main presentation is `index.html` (~650 lines)
+- **Pure Web Technologies**: Vanilla HTML/CSS/JS, no frameworks or build tools
+- **Self-Contained**: All CSS and JavaScript embedded within HTML
+- **Static Deployment**: Deploy directly to any web server or static hosting (Vercel)
+- **Responsive Design**: Mobile-first approach with CSS Grid and Flexbox
 
 ### Key Components
 
-1. **CSS Variables System**: Uses CSS custom properties for theming (colors, fonts, animations)
-2. **Scroll-Snap Navigation**: Implements smooth slide transitions using CSS scroll-snap
-3. **JavaScript Navigation**: Event listeners for keyboard navigation and scroll tracking
-4. **Responsive Design**: Mobile-first approach with CSS Grid and Flexbox
-5. **Brand System**: Consistent color scheme and typography throughout
+1. **CSS Design System**: CSS custom properties for consistent theming
+2. **Scroll-Snap Navigation**: Smooth slide transitions using native CSS
+3. **JavaScript Navigation**: Event listeners for keyboard and dot navigation
+4. **Brand Consistency**: Pink (#D5339C), white, black with Hanken Grotesk and IBM Plex Mono fonts
+5. **Conversion Flow**: Hook → Problem → Solution → Proof → Offer → Urgency → CTA
+
+## Presentation Structure (7-Slide Conversion Deck)
+
+**Slide 1: Hook**
+- Headline: "AI that recovers 25% more debt at 70% less cost"
+- Subtitle: "Transform your debts with AI agents that never give up, never burn out, and speak perfect Spanish"
+- Key metrics: 73% contact rate, +25% recovery gain, 65% cost savings
+- Purpose: Emotional hook focused on outcome, not process
+
+**Slide 2: Problem**
+- Title: "Your Collections Blind Spot"
+- Three-column comparison: Human Agents | Chatbots & IVR | Status Quo
+- Reality check: "You're calling at 9am. Your customer answers at 6pm."
+- Purpose: Establish pain points and create tension
+
+**Slide 3: Solution**
+- Title: "Kleva AI Agent - The collections agent that calls smarter, not harder"
+- Four capabilities: Smart Timing, Native Language Mastery, Negotiation Logic, Always Available
+- Purpose: Present differentiators
+
+**Slide 4: Proof**
+- Title: "Proven Results"
+- Three customer case studies: VANA (Guatemala), ADT (Argentina), DIRECTV (Argentina)
+- Global metric: 400K+ minutes processed monthly
+- Purpose: Build credibility with real customer results
+
+**Slide 5: Offer**
+- Title: "30-Day Pilot Program"
+- What You Get (6 items) | What We Measure (6 metrics)
+- Timeline: Week 1 setup, Weeks 2-3 live, Week 4 analysis
+- Purpose: Remove commitment barriers, clarify value measurement
+
+**Slide 6: Urgency**
+- Title: "Why Start This Month"
+- Three drivers: Collections Push, Budget Allocation, Competitive Edge
+- Purpose: Create time-sensitive pressure
+
+**Slide 7: CTA**
+- Title: "Ready to run the numbers on your portfolio?"
+- Single button: "Start Your 30-Day Pilot"
+- Contact: ed@kleva.co | linkedin.com/in/edjescobar
+- Purpose: Focused conversion with no distraction
 
 ## Development Commands
 
-Since this is a static HTML project, there are no build commands. However, here are the most useful development workflows:
-
 ### Local Development
 ```bash
-# Open in browser (macOS)
-open index.html
-
-# Or serve locally (if you have Python)
-python -m http.server 8000
-# Then visit http://localhost:8000
-
-# Or with Node.js http-server
-npx http-server .
+open index.html                  # Open in browser (macOS)
+python -m http.server 8000       # Serve locally
+npx http-server .                # Or with Node.js
 ```
 
 ### Deployment
 ```bash
-# Deploy to GitHub Pages, Vercel, Netlify, or any static hosting
-# No build step required - just upload index.html and README.md
+# Connected to Vercel - auto-deploys on push to main
+git push origin main
+
+# Or manually to any static host
+# Upload: index.html, index-es.html, logos/, Vector 11.png, favicon.svg
 ```
 
 ### Testing
 ```bash
-# Test on different devices/browsers manually
-# Validate HTML
 npx html-validate index.html
-
-# Check lighthouse performance
 npx lighthouse-cli http://localhost:8000
 ```
 
-## Code Organization
+## Files & Structure
 
-The streamlined `index.html` is structured as:
+```
+kleva-sales-deck/
+├── index.html           # Main conversion deck (7 slides)
+├── index-es.html        # Spanish version
+├── pilot-deck.html      # Reference backup
+├── WARP.md              # This file
+├── README.md            # Basic project info
+├── favicon.svg          # Brand icon
+├── Vector 11.png        # Decorative effect (final slide)
+└── logos/
+    ├── vana-logo.png    # VANA customer
+    ├── adt.png          # ADT customer
+    └── directv.png      # DIRECTV customer
+```
 
-1. **Head Section** (lines 1-7): Meta tags, title, Google Fonts
-2. **CSS Styles** (lines 8-532): All styling including:
-   - CSS variables and reset
-   - Typography system
-   - Component styles (slides, navigation, metrics)
-   - Responsive breakpoints
-   - Animations and transitions
-3. **HTML Content** (lines 537-920): 6 focused presentation slides with:
-   - Bank-focused messaging
-   - Cost savings and compliance metrics
-   - Simple pricing and call-to-action
-4. **JavaScript** (lines 925+): Navigation logic including:
-   - Slide scrolling and dot navigation
-   - Keyboard event handlers
-   - Intersection Observer for animations
-
-## Brand Assets & Design System
+## Brand & Design System
 
 ### Colors (CSS Variables)
-- `--clr-black`: Primary background (0, 0, 0)
-- `--clr-white`: Text and accents (255, 255, 255)  
-- `--clr-pink`: Brand accent (213, 51, 156)
-- `--clr-gray`: Secondary text (192, 192, 192)
+- `--clr-black`: 0, 0, 0 (background)
+- `--clr-white`: 255, 255, 255 (text/accents)
+- `--clr-pink`: 213, 51, 156 (primary brand accent)
+- `--clr-gray`: 192, 192, 192 (secondary text)
 
 ### Typography
-- **Sans Serif**: Hanken Grotesk (primary)
-- **Monospace**: IBM Plex Mono (accents, metrics)
+- **Primary**: Hanken Grotesk (clean, modern sans-serif)
+- **Accent**: IBM Plex Mono (numbers, metrics, technical text)
+- Weights: 300 (light), 400 (regular), 600 (bold)
 
-### Layout Patterns
-- **Slide Container**: Full viewport height with scroll-snap
-- **Metric Cards**: Grid-based components with hover effects
-- **Logo System**: Consistent K logo with text treatment
+### Component Patterns
+- Problem cards: 3-column grid, pink border
+- Proof cards: Customer logos, centered metrics
+- Capability items: 2-column layout, left-border accent
+- CTAs: Solid pink button with hover shadow
 
-## Navigation & Interaction
+## Key Differentiators
 
-- **Keyboard**: Arrow keys, spacebar for slide navigation
-- **Mouse**: Dot navigation on right side
-- **Touch**: Swipe gestures on mobile
-- **Smooth Scrolling**: CSS scroll-behavior with JavaScript fallback
+1. **Smart Timing**: AI calls when customers are most likely to answer (behavioral analysis)
+2. **Language Expertise**: 45+ Spanish dialects, cultural context, native-like fluency
+3. **Cost Efficiency**: 65% cheaper than human agents ($0.17/min vs $0.40/min)
+4. **Recovery Performance**: 25% better recovery rate, 73% contact rate
 
-## Mobile Optimization
+## Navigation
 
-The presentation is fully responsive with:
-- Flexible typography scaling
-- Mobile-optimized layouts
-- Touch-friendly navigation
-- Viewport-aware sizing
+Users can navigate with:
+- Arrow keys (up/down or left/right)
+- Spacebar (next slide)
+- Dot indicators on right side (click to jump)
+- Smooth scroll-snap behavior
 
-## Content Structure
+## Customization Guide
 
-The deck contains 6 focused slides for bank sales:
-1. **Title Slide** - AI Collections Agent for Banks with key metrics
-2. **Problem** - High costs and poor results of human call centers
-3. **Solution** - AI agent with better results, compliance, and instant scale
-4. **How It Works** - 4 key capabilities: Natural Voice, Smart Negotiation, Compliance, Scale
-5. **Proven Results** - 900K+ minutes monthly, active across 3 countries
-6. **Pricing & Next Steps** - Simple $0.17/minute pricing with demo CTA
+### To Update Copy
+- Edit slide headings, subtitles, and body text directly in HTML
+- Keep accent text in `<span class="accent-text">` for pink coloring
+- Search for "Slide X:" to find sections quickly
 
-## Performance Considerations
+### To Update Metrics
+- Hook slide (line ~412): Grid with 3 metric values
+- Problem slide (line ~436): Three problem cards
+- Solution slide (line ~481): Four capability items
+- Proof slide (line ~515): Three customer cards
 
-- **Single HTTP Request**: Everything in one file minimizes network requests
-- **Optimized Assets**: Uses web fonts and minimal external resources
-- **Efficient CSS**: Uses modern layout techniques (Grid, Flexbox)
-- **Smooth Animations**: CSS transitions with cubic-bezier easing
-- **Lazy Loading**: Intersection Observer for slide animations
+### To Change Colors
+- Edit CSS variables in `:root` section (lines 16-24)
+- `--clr-pink` controls primary accent color globally
 
-## Browser Compatibility
+### To Update Customer Logos
+- Replace PNG files in `logos/` folder
+- Update `<img src="logos/..."` tags with new filenames
+- Ensure filenames have no spaces (use underscores or hyphens)
 
-- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest versions)
-- **CSS Features**: Scroll-snap, CSS Grid, CSS variables, Flexbox
-- **JavaScript**: ES6+ features, Intersection Observer API
+## Performance & Compatibility
+
+- Single HTTP request minimizes load time
+- No external dependencies = fast loading
+- CSS animations use GPU acceleration
+- Lazy animation on intersection observer
+- Modern browsers: Chrome, Firefox, Safari, Edge (latest)
+- Fully responsive from 320px and up
+
+## Recent Changes
+
+- Replaced 6-slide product deck with 7-slide conversion deck
+- Updated hook to focus on recovery outcomes
+- Removed Q4 seasonal references for timelessness
+- Simplified final CTA to single button
+- Fixed logo file paths (removed spaces)
+- Aligned messaging across English and Spanish versions
+
+## Deployment Status
+
+- **Primary URL**: https://kleva-sales-deck.vercel.app/index.html
+- **Spanish URL**: https://kleva-sales-deck.vercel.app/index-es.html
+- **Host**: Vercel (connected to GitHub repo)
+- **Auto-deploy**: Yes (on push to main branch)
+
+## Contact
+
+- Ed Escobar: ed@kleva.co
+- LinkedIn: linkedin.com/in/edjescobar
