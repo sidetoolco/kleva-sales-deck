@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kleva - AI Collections for Latin American Finance</title>
+    <title>Kleva - IA para Cobranza en América Latina</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -64,6 +64,34 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 200;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-button {
+            padding: 8px 16px;
+            background: rgba(var(--clr-white), 0.1);
+            border: 1px solid rgba(var(--clr-white), 0.2);
+            color: rgba(var(--clr-white), 0.7);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-button:hover, .lang-button.active {
+            background: rgba(var(--clr-pink), 1);
+            color: white;
+            border-color: rgba(var(--clr-pink), 1);
         }
         
         /* Typography */
@@ -206,277 +234,6 @@
             letter-spacing: 0.5px;
         }
         
-        /* Visual Elements */
-        .gradient-bg {
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 1) 0%, rgba(var(--clr-pink), 0.8) 100%);
-        }
-        
-        .problem-solution-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .problem-card, .solution-card {
-            padding: 40px;
-            border-radius: 20px;
-            min-height: 400px;
-        }
-        
-        .problem-card {
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 0.8) 0%, rgba(var(--clr-pink), 0.6) 100%);
-        }
-        
-        .solution-card {
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 1) 0%, rgba(var(--clr-pink), 0.9) 100%);
-        }
-        
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .card-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .card-list {
-            list-style: none;
-            padding: 0;
-            font-size: 18px;
-            line-height: 2;
-        }
-        
-        .card-list li {
-            padding-left: 30px;
-            position: relative;
-            color: white;
-        }
-        
-        .card-list li::before {
-            content: "×";
-            position: absolute;
-            left: 0;
-            font-weight: 700;
-            font-size: 24px;
-        }
-        
-        .solution-card .card-list li::before {
-            content: "✓";
-        }
-        
-        /* Timeline */
-        .timeline {
-            display: flex;
-            justify-content: space-between;
-            margin: 60px 0;
-            position: relative;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 60px;
-            right: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--kleva-blue) 0%, var(--kleva-green) 100%);
-            z-index: 0;
-        }
-        
-        .timeline-item {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            flex: 1;
-        }
-        
-        .timeline-dot {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--kleva-black);
-            border: 4px solid var(--kleva-blue);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 16px;
-            color: white;
-        }
-        
-        .timeline-dot.completed {
-            background: var(--kleva-blue);
-        }
-        
-        .timeline-dot.future {
-            border-color: var(--kleva-gray);
-            color: var(--kleva-gray);
-        }
-        
-        /* Team Grid */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .team-member {
-            text-align: center;
-        }
-        
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.8));
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: 700;
-        }
-        
-        .team-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .team-role {
-            font-size: 16px;
-            color: rgba(var(--clr-pink), 1);
-            margin-bottom: 12px;
-            font-family: var(--font-mono);
-        }
-        
-        .team-bio {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
-        }
-        
-        /* Tables */
-        .comparison-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 40px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .comparison-table th {
-            background: var(--kleva-dark-gray);
-            color: white;
-            padding: 20px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .comparison-table td {
-            padding: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 16px;
-        }
-        
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .comparison-table tr.highlight {
-            background: rgba(213, 51, 156, 0.1);
-        }
-        
-        .comparison-table tr.highlight td {
-            font-weight: 600;
-        }
-        
-        /* Call to Action */
-        .cta-section {
-            text-align: center;
-            padding: 60px;
-            background: linear-gradient(135deg, rgba(var(--clr-pink), 1) 0%, rgba(var(--clr-pink), 0.8) 100%);
-            border-radius: 20px;
-            margin: 40px 0;
-        }
-        
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section p {
-            color: rgba(255,255,255,0.9);
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .cta-button {
-            background: white;
-            color: var(--kleva-blue);
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
-        .cta-button.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .cta-button.secondary:hover {
-            background: white;
-            color: var(--kleva-blue);
-        }
-        
-        /* Navigation */
-        .nav-dots {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-        }
-        
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            margin: 12px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-dot.active {
-            background: rgba(var(--clr-pink), 1);
-            transform: scale(1.3);
-        }
-        
         /* Slide specific styles */
         .slide-center {
             text-align: center;
@@ -513,32 +270,28 @@
             animation: fadeInUp 0.8s ease-out forwards;
         }
         
-        /* Language Switcher */
-        .language-switcher {
+        /* Navigation */
+        .nav-dots {
             position: fixed;
-            top: 30px;
             right: 30px;
-            z-index: 200;
-            display: flex;
-            gap: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
         }
         
-        .lang-button {
-            padding: 8px 16px;
-            background: rgba(var(--clr-white), 0.1);
-            border: 1px solid rgba(var(--clr-white), 0.2);
-            color: rgba(var(--clr-white), 0.7);
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            margin: 12px 0;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
         
-        .lang-button:hover, .lang-button.active {
+        .nav-dot.active {
             background: rgba(var(--clr-pink), 1);
-            color: white;
-            border-color: rgba(var(--clr-pink), 1);
+            transform: scale(1.3);
         }
         
         /* Responsive */
@@ -556,26 +309,13 @@
                 display: none; 
             }
         }
-                flex-direction: column; 
-                gap: 20px;
-            }
-            .timeline::before {
-                display: none;
-            }
-            .nav-dots { 
-                display: none; 
-            }
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Language Switcher -->
     <div class="language-switcher">
-        <a href="index.html" class="lang-button active">EN</a>
-        <a href="index-es.html" class="lang-button">ES</a>
+        <a href="index.html" class="lang-button">EN</a>
+        <a href="index-es.html" class="lang-button active">ES</a>
     </div>
 
     <div class="deck-container" id="deck">
@@ -589,37 +329,37 @@
                 </div>
                 
                 <h1 class="animate-in" style="color: white; font-size: 70px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    AI Collections Agent<br>
-                    for Banks
+                    Agente de IA para<br>
+                    Cobranzas Bancarias
                 </h1>
                 
                 <p class="subtitle" style="color: rgba(255,255,255,0.85); font-size: 18px; max-width: 592px; margin: 0 auto 32px;">
-                    Recover more debt at lower cost with AI that speaks your customers' language
+                    Recupera más deuda a menor costo con IA que habla el idioma de tus clientes
                 </p>
                 
                 <p style="margin-bottom: 40px; font-size: 16px; letter-spacing: -0.48px; color: white; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 20px; display: inline-block;">
-                    25% better recovery | 70% cost savings | 100% compliant
+                    25% mejor recuperación | 70% ahorro en costos | 100% cumplimiento
                 </p>
                 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
                     <div style="text-align: center;">
                         <div class="big-metric-value" style="color: white; font-size: 48px;">$0.17</div>
-                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">per minute</div>
+                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">por minuto</div>
                     </div>
                     <div style="text-align: center;">
                         <div class="big-metric-value" style="color: white; font-size: 48px;">73%</div>
-                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">success rate</div>
+                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">tasa de éxito</div>
                     </div>
                     <div style="text-align: center;">
                         <div class="big-metric-value" style="color: white; font-size: 48px;">24/7</div>
-                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">available</div>
+                        <div class="big-metric-label" style="color: rgba(255,255,255,0.8);">disponible</div>
                     </div>
                 </div>
             </div>
             <span class="slide-number" style="color: rgba(255,255,255,0.6);">1</span>
         </div>
 
-        <!-- Slide 2: The Problem -->
+        <!-- Slide 2: Problem -->
         <div class="slide">
             <div class="container">
                 <div class="kleva-logo">
@@ -627,27 +367,27 @@
                     <span class="kleva-logo-text">KLEVA</span>
                 </div>
                 
-                <h1>Your Collections Challenge</h1>
-                <p class="subtitle">Human agents are expensive and ineffective</p>
+                <h1>Tu Desafío de Cobranzas</h1>
+                <p class="subtitle">Los agentes humanos son costosos e ineficaces</p>
                 
                 <div style="background: rgba(var(--clr-white), 0.05); border-radius: 16px; padding: 40px; margin: 40px 0;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
                         <div>
-                            <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">High Costs</h2>
+                            <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">Altos Costos</h2>
                             <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2;">
-                                <li><strong>$0.40 per minute</strong> for human agents</li>
-                                <li><strong>156% turnover rate</strong> requires constant hiring</li>
-                                <li><strong>Infrastructure costs</strong> for call centers</li>
-                                <li><strong>Training expenses</strong> for new agents</li>
+                                <li><strong>$0.40 por minuto</strong> para agentes humanos</li>
+                                <li><strong>156% rotación</strong> requiere contratación constante</li>
+                                <li><strong>Costos de infraestructura</strong> para call centers</li>
+                                <li><strong>Gastos de capacitación</strong> para nuevos agentes</li>
                             </ul>
                         </div>
                         <div>
-                            <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">Poor Results</h2>
+                            <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px;">Malos Resultados</h2>
                             <ul style="list-style: none; padding: 0; font-size: 18px; line-height: 2;">
-                                <li><strong>Low success rates</strong> of 15-30%</li>
-                                <li><strong>Limited hours</strong> miss customer availability</li>
-                                <li><strong>Compliance violations</strong> from human error</li>
-                                <li><strong>Customer complaints</strong> hurt brand reputation</li>
+                                <li><strong>Bajas tasas de éxito</strong> del 15-30%</li>
+                                <li><strong>Horarios limitados</strong> pierden disponibilidad del cliente</li>
+                                <li><strong>Violaciones de cumplimiento</strong> por error humano</li>
+                                <li><strong>Quejas de clientes</strong> dañan la reputación de la marca</li>
                             </ul>
                         </div>
                     </div>
@@ -655,7 +395,7 @@
                 
                 <div style="text-align: center; margin-top: 40px;">
                     <h3 style="color: rgba(var(--clr-gray), 1); font-weight: 400;">
-                        You need better recovery rates at lower cost
+                        Necesitas mejores tasas de recuperación a menor costo
                     </h3>
                 </div>
             </div>
@@ -670,36 +410,36 @@
                     <span class="kleva-logo-text">KLEVA</span>
                 </div>
                 
-                <h1>AI Collections Agent</h1>
-                <p class="subtitle">Smart automation that recovers more debt at lower cost</p>
+                <h1>Agente de IA para Cobranzas</h1>
+                <p class="subtitle">Automatización inteligente que recupera más deuda a menor costo</p>
                 
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0;">
                     <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Better Results</h3>
-                        <p style="margin-bottom: 20px;">AI analyzes customer data to personalize every conversation.</p>
+                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Mejores Resultados</h3>
+                        <p style="margin-bottom: 20px;">La IA analiza datos del cliente para personalizar cada conversación.</p>
                         <div style="display: flex; gap: 40px;">
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">73%</div>
-                                <div class="metric-label">success rate</div>
+                                <div class="metric-label">tasa de éxito</div>
                             </div>
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">25%</div>
-                                <div class="metric-label">better recovery</div>
+                                <div class="metric-label">mejor recuperación</div>
                             </div>
                         </div>
                     </div>
                     
                     <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Instant Scale</h3>
-                        <p style="margin-bottom: 20px;">From 10 to 10,000 calls instantly. No hiring needed.</p>
+                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Escala Instantánea</h3>
+                        <p style="margin-bottom: 20px;">De 10 a 10,000 llamadas al instante. No requiere contratación.</p>
                         <div style="display: flex; gap: 40px;">
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 24px;">∞</div>
-                                <div class="metric-label">capacity</div>
+                                <div class="metric-label">capacidad</div>
                             </div>
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">24/7</div>
-                                <div class="metric-label">available</div>
+                                <div class="metric-label">disponible</div>
                             </div>
                         </div>
                     </div>
@@ -707,13 +447,13 @@
                 
                 <div class="big-metric" style="justify-content: center;">
                     <span class="big-metric-value">$0.17</span>
-                    <span class="big-metric-label">per minute vs $0.40 for human agents</span>
+                    <span class="big-metric-label">por minuto vs $0.40 para agentes humanos</span>
                 </div>
             </div>
             <span class="slide-number">3</span>
         </div>
 
-        <!-- Slide 4: Capabilities -->
+        <!-- Slide 4: How It Works -->
         <div class="slide">
             <div class="container">
                 <div class="kleva-logo">
@@ -721,51 +461,51 @@
                     <span class="kleva-logo-text">KLEVA</span>
                 </div>
                 
-                <h1>How It Works</h1>
-                <p class="subtitle">Simple AI that delivers results</p>
+                <h1>Cómo Funciona</h1>
+                <p class="subtitle">IA simple que entrega resultados</p>
                 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin: 60px 0;">
                     <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Natural Voice AI</h3>
-                        <p style="margin-bottom: 20px;">Speaks Spanish like a native. Understands regional slang, accents, and cultural nuances.</p>
+                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">IA de Voz Natural</h3>
+                        <p style="margin-bottom: 20px;">Habla español como nativo. Entiende jerga regional, acentos y matices culturales.</p>
                         <div style="display: flex; gap: 40px;">
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">94%</div>
-                                <div class="metric-label">comprehension</div>
+                                <div class="metric-label">comprensión</div>
                             </div>
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">45+</div>
-                                <div class="metric-label">dialects</div>
+                                <div class="metric-label">dialectos</div>
                             </div>
                         </div>
                     </div>
                     
                     <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Smart Negotiation</h3>
-                        <p style="margin-bottom: 20px;">Adapts strategy in real-time based on debtor responses. Offers payment plans that maximize recovery.</p>
+                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Negociación Inteligente</h3>
+                        <p style="margin-bottom: 20px;">Adapta estrategia en tiempo real según respuestas del deudor. Ofrece planes de pago que maximizan la recuperación.</p>
                         <div style="display: flex; gap: 40px;">
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">73%</div>
-                                <div class="metric-label">success rate</div>
+                                <div class="metric-label">tasa de éxito</div>
                             </div>
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">1min</div>
-                                <div class="metric-label">avg. call</div>
+                                <div class="metric-label">llamada prom.</div>
                             </div>
                         </div>
                     </div>
                     
                     <div style="padding: 30px; border-radius: 16px; background: rgba(var(--clr-white), 0.05);">
-                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Instant Scale</h3>
-                        <p style="margin-bottom: 20px;">From 10 to 10,000 calls instantly. No hiring, no training, no infrastructure needed.</p>
+                        <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Escala Instantánea</h3>
+                        <p style="margin-bottom: 20px;">De 10 a 10,000 llamadas al instante. Sin contratación, capacitación o infraestructura.</p>
                         <div style="display: flex; gap: 40px;">
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 24px;">∞</div>
-                                <div class="metric-label">capacity</div>
+                                <div class="metric-label">capacidad</div>
                             </div>
                             <div style="text-align: center;">
                                 <div class="metric-value" style="font-size: 36px;">0</div>
-                                <div class="metric-label">downtime</div>
+                                <div class="metric-label">tiempo inactivo</div>
                             </div>
                         </div>
                     </div>
@@ -773,71 +513,8 @@
             </div>
             <span class="slide-number">4</span>
         </div>
-        
-        <!-- Slide 5: How It Works -->
-        <div class="slide slide-gradient">
-            <div class="container slide-center">
-                <div class="kleva-logo" style="justify-content: center;">
-                    <div class="kleva-logo-mark" style="background: white; color: black;">K</div>
-                    <span class="kleva-logo-text" style="color: white;">KLEVA</span>
-                </div>
-                
-                <h1 style="color: white; margin-bottom: 20px;">AI Process That Never Stops Learning</h1>
-                <p class="subtitle" style="color: rgba(255,255,255,0.85);">
-                    Kleva's AI engine processes thousands of conversations simultaneously, improving with every interaction.
-                </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; margin: 60px 0;">
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">1</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Analyze</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Instantly assess debtor profile, payment history, and behavioral patterns</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">0.3s response time</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">2</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Personalize</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Tailor approach based on cultural context and individual circumstances</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">45+ dialects supported</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">3</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Negotiate</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Dynamically adjust payment plans to maximize recovery probability</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">73% success rate</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">4</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Ensure</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Maintain 100% compliance with local regulations automatically</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">0 violations</span>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="font-size: 48px; margin-bottom: 15px; color: white; font-family: var(--font-mono);">5</div>
-                        <h4 style="color: white; margin-bottom: 10px;">Optimize</h4>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Learn from every interaction to improve future performance</p>
-                        <div style="margin-top: 15px; color: rgba(255,255,255,0.6);">
-                            <span class="metric" style="font-size: 14px;">94% first call resolution</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <span class="slide-number" style="color: rgba(255,255,255,0.6);">5</span>
-        </div>
 
-        <!-- Slide 6: Traction -->
+        <!-- Slide 5: Proven Results -->
         <div class="slide" style="background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%);">
             <div class="container">
                 <div class="kleva-logo">
@@ -845,35 +522,35 @@
                     <span class="kleva-logo-text">KLEVA</span>
                 </div>
                 
-                <h1 style="background: linear-gradient(135deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Proven Results</h1>
-                <p class="subtitle" style="color: rgba(var(--clr-white), 0.9);">Real companies, real results across Latin America</p>
+                <h1 style="background: linear-gradient(135deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.8)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Resultados Comprobados</h1>
+                <p class="subtitle" style="color: rgba(var(--clr-white), 0.9);">Empresas reales, resultados reales en América Latina</p>
                 
                 <div style="text-align: center; margin: 40px 0; position: relative;">
                     <div style="background: linear-gradient(135deg, rgba(var(--clr-pink), 0.1), rgba(var(--clr-pink), 0.05)); border: 2px solid rgba(var(--clr-pink), 0.3); border-radius: 24px; padding: 30px; display: inline-block; position: relative; overflow: hidden;">
                         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(var(--clr-pink), 0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite;"></div>
                         <div class="big-metric" style="justify-content: center; position: relative; z-index: 1;">
                             <span class="big-metric-value" style="color: rgba(var(--clr-pink), 1); text-shadow: 0 0 20px rgba(var(--clr-pink), 0.5);">400K+</span>
-                            <span class="big-metric-label" style="color: rgba(var(--clr-white), 0.9);">minutes processed monthly</span>
+                            <span class="big-metric-label" style="color: rgba(var(--clr-white), 0.9);">minutos procesados mensualmente</span>
                         </div>
                     </div>
                 </div>
                 
                 <div style="background: linear-gradient(135deg, rgba(var(--clr-white), 0.08), rgba(var(--clr-white), 0.03)); border: 1px solid rgba(var(--clr-pink), 0.2); border-radius: 24px; padding: 40px; margin: 40px 0; text-align: center; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, rgba(var(--clr-pink), 1), rgba(var(--clr-pink), 0.5), rgba(var(--clr-pink), 1));"></div>
-                    <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px; font-size: 28px; text-shadow: 0 0 10px rgba(var(--clr-pink), 0.3);">Recent Performance</h2>
+                    <h2 style="color: rgba(var(--clr-pink), 1); margin-bottom: 30px; font-size: 28px; text-shadow: 0 0 10px rgba(var(--clr-pink), 0.3);">Rendimiento Reciente</h2>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 600px; margin: 0 auto;">
                         <div style="background: rgba(var(--clr-white), 0.02); border-radius: 16px; padding: 20px; border: 1px solid rgba(var(--clr-white), 0.1);">
                             <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1); text-shadow: 0 0 15px rgba(var(--clr-pink), 0.4);">$4M</div>
-                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recovered in October</div>
+                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recuperado en octubre</div>
                         </div>
                         <div style="background: rgba(var(--clr-white), 0.02); border-radius: 16px; padding: 20px; border: 1px solid rgba(var(--clr-white), 0.1);">
                             <div class="big-metric-value" style="font-size: 48px; color: rgba(var(--clr-pink), 1); text-shadow: 0 0 15px rgba(var(--clr-pink), 0.4);">$9M</div>
-                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recovered in November</div>
+                            <div class="big-metric-label" style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">recuperado en noviembre</div>
                         </div>
                     </div>
                     <div style="margin-top: 25px; padding: 15px; background: rgba(var(--clr-pink), 0.1); border-radius: 12px; border: 1px solid rgba(var(--clr-pink), 0.2);">
                         <p style="color: rgba(var(--clr-pink), 0.9); font-style: italic; font-size: 18px; margin: 0;">
-                            ✨ More than doubled recovery performance month-over-month
+                            ✨ Más que duplicamos el rendimiento de recuperación mes a mes
                         </p>
                     </div>
                 </div>
@@ -884,8 +561,8 @@
                             <img src="vana-logo.svg" alt="VANA" style="width: 80px; height: 40px; object-fit: contain;">
                         </div>
                         <h3>VANA</h3>
-                        <p style="color: var(--kleva-gray); margin: 10px 0;">Microfinance</p>
-                        <span class="metric-value" style="color: var(--kleva-blue);">Active</span>
+                        <p style="color: var(--kleva-gray); margin: 10px 0;">Microfinanzas</p>
+                        <span class="metric-value" style="color: var(--kleva-blue);">Activo</span>
                         <span class="metric-label">Guatemala</span>
                     </div>
                     <div class="metric-card">
@@ -893,8 +570,8 @@
                             <img src="adt-logo.svg" alt="ADT" style="width: 80px; height: 40px; object-fit: contain;">
                         </div>
                         <h3>ADT</h3>
-                        <p style="color: var(--kleva-gray); margin: 10px 0;">Security Services</p>
-                        <span class="metric-value" style="color: var(--kleva-blue);">Active</span>
+                        <p style="color: var(--kleva-gray); margin: 10px 0;">Servicios de Seguridad</p>
+                        <span class="metric-value" style="color: var(--kleva-blue);">Activo</span>
                         <span class="metric-label">Argentina</span>
                     </div>
                     <div class="metric-card">
@@ -902,8 +579,8 @@
                             <img src="directv-logo.svg" alt="DIRECTV" style="width: 100px; height: 40px; object-fit: contain;">
                         </div>
                         <h3>DIRECTV</h3>
-                        <p style="color: var(--kleva-gray); margin: 10px 0;">Pay TV</p>
-                        <span class="metric-value" style="color: var(--kleva-blue);">Active</span>
+                        <p style="color: var(--kleva-gray); margin: 10px 0;">TV Paga</p>
+                        <span class="metric-value" style="color: var(--kleva-blue);">Activo</span>
                         <span class="metric-label">Ecuador</span>
                     </div>
                 </div>
@@ -911,22 +588,22 @@
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
                     <div class="metric-card">
                         <span class="metric-value" style="color: var(--kleva-green);">25%</span>
-                        <span class="metric-label">Better Recovery</span>
+                        <span class="metric-label">Mejor Recuperación</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-value" style="color: var(--kleva-green);">70%</span>
-                        <span class="metric-label">Cost Reduction</span>
+                        <span class="metric-label">Reducción de Costos</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-value" style="color: var(--kleva-green);">0%</span>
-                        <span class="metric-label">Agent Turnover</span>
+                        <span class="metric-label">Rotación de Agentes</span>
                     </div>
                 </div>
             </div>
-            <span class="slide-number">6</span>
+            <span class="slide-number">5</span>
         </div>
 
-        <!-- Slide 7: Pricing & Next Steps -->
+        <!-- Slide 6: Pricing -->
         <div class="slide slide-gradient slide-center">
             <div class="container">
                 <div class="kleva-logo" style="justify-content: center; margin-bottom: 60px;">
@@ -934,14 +611,13 @@
                 </div>
                 
                 <h1 style="color: white; font-size: 56px; margin-bottom: 40px;">
-                    Simple Pricing
+                    Precios Simples
                 </h1>
                 
                 <div class="big-metric" style="justify-content: center; color: white; margin: 60px 0;">
                     <span class="big-metric-value" style="color: white;">$0.17</span>
-                    <span class="big-metric-label" style="color: rgba(255,255,255,0.8);">per minute</span>
+                    <span class="big-metric-label" style="color: rgba(255,255,255,0.8);">por minuto</span>
                 </div>
-                
                 
                 <div style="margin-top: 40px;">
                     <p style="color: rgba(255,255,255,0.8); font-size: 16px;">
@@ -951,7 +627,6 @@
             </div>
             <span class="slide-number" style="color: rgba(255,255,255,0.6);">6</span>
         </div>
-
 
     </div>
 
