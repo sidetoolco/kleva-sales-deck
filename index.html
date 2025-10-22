@@ -364,6 +364,42 @@
             margin: 60px 0;
         }
         
+        .lang-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 200;
+            background: rgba(var(--clr-white), 0.1);
+            border: 1px solid rgba(var(--clr-pink), 0.5);
+            border-radius: 8px;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-button {
+            background: transparent;
+            border: none;
+            color: rgba(var(--clr-white), 0.6);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-button.active {
+            background: rgba(var(--clr-pink), 1);
+            color: rgb(var(--clr-white));
+        }
+        
+        .lang-button:hover {
+            color: rgb(var(--clr-white));
+        }
+        
         @media (max-width: 768px) {
             .slide { 
                 padding: 40px 20px; 
@@ -385,6 +421,12 @@
     </style>
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-button active" data-lang="en">EN</button>
+        <button class="lang-button" data-lang="es">ES</button>
+    </div>
+    
     <div class="deck-container" id="deck">
         
         <!-- Slide 1: Hook -->
@@ -402,25 +444,25 @@
                 </svg>
                 
                 <h1 class="animate-in" style="font-size: 70px; max-width: 900px; margin: 0 auto 30px;">
-                    <span class="accent-text">AI that recovers<br>25% more debt at 70% less cost</span>
+                    <span class="accent-text" data-en="AI that recovers<br>25% more debt at 70% less cost" data-es="IA que recupera<br>25% más deuda a 70% menos costo">AI that recovers<br>25% more debt at 70% less cost</span>
                 </h1>
                 
-                <p class="subtitle" style="max-width: 700px; margin: 0 auto;">
+                <p class="subtitle" style="max-width: 700px; margin: 0 auto;" data-en="Transform your debts with AI agents that never give up, never burn out, and speak perfect Spanish" data-es="Transforma tus cobranzas con agentes de IA que nunca se rinden, nunca se agotan y hablan español perfecto">
                     Transform your debts with AI agents that never give up, never burn out, and speak perfect Spanish
                 </p>
                 
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 600px; margin: 60px auto;">
                     <div style="text-align: center;">
                         <div class="metric-value">73%</div>
-                        <div class="metric-label">contact rate</div>
+                        <div class="metric-label" data-en="contact rate" data-es="tasa de contacto">contact rate</div>
                     </div>
                     <div style="text-align: center;">
                         <div class="metric-value">+25%</div>
-                        <div class="metric-label">recovery gain</div>
+                        <div class="metric-label" data-en="recovery gain" data-es="mejora en recuperación">recovery gain</div>
                     </div>
                     <div style="text-align: center;">
                         <div class="metric-value">65%</div>
-                        <div class="metric-label">cost savings</div>
+                        <div class="metric-label" data-en="cost savings" data-es="ahorro de costos">cost savings</div>
                     </div>
                 </div>
             </div>
@@ -430,42 +472,42 @@
         <!-- Slide 2: Problem -->
         <div class="slide">
             <div class="container">
-                <h2 style="margin-bottom: 20px;">Your Collections Blind Spot</h2>
-                <p class="subtitle">Most strategies fail because they ignore the single factor that drives revenue: getting someone to pick up the phone.</p>
+                <h2 style="margin-bottom: 20px;" data-en="Your Collections Blind Spot" data-es="El Punto Ciego de tus Cobranzas">Your Collections Blind Spot</h2>
+                <p class="subtitle" data-en="Most strategies fail because they ignore the single factor that drives revenue: getting someone to pick up the phone." data-es="La mayoría de las estrategias fracasan porque ignoran el único factor que genera ingresos: lograr que alguien conteste el teléfono.">Most strategies fail because they ignore the single factor that drives revenue: getting someone to pick up the phone.</p>
                 
                 <div class="problem-grid">
                     <div class="problem-card">
-                        <h3>Human Agents</h3>
+                        <h3 data-en="Human Agents" data-es="Agentes Humanos">Human Agents</h3>
                         <ul>
-                            <li>15-30% contact rate</li>
-                            <li>Miss optimal calling times</li>
-                            <li>156% annual turnover</li>
-                            <li>Expensive to scale</li>
+                            <li data-en="15-30% contact rate" data-es="15-30% tasa de contacto">15-30% contact rate</li>
+                            <li data-en="Miss optimal calling times" data-es="Pierden horarios óptimos">Miss optimal calling times</li>
+                            <li data-en="156% annual turnover" data-es="156% rotación anual">156% annual turnover</li>
+                            <li data-en="Expensive to scale" data-es="Costoso escalar">Expensive to scale</li>
                         </ul>
                     </div>
                     <div class="problem-card">
-                        <h3>Chatbots & IVR</h3>
+                        <h3 data-en="Chatbots & IVR" data-es="Chatbots e IVR">Chatbots & IVR</h3>
                         <ul>
-                            <li>Zero native language skills</li>
-                            <li>Sound robotic & deflect calls</li>
-                            <li>No real negotiation</li>
-                            <li>High compliance risk</li>
+                            <li data-en="Zero native language skills" data-es="Cero habilidades nativas">Zero native language skills</li>
+                            <li data-en="Sound robotic & deflect calls" data-es="Suenan robóticos y desvían llamadas">Sound robotic & deflect calls</li>
+                            <li data-en="No real negotiation" data-es="Sin negociación real">No real negotiation</li>
+                            <li data-en="High compliance risk" data-es="Alto riesgo de cumplimiento">High compliance risk</li>
                         </ul>
                     </div>
                     <div class="problem-card">
-                        <h3>Status Quo</h3>
+                        <h3 data-en="Status Quo" data-es="Status Quo">Status Quo</h3>
                         <ul>
-                            <li>$0.40/min + infrastructure</li>
-                            <li>Compliance violations</li>
-                            <li>Leave money on table</li>
-                            <li>Competitive disadvantage</li>
+                            <li data-en="$0.40/min + infrastructure" data-es="$0.40/min + infraestructura">$0.40/min + infrastructure</li>
+                            <li data-en="Compliance violations" data-es="Violaciones de cumplimiento">Compliance violations</li>
+                            <li data-en="Leave money on table" data-es="Dejan dinero sobre la mesa">Leave money on table</li>
+                            <li data-en="Competitive disadvantage" data-es="Desventaja competitiva">Competitive disadvantage</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div style="background: rgba(var(--clr-pink), 0.15); border: 1px solid rgba(var(--clr-pink), 0.3); border-radius: 12px; padding: 30px; margin-top: 40px; text-align: center;">
                     <p style="font-size: 20px; color: rgba(var(--clr-white), 0.9);">
-                        <span class="accent-text">Reality check:</span> You're calling at 9am. Your customer answers at 6pm.
+                        <span class="accent-text" data-en="Reality check:" data-es="Chequeo de realidad:">Reality check:</span> <span data-en="You're calling at 9am. Your customer answers at 6pm." data-es="Llamas a las 9am. Tu cliente contesta a las 6pm.">You're calling at 9am. Your customer answers at 6pm.</span>
                     </p>
                 </div>
             </div>
@@ -475,31 +517,31 @@
         <!-- Slide 3: Solution -->
         <div class="slide">
             <div class="container">
-                <h2 style="margin-bottom: 20px;">Kleva AI Agent</h2>
-                <p class="subtitle">The collections agent that calls smarter, not harder.</p>
+                <h2 style="margin-bottom: 20px;" data-en="Kleva AI Agent" data-es="Agente de IA Kleva">Kleva AI Agent</h2>
+                <p class="subtitle" data-en="The collections agent that calls smarter, not harder." data-es="El agente de cobranzas que llama más inteligente, no más fuerte.">The collections agent that calls smarter, not harder.</p>
                 
                 <div class="capability-grid">
                     <div class="capability-item">
-                        <h3>Smart Timing</h3>
-                        <p>Behavioral analysis predicts when your customer will answer. Call probability peaks at different times per person, per portfolio segment. Kleva learns and adapts in real-time.</p>
+                        <h3 data-en="Smart Timing" data-es="Sincronización Inteligente">Smart Timing</h3>
+                        <p data-en="Behavioral analysis predicts when your customer will answer. Call probability peaks at different times per person, per portfolio segment. Kleva learns and adapts in real-time." data-es="El análisis conductual predice cuándo contestará tu cliente. La probabilidad de llamada alcanza su punto máximo en diferentes momentos por persona, por segmento de cartera. Kleva aprende y se adapta en tiempo real.">Behavioral analysis predicts when your customer will answer. Call probability peaks at different times per person, per portfolio segment. Kleva learns and adapts in real-time.</p>
                     </div>
                     <div class="capability-item">
-                        <h3>Native Language Mastery</h3>
-                        <p>45+ regional dialects, local idioms, cultural context. Speaks Spanish like a native across Latin America. No "please hold" delays. Instant conversation.</p>
+                        <h3 data-en="Native Language Mastery" data-es="Dominio de Idioma Nativo">Native Language Mastery</h3>
+                        <p data-en="45+ regional dialects, local idioms, cultural context. Speaks Spanish like a native across Latin America. No &quot;please hold&quot; delays. Instant conversation." data-es="Más de 45 dialectos regionales, modismos locales, contexto cultural. Habla español como nativo en toda Latinoamérica. Sin demoras de 'espere por favor'. Conversación instantánea.">45+ regional dialects, local idioms, cultural context. Speaks Spanish like a native across Latin America. No "please hold" delays. Instant conversation.</p>
                     </div>
                     <div class="capability-item">
-                        <h3>Negotiation Logic</h3>
-                        <p>Real-time strategy adaptation based on customer response. Offers payment plans that maximize recovery and stick. Zero defaulted agreements.</p>
+                        <h3 data-en="Negotiation Logic" data-es="Lógica de Negociación">Negotiation Logic</h3>
+                        <p data-en="Real-time strategy adaptation based on customer response. Offers payment plans that maximize recovery and stick. Zero defaulted agreements." data-es="Adaptación de estrategia en tiempo real según respuesta del cliente. Ofrece planes de pago que maximizan la recuperación y se cumplen. Cero acuerdos incumplidos.">Real-time strategy adaptation based on customer response. Offers payment plans that maximize recovery and stick. Zero defaulted agreements.</p>
                     </div>
                     <div class="capability-item">
-                        <h3>Always Available</h3>
-                        <p>24/7 operation at $0.17/min. 65% cheaper than human agents. No turnover. No training. Scales from 10 to 10,000 calls instantly.</p>
+                        <h3 data-en="Always Available" data-es="Siempre Disponible">Always Available</h3>
+                        <p data-en="24/7 operation at $0.17/min. 65% cheaper than human agents. No turnover. No training. Scales from 10 to 10,000 calls instantly." data-es="Operación 24/7 a $0.17/min. 65% más barato que agentes humanos. Sin rotación. Sin capacitación. Escala de 10 a 10,000 llamadas instantáneamente.">24/7 operation at $0.17/min. 65% cheaper than human agents. No turnover. No training. Scales from 10 to 10,000 calls instantly.</p>
                     </div>
                 </div>
                 
                 <div style="background: rgba(var(--clr-white), 0.05); border-radius: 12px; padding: 30px; margin-top: 40px; text-align: center;">
                     <p style="font-size: 18px; color: rgba(var(--clr-white), 0.9);">
-                        Result: <span class="accent-text">Higher contact rate → Better recovery → Lower cost</span>
+                        <span data-en="Result:" data-es="Resultado:">Result:</span> <span class="accent-text" data-en="Higher contact rate → Better recovery → Lower cost" data-es="Mayor tasa de contacto → Mejor recuperación → Menor costo">Higher contact rate → Better recovery → Lower cost</span>
                     </p>
                 </div>
             </div>
@@ -509,8 +551,8 @@
         <!-- Slide 4: Proof -->
         <div class="slide">
             <div class="container">
-                <h2 style="margin-bottom: 20px;">Proven Results</h2>
-                <p class="subtitle">Real companies, real revenue recovery. Right now, in your region.</p>
+                <h2 style="margin-bottom: 20px;" data-en="Proven Results" data-es="Resultados Comprobados">Proven Results</h2>
+                <p class="subtitle" data-en="Real companies, real revenue recovery. Right now, in your region." data-es="Empresas reales, recuperación de ingresos real. Ahora mismo, en tu región.">Real companies, real revenue recovery. Right now, in your region.</p>
                 
                 <div class="proof-grid">
                     <div class="proof-card">
@@ -518,35 +560,35 @@
                             <img src="logos/vana-logo.png" alt="VANA" style="width: 80px; height: 40px; object-fit: contain;">
                         </div>
                         <h3>VANA</h3>
-                        <p>Microfinance, Guatemala</p>
+                        <p data-en="Microfinance, Guatemala" data-es="Microfinanzas, Guatemala">Microfinance, Guatemala</p>
                         <div class="proof-stat">+25%</div>
-                        <div class="proof-metric">recovery rate increase month 1</div>
+                        <div class="proof-metric" data-en="recovery rate increase month 1" data-es="incremento tasa recuperación mes 1">recovery rate increase month 1</div>
                     </div>
                     <div class="proof-card">
                         <div style="width: 80px; height: 40px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
                             <img src="logos/adt.png" alt="ADT" style="width: 80px; height: 40px; object-fit: contain;">
                         </div>
                         <h3>ADT</h3>
-                        <p>Security Services, Argentina</p>
+                        <p data-en="Security Services, Argentina" data-es="Servicios de Seguridad, Argentina">Security Services, Argentina</p>
                         <div class="proof-stat">73%</div>
-                        <div class="proof-metric">contact rate sustained</div>
+                        <div class="proof-metric" data-en="contact rate sustained" data-es="tasa de contacto sostenida">contact rate sustained</div>
                     </div>
                     <div class="proof-card">
                         <div style="width: 100px; height: 40px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
                             <img src="logos/directv.png" alt="DIRECTV" style="width: 100px; height: 40px; object-fit: contain;">
                         </div>
                         <h3>DIRECTV</h3>
-                        <p>Telecom, Argentina</p>
+                        <p data-en="Telecom, Argentina" data-es="Telecomunicaciones, Argentina">Telecom, Argentina</p>
                         <div class="proof-stat">$9M</div>
-                        <div class="proof-metric">recovered in November (up from $4M Oct)</div>
+                        <div class="proof-metric" data-en="recovered in November (up from $4M Oct)" data-es="recuperados en noviembre (antes $4M en oct)">recovered in November (up from $4M Oct)</div>
                     </div>
                 </div>
                 
                 <div style="margin-top: 60px; text-align: center; background: rgba(var(--clr-white), 0.05); border-radius: 12px; padding: 40px;">
                     <p style="font-size: 18px; margin-bottom: 20px;">
-                        <span class="accent-text">400K+ minutes processed monthly</span> across 3 countries
+                        <span class="accent-text" data-en="400K+ minutes processed monthly" data-es="Más de 400K minutos procesados mensualmente">400K+ minutes processed monthly</span> <span data-en="across 3 countries" data-es="en 3 países">across 3 countries</span>
                     </p>
-                    <p style="font-size: 14px; color: rgba(var(--clr-white), 0.7);">
+                    <p style="font-size: 14px; color: rgba(var(--clr-white), 0.7);" data-en="Active collections agents across fintech, banking, telecom, and debt collection services" data-es="Agentes de cobranza activos en fintech, banca, telecomunicaciones y servicios de cobranza de deudas">
                         Active collections agents across fintech, banking, telecom, and debt collection services
                     </p>
                 </div>
@@ -557,37 +599,37 @@
         <!-- Slide 5: The Pilot Offer -->
         <div class="slide">
             <div class="container">
-                <h2 style="margin-bottom: 20px;">30-Day Pilot Program</h2>
-                <p class="subtitle">Test drive with real data. See results before commitment.</p>
+                <h2 style="margin-bottom: 20px;" data-en="30-Day Pilot Program" data-es="Programa Piloto de 30 Días">30-Day Pilot Program</h2>
+                <p class="subtitle" data-en="Test drive with real data. See results before commitment." data-es="Prueba con datos reales. Ve resultados antes de comprometerte.">Test drive with real data. See results before commitment.</p>
                 
                 <div class="pilot-features">
                     <div class="feature-box">
-                        <h4>What You Get</h4>
+                        <h4 data-en="What You Get" data-es="Qué Obtienes">What You Get</h4>
                         <ul>
-                            <li>Full AI agent deployment on test portfolio</li>
-                            <li>Real-time performance dashboard</li>
-                            <li>Dedicated success manager</li>
-                            <li>Technical support + onboarding</li>
-                            <li>Weekly performance reports</li>
-                            <li>Zero long-term commitment</li>
+                            <li data-en="Full AI agent deployment on test portfolio" data-es="Despliegue completo de agente IA en cartera de prueba">Full AI agent deployment on test portfolio</li>
+                            <li data-en="Real-time performance dashboard" data-es="Dashboard de rendimiento en tiempo real">Real-time performance dashboard</li>
+                            <li data-en="Dedicated success manager" data-es="Gerente de éxito dedicado">Dedicated success manager</li>
+                            <li data-en="Technical support + onboarding" data-es="Soporte técnico + incorporación">Technical support + onboarding</li>
+                            <li data-en="Weekly performance reports" data-es="Reportes semanales de rendimiento">Weekly performance reports</li>
+                            <li data-en="Zero long-term commitment" data-es="Cero compromiso a largo plazo">Zero long-term commitment</li>
                         </ul>
                     </div>
                     <div class="feature-box">
-                        <h4>What We Measure</h4>
+                        <h4 data-en="What We Measure" data-es="Qué Medimos">What We Measure</h4>
                         <ul>
-                            <li>Contact rate vs. your baseline</li>
-                            <li>Recovery rate improvement</li>
-                            <li>Cost per recovery</li>
-                            <li>Payment plan acceptance</li>
-                            <li>Customer satisfaction score</li>
-                            <li>Compliance audit results</li>
+                            <li data-en="Contact rate vs. your baseline" data-es="Tasa de contacto vs. tu línea base">Contact rate vs. your baseline</li>
+                            <li data-en="Recovery rate improvement" data-es="Mejora en tasa de recuperación">Recovery rate improvement</li>
+                            <li data-en="Cost per recovery" data-es="Costo por recuperación">Cost per recovery</li>
+                            <li data-en="Payment plan acceptance" data-es="Aceptación de planes de pago">Payment plan acceptance</li>
+                            <li data-en="Customer satisfaction score" data-es="Puntuación de satisfacción del cliente">Customer satisfaction score</li>
+                            <li data-en="Compliance audit results" data-es="Resultados de auditoría de cumplimiento">Compliance audit results</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div style="background: rgba(var(--clr-pink), 0.1); border: 2px solid rgba(var(--clr-pink), 1); border-radius: 16px; padding: 40px; text-align: center; margin-top: 40px;">
-                    <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;">Pilot Timeline: 30 Days</h3>
-                    <p style="font-size: 18px; color: rgba(var(--clr-white), 0.9);">
+                    <h3 style="color: rgba(var(--clr-pink), 1); margin-bottom: 20px;" data-en="Pilot Timeline: 30 Days" data-es="Cronograma del Piloto: 30 Días">Pilot Timeline: 30 Days</h3>
+                    <p style="font-size: 18px; color: rgba(var(--clr-white), 0.9);" data-en="Week 1: Setup & integration | Weeks 2-3: Live calling & data gathering | Week 4: Analysis & decision" data-es="Semana 1: Configuración e integración | Semanas 2-3: Llamadas en vivo y recopilación de datos | Semana 4: Análisis y decisión">
                         Week 1: Setup & integration | Weeks 2-3: Live calling & data gathering | Week 4: Analysis & decision
                     </p>
                 </div>
@@ -598,20 +640,20 @@
         <!-- Slide 6: Urgency -->
         <div class="slide">
             <div class="container">
-                <h2 style="margin-bottom: 40px;">Why Start This Month</h2>
+                <h2 style="margin-bottom: 40px;" data-en="Why Start This Month" data-es="Por Qué Comenzar Este Mes">Why Start This Month</h2>
                 
                 <div class="urgency-grid">
                     <div class="urgency-card">
-                        <h4>Collections Push</h4>
-                        <p>Peak calling season with highest contact rates. Maximize your window.</p>
+                        <h4 data-en="Collections Push" data-es="Impulso de Cobranzas">Collections Push</h4>
+                        <p data-en="Peak calling season with highest contact rates. Maximize your window." data-es="Temporada pico de llamadas con las tasas de contacto más altas. Maximiza tu ventana.">Peak calling season with highest contact rates. Maximize your window.</p>
                     </div>
                     <div class="urgency-card">
-                        <h4>Budget Allocation</h4>
-                        <p>Pilot results inform Q1 planning and budget approval. Early data secures resources for scale.</p>
+                        <h4 data-en="Budget Allocation" data-es="Asignación de Presupuesto">Budget Allocation</h4>
+                        <p data-en="Pilot results inform Q1 planning and budget approval. Early data secures resources for scale." data-es="Los resultados del piloto informan la planificación del T1 y aprobación de presupuesto. Datos tempranos aseguran recursos para escalar.">Pilot results inform Q1 planning and budget approval. Early data secures resources for scale.</p>
                     </div>
                     <div class="urgency-card">
-                        <h4>Competitive Edge</h4>
-                        <p>Early adopters already seeing results. Your competitors are evaluating. Don't get left behind.</p>
+                        <h4 data-en="Competitive Edge" data-es="Ventaja Competitiva">Competitive Edge</h4>
+                        <p data-en="Early adopters already seeing results. Your competitors are evaluating. Don't get left behind." data-es="Los primeros adoptantes ya ven resultados. Tus competidores están evaluando. No te quedes atrás.">Early adopters already seeing results. Your competitors are evaluating. Don't get left behind.</p>
                     </div>
                 </div>
                 
@@ -622,17 +664,17 @@
         <!-- Slide 7: CTA -->
         <div class="slide slide-gradient slide-center">
             <div class="container">
-                <h2 style="margin-bottom: 30px;">Ready to run the numbers on your portfolio?</h2>
+                <h2 style="margin-bottom: 30px;" data-en="Ready to run the numbers on your portfolio?" data-es="¿Listo para analizar los números de tu cartera?">Ready to run the numbers on your portfolio?</h2>
                 
                 <div class="cta-buttons">
-                    <button class="cta-button" onclick="alert('Scheduling integration coming soon')">
+                    <button class="cta-button" onclick="alert('Scheduling integration coming soon')" data-en="Start Your 30-Day Pilot" data-es="Inicia tu Piloto de 30 Días">
                         Start Your 30-Day Pilot
                     </button>
                 </div>
                 
                 <div style="margin-top: 60px; border-top: 1px solid rgba(var(--clr-white), 0.1); padding-top: 40px;">
                     <p style="font-size: 16px; color: rgba(var(--clr-white), 0.8);">
-                        Questions? Let's talk.<br>
+                        <span data-en="Questions? Let's talk." data-es="¿Preguntas? Hablemos.">Questions? Let's talk.</span><br>
                         <span class="accent-text">ed@kleva.co</span> | 
                         <a href="https://linkedin.com/in/edjescobar" style="color: rgba(var(--clr-pink), 1); text-decoration: none;">linkedin.com/in/edjescobar</a>
                     </p>
@@ -699,6 +741,42 @@
             el.style.opacity = '0';
             el.style.transform = 'translateY(40px)';
             el.style.transition = 'all 0.8s ease-out';
+        });
+        
+        // Language Toggle
+        const langButtons = document.querySelectorAll('.lang-button');
+        let currentLang = 'en';
+        
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button states
+            langButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) {
+                    if (el.tagName === 'BUTTON') {
+                        el.textContent = translation;
+                    } else if (el.innerHTML.includes('<br>')) {
+                        el.innerHTML = translation;
+                    } else {
+                        el.textContent = translation;
+                    }
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+        
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.dataset.lang);
+            });
         });
     </script>
 </body>
