@@ -69,9 +69,10 @@ Sign leads up for a 30-day pilot program with zero pricing commitment.
 
 **Slide 7: CTA**
 - Title: "Ready to run the numbers on your portfolio?"
-- Single button: "Start Your 30-Day Pilot"
-- Contact: ed@kleva.co | linkedin.com/in/edjescobar
-- Purpose: Focused conversion with no distraction
+- Video: Short 2-minute product demo embedded between title and contact
+- CTA: No primary button (video-focused final slide)
+- Contact: ed@kleva.co | +1 (704) 816-9059 | linkedin.com/in/edjescobar
+- Purpose: Drive understanding via demo, then direct contact
 
 ## Development Commands
 
@@ -101,13 +102,12 @@ npx lighthouse-cli http://localhost:8000
 
 ```
 kleva-sales-deck/
-├── index.html           # Main conversion deck (7 slides)
-├── index-es.html        # Spanish version
-├── pilot-deck.html      # Reference backup
-├── WARP.md              # This file
+├── index.html           # Main conversion deck (7 slides, EN/ES toggle)
+├── WARP.md              # Project guide for Warp
 ├── README.md            # Basic project info
 ├── favicon.svg          # Brand icon
 ├── Vector 11.png        # Decorative effect (final slide)
+├── dia-app-kleva.mp4    # 2-minute demo video embedded in final slide
 └── logos/
     ├── vana-logo.png    # VANA customer
     ├── adt.png          # ADT customer
@@ -154,6 +154,7 @@ Users can navigate with:
 - Edit slide headings, subtitles, and body text directly in HTML
 - Keep accent text in `<span class="accent-text">` for pink coloring
 - Search for "Slide X:" to find sections quickly
+- For translations, update `data-en` and `data-es` attributes on elements (buttons, headings, paragraphs)
 
 ### To Update Metrics
 - Hook slide (line ~412): Grid with 3 metric values
@@ -179,23 +180,38 @@ Users can navigate with:
 - Modern browsers: Chrome, Firefox, Safari, Edge (latest)
 - Fully responsive from 320px and up
 
+## Session Resume / Backlog (Enterprise Focus)
+
+Use this to pick up the conversation quickly:
+
+- Done: EN/ES toggle, full Spanish translations, embedded 2-min video, final slide copy improved, phone added
+- Next: Add enterprise buyer content for banks (new slides or callouts):
+  - Security & compliance: SOC2/ISO status, encryption, audit logs, data residency, CONDUSEF/CNBV alignment
+  - Integration: API overview, typical timelines, supported connectors (CRM/collections/core banking)
+  - Scale & reliability: uptime SLA, DR/BCP, multi-region
+  - Risk & data: data ownership, exit plan, consent/recording policy
+  - ROI model: calculator inputs/assumptions for large portfolios
+  - Credibility: team, support model, references; competitor comparison (Genesys/NICE/Nuance, etc.)
+
+When ready, add a slide titled "Enterprise-Grade for Banks" summarizing the above.
+
 ## Recent Changes
 
-- Replaced 6-slide product deck with 7-slide conversion deck
-- Updated hook to focus on recovery outcomes
-- Removed Q4 seasonal references for timelessness
-- Simplified final CTA to single button
-- Fixed logo file paths (removed spaces)
-- Aligned messaging across English and Spanish versions
+- Added EN/ES language toggle with data-en/data-es attributes
+- Translated the entire deck to Spanish (dynamic switch, single index.html)
+- Embedded 2-minute demo video on final slide (dia-app-kleva.mp4)
+- Removed "Start Your 30-Day Pilot" button from final slide; added improved copy
+- Added contact phone number: +1 (704) 816-9059
+- Updated messaging and final-slide text per latest copy
 
 ## Deployment Status
 
 - **Primary URL**: https://kleva-sales-deck.vercel.app/index.html
-- **Spanish URL**: https://kleva-sales-deck.vercel.app/index-es.html
+- **Language**: EN/ES toggle within the same page (no separate Spanish URL)
 - **Host**: Vercel (connected to GitHub repo)
 - **Auto-deploy**: Yes (on push to main branch)
 
 ## Contact
 
-- Ed Escobar: ed@kleva.co
+- Ed Escobar: ed@kleva.co | +1 (704) 816-9059
 - LinkedIn: linkedin.com/in/edjescobar
