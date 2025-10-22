@@ -29,9 +29,16 @@
   - CTA buttons become full-width blocks on mobile
   - All cards/boxes have reduced padding on smaller screens
 
-#### 3. Git Changes
+#### 3. Metrics Update (Later in Session)
+- **Updated contact rate**: Changed from 73% to 34% across the deck
+  - Slide 1: Metrics grid (hook slide)
+  - Slide 4: ADT proof card
+  - Reflects more accurate/conservative performance data
+
+#### 4. Git Changes
 - **Commit 1 (75e3ccd)**: "Remove 'zero defaulted agreements' text and customer names from proof cards"
 - **Commit 2 (7a23dde)**: "Add comprehensive mobile responsive styles for all breakpoints"
+- **Commit 3 (9e055e0)**: "Update contact rate from 73% to 34%"
 - Successfully pushed to GitHub and auto-deployed to Vercel
 
 ### Previous Session: October 21, 2025
@@ -123,14 +130,14 @@ kleva-sales-deck/
 2. **ADT** - Servicios de Seguridad - Argentina (Active) 
 3. **DIRECTV** - TV Paga - Ecuador (Active)
 
-## Metrics Maintained
+## Current Metrics
 - **$0.17** per minute vs **$0.40** for human agents
-- **73%** success rate
+- **34%** contact rate (updated October 22, 2025)
 - **24/7** availability
 - **25%** better recovery
-- **70%** cost reduction
+- **65%** cost savings
 - **400K+** minutes processed monthly
-- **$4M** recovered in October, **$9M** in November
+- **$4M** recovered in October, **$9M** in November (DIRECTV)
 
 ## User Environment Context
 - **OS**: macOS

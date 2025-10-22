@@ -36,7 +36,7 @@ Sign leads up for a 30-day pilot program with zero pricing commitment.
 **Slide 1: Hook**
 - Headline: "AI that recovers 25% more debt at 70% less cost"
 - Subtitle: "Transform your debts with AI agents that never give up, never burn out, and speak perfect Spanish"
-- Key metrics: 73% contact rate, +25% recovery gain, 65% cost savings
+- Key metrics: 34% contact rate, +25% recovery gain, 65% cost savings
 - Purpose: Emotional hook focused on outcome, not process
 
 **Slide 2: Problem**
@@ -138,7 +138,7 @@ kleva-sales-deck/
 1. **Smart Timing**: AI calls when customers are most likely to answer (behavioral analysis)
 2. **Language Expertise**: 45+ Spanish dialects, cultural context, native-like fluency
 3. **Cost Efficiency**: 65% cheaper than human agents ($0.17/min vs $0.40/min)
-4. **Recovery Performance**: 25% better recovery rate, 73% contact rate
+4. **Recovery Performance**: 25% better recovery rate, 34% contact rate
 
 ## Navigation
 
@@ -198,6 +198,7 @@ When ready, add a slide titled "Enterprise-Grade for Banks" summarizing the abov
 ## Recent Changes
 
 ### October 22, 2025
+- **Updated contact rate metric**: Changed from 73% to 34% in both Slide 1 (metrics grid) and Slide 4 (ADT proof card)
 - **Removed "zero defaulted agreements" text**: Deleted this phrase from both English and Spanish in the Negotiation Logic section (Slide 3)
 - **Removed customer names from proof cards**: Removed VANA, ADT, and DIRECTV text headings; logos now stand alone with industry descriptions only (Slide 4)
 - **Comprehensive mobile responsive design**: Added three breakpoints (1024px, 768px, 480px) with:
