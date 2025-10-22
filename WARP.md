@@ -197,6 +197,20 @@ When ready, add a slide titled "Enterprise-Grade for Banks" summarizing the abov
 
 ## Recent Changes
 
+### October 22, 2025
+- **Removed "zero defaulted agreements" text**: Deleted this phrase from both English and Spanish in the Negotiation Logic section (Slide 3)
+- **Removed customer names from proof cards**: Removed VANA, ADT, and DIRECTV text headings; logos now stand alone with industry descriptions only (Slide 4)
+- **Comprehensive mobile responsive design**: Added three breakpoints (1024px, 768px, 480px) with:
+  - All grids stack to single column on mobile
+  - Typography scales down appropriately (h1: 70px → 36px → 28px)
+  - Padding reduces progressively (80px → 40px → 30px)
+  - Metrics grid stacks vertically on small screens
+  - Navigation dots hidden on mobile
+  - Language toggle repositioned and resized
+  - Full-width CTA buttons on mobile
+  - Optimized spacing and card padding for all screen sizes
+
+### Previous Updates
 - Added EN/ES language toggle with data-en/data-es attributes
 - Translated the entire deck to Spanish (dynamic switch, single index.html)
 - Embedded 2-minute demo video on final slide (dia-app-kleva.mp4)
